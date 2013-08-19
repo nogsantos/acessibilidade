@@ -1,6 +1,7 @@
 [production]
 phpSettings.display_startup_errors = 0
 phpSettings.display_errors = 0
+phpSettings.mbstring.internal_encoding = 'UTF8'
 includePaths.library = APPLICATION_PATH "/../library"
 includePaths.plugins = APPLICATION_PATH "/plugins"
 bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
@@ -11,13 +12,25 @@ resources.frontController.params.displayExceptions = 0
 phpSettings.date.timezone = "America/Sao Paulo"
 resources.view.doctype = "XHTML1_STRICT"
 
+; Localização
+resources.locale.default = "pt_BR"
+resources.locale.force = true
+
+; Translate
+resources.translate.registry_key = "Zend_Translate"
+resources.translate.data = APPLICATION_PATH "/configs/lang"
+resources.translate.locale = "pt_BR"
+resources.translate.options.scan = "directory"
+resources.translate.options.logUntranslated = false
+resources.translate.disableNotices = true
+
 resources.db.adapter = PDO_MYSQL
 resources.db.params.host = localhost
 resources.db.params.username = 
 resources.db.params.password = 
 resources.db.params.dbname = 
 
-resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+resources.layout.layoutPath = APPLICATION_PATH "/views/layouts/scripts/"
 [staging : production]
 
 [testing : production]
@@ -28,3 +41,8 @@ phpSettings.display_errors = 1
 phpSettings.display_startup_errors = 1
 phpSettings.display_errors = 1
 resources.frontController.params.displayExceptions = 1
+
+;Firebug
+;resources.db.params.profiler.enabled = "true"
+;resources.db.params.profiler.class = "Zend_Db_Profiler_Firebug"
+;resources.db.defaultMetadataCache = "database"
