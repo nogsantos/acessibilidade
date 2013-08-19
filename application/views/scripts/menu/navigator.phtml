@@ -1,0 +1,82 @@
+<?php
+/**
+ * View Menu
+ * 
+ * @author Fabricio Nogueira <fabricionogueira@cercomp.ufg.br>
+ * @since 15 JAN 2013
+ * 
+ * @copyright (c) 2013, Cercomp Universidade Federal de Goiás
+ */
+//$vMenu = isset($this->menu['FUNCAO']) ? $this->menu['FUNCAO'] : '';
+?>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand <?php echo $this->default ? 'active' : ''?>" href="<?php echo $this->url(array('action'=>'index'));?>">SCO-MTN</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">                            
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <?php echo $this->financeiro ? 'active' : ''?>" data-toggle="dropdown">Financeiro<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo $this->url(array('controller'=>'fi-recibos','action'=>'index'));?>">Recibo</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <?php echo $this->biblioteca ? 'active' : ''?>" data-toggle="dropdown">Biblioteca<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Livros</li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'bl-editoras','action'=>'index'));?>">Editora</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'bl-autores','action'=>'index'));?>">Autor</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'bl-generos','action'=>'index'));?>">Genero</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'bl-livros','action'=>'index'));?>">Livro</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'bl-emprestimos','action'=>'index'));?>">Empr&eacute;stimo</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <?php echo $this->seminario ? 'active' : ''?>" data-toggle="dropdown">Semin&aacute;rio<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo $this->url(array('controller'=>'se-turmas','action'=>'index'));?>">Turma</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'se-materias','action'=>'index'));?>">Mat&eacute;ria</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <?php echo $this->pessoas ? 'active' : ''?>" data-toggle="dropdown">Pessoas<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo $this->url(array('controller'=>'pe-alunos','action'=>'index'));?>">Aluno</a></li>
+                            <li><a href="<?php echo $this->url(array('controller'=>'pe-professores','action'=>'index'));?>">Professor</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle <?php echo $this->relatorios ? 'active' : ''?>" data-toggle="dropdown">Relat&oacute;rios<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-header">Financeiro</li>
+                            <li><a href="#">Recibos</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Biblioteca</li>
+                            <li><a href="#">Editoras</a></li>
+                            <li><a href="#">Autores</a></li>
+                            <li><a href="#">Generos</a></li>
+                            <li><a href="#">Empr&eacute;stimos</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Semin&aacute;rio</li>
+                            <li><a href="#">Alunos</a></li>
+                            <li><a href="#">Professores</a></li>
+                            <li><a href="#">Mat&eacute;rias</a></li>
+                            <li><a href="#">Turmas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <a href="<?php echo $this->url(array('controller'=>'auth','action'=>'logout'));?>">
+                    <div class="btn pull-right">Sair&nbsp;&nbsp;&nbsp;<i class="icon-off"></i>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

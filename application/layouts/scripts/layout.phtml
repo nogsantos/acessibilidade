@@ -1,0 +1,88 @@
+<?php
+    $this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+    $this->headTitle()->setSeparator(' - ');
+    $this->headTitle('SCO-MTN');
+    /*
+     * Foco link menu
+     */
+    switch ($this->classActive) {
+       case 'financeiro': $this->financeiro = true; break;
+       case 'biblioteca': $this->biblioteca = true; break;
+       case 'seminario': $this->seminario = true; break;
+       case 'pessoas': $this->pessoas = true; break;
+       case 'relatorios': $this->relatorios = true; break;
+       default: $this->default = true;break;
+    }
+    /*
+     * Identificando o usuário logado
+     */
+     $sessao = Zend_Auth::getInstance();
+     $cdUsuario = !empty($sessao->getIdentity()->cd_usuario) ? $sessao->getIdentity()->cd_usuario : '' ;
+?>
+<!DOCTYPE html>
+    <!--[if lt IE 7]>
+          <html class="no-js lt-ie9 lt-ie8 lt-ie7"> 
+    <![endif]-->
+    <!--[if IE 7]>
+         <html class="no-js lt-ie9 lt-ie8"> 
+     <![endif]-->
+    <!--[if IE 8]> 
+        <html class="no-js lt-ie9"> 
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <html class="no-js"> 
+    <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap.min.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap-responsive.min.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/main.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/default.css'); ?>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' ?>"></script>
+        
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/jquery-1.8.2.min' ?>"></script>
+        <script>window.jQuery || document.write('<script src="<?php print $this->baseUrl()?>/js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/vendor/bootstrap.min.js' ?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/plugins.js' ?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl() . '/js/main.js' ?>"></script>
+        
+        <?php if(isset($this->css) && is_array($this->css)) : ?>
+            <?php foreach ($this->css as $css) :?>
+                <link href="<?php echo $this->baseUrl() ?>/css/<?php echo $css ?>.css" rel="stylesheet" type="text/css" />
+            <?php endforeach;?>
+        <?php endif;?>
+        <?php if(isset($this->js) && is_array($this->js)) : ?>
+        <?php foreach ($this->js as $js) :?>
+            <script type="text/javascript" src="<?php echo $this->baseUrl() ?>/js/<?php echo $js ?>.js"></script>
+        <?php endforeach;?>
+        <?php endif;?>
+            
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">Voc&ecirc; est&aacute; um browser antigo. <a href="http://browsehappy.com/">Aproveite para atualiz&aacute-lo hoje</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> e obtenha uma melhor navega&ccedil;&atilde;o.</p>
+        <![endif]-->       
+        <?php if(isset($cdUsuario) && !empty($cdUsuario)) : ?>
+            <?php echo $this->layout()->menu; ?>
+            <div class="container">
+        <?php else : ?>
+            <div class="container">
+            <div class="alert alert-info">
+                <h1>Bem vindo ao sistema!</h1> Por favor identifique-se pelo formul&aacute;rio abaixo.
+            </div>
+        <?php endif;?>
+            <div id="content">
+                <?php echo $this->layout()->content; ?>
+            </div>        
+            <hr>
+            <footer>
+                <p>&copy; Miss&atilde;o Tocando as Na&ccedil;&otilde;es <?php echo date('Y')?> <span class="pull-right">Desenvolvido por: <a href="http://www.nogsantos.com.br" target="_blank">Fabricio Nogueira</a></span> </p>
+            </footer>
+        </div>
+    </body>
+</html>
+

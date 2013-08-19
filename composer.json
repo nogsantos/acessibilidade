@@ -1,0 +1,19 @@
+{
+    "name": "Grass",
+    "description": "The lunatics is on the grass...",
+    "keywords": ["GRASS", "on the grass"],
+    "homepage": "https://github.com/nogsantos/grass",
+    "type": "System",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fabricio Nogueira",
+            "email": "nogsantos@gmail.com",
+            "homepage": "http://www.nogsantos.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "zendframework/zendframework1": "1.12.x"
+    }
+}
