@@ -1,10 +1,7 @@
 <?php
-/*
- * Identificando o usuario logado
+/**
+ * @author Fabricio Nogueira
  */
- $sessao = Zend_Auth::getInstance();
-// echo '<pre>';print_r($sessao);exit;
- $cdUsuario = !empty($sessao->getIdentity()->cd_usuario) ? $sessao->getIdentity()->cd_usuario : '' ;
 ?>
 <!DOCTYPE html>
     <!--[if lt IE 7]>
@@ -46,16 +43,6 @@
                 </div>
             </div>
         </div>
-        <?php if(isset($cdUsuario) && !empty($cdUsuario)) : ?>
-            <div class="jumbotron">
-                <div class="container">
-                  <?php echo $this->layout()->menu; ?>
-                  <h1>Hello, world!</h1>
-                  <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                  <p><a class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-                </div>
-            </div>
-        <?php endif;?>
         <div class="container">
             <div id="content">
                 <?php echo $this->layout()->content; ?>

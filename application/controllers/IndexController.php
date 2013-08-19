@@ -3,13 +3,8 @@
 class IndexController extends Zend_Controller_Action {
 
     public function init() {
-        /*
-         * Monta o menu principal
-         */
-//        $this->_helper->actionStack('navigator', 'Menu');
         
     }
-
     public function indexAction() {
         
     }

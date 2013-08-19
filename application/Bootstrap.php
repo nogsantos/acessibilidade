@@ -20,4 +20,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $frontController = Zend_Controller_Front::getInstance();
         $frontController->registerPlugin(new Application_Plugin_HasIdentity());
     }
+    /**
+     * Retorna o componente Zend_Translate
+     * @return type Zend_Translate
+     */
+    protected function _initTranslate() {
+        $resource  = $this->getPluginResource('translate');
+        $translate = $resource->getTranslate();
+        return $translate;
+    }
 }
