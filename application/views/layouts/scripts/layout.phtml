@@ -18,9 +18,9 @@
     <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headMeta(); ?>
+        <?php echo $this->defaults() ?>
         <?php echo $this->headTitle(); ?>
-        <meta name="description" content="">
+        <?php echo $this->headMeta(); ?>
         <meta name="viewport" content="width=device-width">
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap.min.css'); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap-theme.min.css'); ?>

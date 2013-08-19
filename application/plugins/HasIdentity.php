@@ -1,26 +1,25 @@
 <?php
 /*
- * Description of HasIdentity
  *
  * @author fabricionogueira
  */
 class Application_Plugin_HasIdentity extends Zend_Controller_Plugin_Abstract {
     /*
-     * Nome do módulo, controlador e ação que o usuário terá acesso caso não esteja logado.
+     * Nome do modulo, controlador e acao que o usuario tera acesso caso nao esteja logado.
      */
     const controller = 'auth';
-    const action = 'login';
+    const action     = 'login';
 
     public function preDispatch(Zend_Controller_Request_Abstract $request) {       
         $controller = $request->getControllerName();
         $action = $request->getActionName();
         /*
-         *  Verifica se o usuário não está logado
+         *  Verifica se o usuario nao esta logado
          */
         if (!Zend_Auth::getInstance()->hasIdentity()) {
             /*
-             *  Verifica se a requisição é diferente do permitido
-             *  Se for diferente rotea para a página de login
+             *  Verifica se a requisicao e diferente do permitido
+             *  Se for diferente rotea para a pagina de login
              */
             if ($controller != self::controller && $action != self::action) {
                 $request->setControllerName(self::controller);

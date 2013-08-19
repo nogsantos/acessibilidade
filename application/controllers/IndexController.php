@@ -6,7 +6,6 @@ class IndexController extends Zend_Controller_Action {
         
     }
     public function indexAction() {
-        
     }
     /**
      * Redirecionamento para a pagina inicial do formulario
