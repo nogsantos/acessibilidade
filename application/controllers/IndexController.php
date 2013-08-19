@@ -6,14 +6,15 @@ class IndexController extends Zend_Controller_Action {
         /*
          * Monta o menu principal
          */
-        $this->_helper->actionStack('navigator', 'Menu');
+//        $this->_helper->actionStack('navigator', 'Menu');
+        
     }
 
     public function indexAction() {
         
     }
     /**
-     * Redirecionamento para a página inicial do formulário
+     * Redirecionamento para a pagina inicial do formulario
      */
     public function gridAction() {
         $this->_helper->redirector('index');

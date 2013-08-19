@@ -14,7 +14,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
        return $autoloader;
     }
     /**
-     * Inicialização dos plugins
+     * Inicializacao dos plugins
      */
     public function _initPlugins() {
         $frontController = Zend_Controller_Front::getInstance();
