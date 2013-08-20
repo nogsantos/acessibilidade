@@ -29,4 +29,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $translate = $resource->getTranslate();
         return $translate;
     }
+    /**
+     * 
+     * @return type Zend_View_Helper
+     */
+    protected function _initViewHelpers() {
+        $this->bootstrap('view');
+        $view = $this->getResource('view');
+        return $view;
+    }
 }

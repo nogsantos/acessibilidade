@@ -56,7 +56,7 @@ class AuthController extends Zend_Controller_Action {
                      * Armazena os dados do usuario em sessao, 
                      * apenas desconsiderando a senha do usuario
                      */
-                    $info    = $authAdapter->getResultRowObject(null, 'senha');                                      
+                    $info    = $authAdapter->getResultRowObject(null, 'senha');
                     $storage = $auth->getStorage();
                     $storage->write($info);
                     /*

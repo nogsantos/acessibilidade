@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL);
 /**
  * @author Fabricio Nogueira
  */
@@ -29,6 +30,9 @@
         <?php echo $this->headLink() ?>
     </head>
     <body>
+        <?php if (!empty($this->loggedInAs())) : ?>
+            <?php echo $this->navigation()->menu()->setPartial('navigation.phtml'); ?>
+         <?php else : ?>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -43,8 +47,14 @@
                 </div>
             </div>
         </div>
+        <?php endif;?>
         <div class="container">
             <div id="content">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <span class="pull-right"><p class="text-muted"><?php print $this->loggedInAs();?></p></span>
+                    </div>
+                </div>
                 <?php echo $this->layout()->content; ?>
             </div>        
             <hr>

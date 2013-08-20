@@ -9,7 +9,7 @@ bootstrap.class = "Bootstrap"
 appnamespace = "Application"
 resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
 resources.frontController.params.displayExceptions = 0
-phpSettings.date.timezone = "America/Sao Paulo"
+phpSettings.date.timezone = "America/Sao_Paulo"
 resources.view.doctype = "XHTML1_STRICT"
 
 ; Localização
