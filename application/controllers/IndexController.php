@@ -1,10 +1,14 @@
 <?php
 
 class IndexController extends Zend_Controller_Action {
-
-    public function init() {
-        
+    
+    public function init(){
+        /*
+         * Monta o menu principal
+         */
+        $this->_helper->actionStack('navigation', 'Menu');
     }
+    
     public function indexAction() {
     }
     /**

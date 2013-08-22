@@ -8,26 +8,16 @@
 body {
     padding-top: 60px;
     padding-bottom: 40px;
+    font-family: Arial !important;
+    color: #666 !important;
+    font-size: 12px;
 }
-.active{
-    font-weight: bold !important;
-    color: #fff !important;
-}
-
-.menu-forms ul{
-    float: right !important;
-}
-.text-fade{
-    text-decoration: none !important;
-    color: #666;
-    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    transition: all .2s linear;
-}
-.form-field-invalid{
-    border: 1px solid red !important;
-}
-.navbar{
-    
+footer {
+    background-color: #F5F5F5;
+    border-top: 1px solid #CCCCCC;
+    width: 100%;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    bottom: 0;
+    position: fixed;
 }

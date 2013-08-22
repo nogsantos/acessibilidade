@@ -22,9 +22,10 @@ class My_View_Helper_Defaults extends Zend_View_Helper_Abstract{
             'The lunatics is os the grass'
         );
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $this->view->headTitle($request->getControllerName())
+        $this->view->headTitle('Grass')
+                   ->headTitle($request->getControllerName())
                    ->headTitle($request->getActionName())
         ;
-        $this->view->headTitle()->setSeparator(' / ');
+        $this->view->headTitle()->setSeparator(' » ');
     }
 }

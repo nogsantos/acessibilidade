@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL);
 /**
  * @author Fabricio Nogueira
  */
@@ -25,13 +24,14 @@ error_reporting(E_ALL);
         <meta name="viewport" content="width=device-width">
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap.min.css'); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap-theme.min.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/font-awesome.min.css'); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/main.css'); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/default.css'); ?>
         <?php echo $this->headLink() ?>
     </head>
     <body>
         <?php if (!empty($this->loggedInAs())) : ?>
-            <?php echo $this->navigation()->menu()->setPartial('navigation.phtml'); ?>
+            <?php echo $this->layout()->navigation; ?>
          <?php else : ?>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -50,20 +50,28 @@ error_reporting(E_ALL);
         <?php endif;?>
         <div class="container">
             <div id="content">
-                <div class="row-fluid">
-                    <div class="span12">
+                <div class="row">
+                    <div class="col-md-pull-12">
                         <span class="pull-right"><p class="text-muted"><?php print $this->loggedInAs();?></p></span>
                     </div>
                 </div>
-                <?php echo $this->layout()->content; ?>
+                <div class="row">
+                    <div class="col-md-pull-12">
+                        <?php echo $this->layout()->content; ?>
+                    </div>
+                </div>
             </div>        
             <hr>
-            <footer>
-                <p>&copy; Grass <?php echo date('Y')?> <span class="pull-right">Desenvolvido por: <a href="http://www.nogsantos.com.br" target="_blank">Fabricio Nogueira</a></span> </p>
-            </footer>
         </div>
+        <footer>
+            <div class="container">
+                <div id="content">
+                    <p>&copy; Grass <?php echo date('Y')?> <span class="pull-right">Desenvolvido por: <a href="http://www.nogsantos.com.br" target="_blank">Fabricio Nogueira</a></span> </p>
+                </div>
+            </div>
+        </footer>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/jquery-1.10.2.min.js')?>"></script>
-        <script type="text/javascript" src="<?php print $this->baseUrl('/js/vendor/bootstrap.min.js')?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl('/js/bootstrap.min.js')?>"></script>
         <?php echo $this->headScript() ?>
     </body>
 </html>
