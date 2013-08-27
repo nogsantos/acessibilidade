@@ -21,7 +21,7 @@ class My_View_Helper_Usuario extends Zend_View_Helper_Abstract {
             $oUsuario  = new Application_Model_Usuario();
             $oUsuario->setFkPessoa($auth->getIdentity()->fk_pessoa);
             $resultUsuario = $oUsuario->consultarDados();
-            return '<em>Bem vindo <b>' . $resultUsuario->nome.'!</b></em>';
+            return '<i class="icon-user"></i> <b>' . $resultUsuario->nome.'</b>';
         }
         $request    = Zend_Controller_Front::getInstance()->getRequest();
         $controller = $request->getControllerName();

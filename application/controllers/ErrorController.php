@@ -1,36 +1,44 @@
 <?php
 
 class ErrorController extends Zend_Controller_Action {
-    
+
+    private $writer;
+    private $logger;
+
+    public function init() {
+        $this->writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+        $this->logger = new Zend_Log($this->writer);
+    }
+
     public function errorAction() {
         /*
          * Monta o menu principal
          */
         $this->_helper->actionStack('navigation', 'Menu');
-        
+
         $errors = $this->_getParam('error_handler');
 
         if (!$errors || !$errors instanceof ArrayObject) {
             $this->view->message = 'You have reached the error page';
             return;
         }
-//        echo '<pre>';print_r($errors->type);exit;
         switch ($errors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
-                // 404 error -- controller or action not found
                 $this->getResponse()->setHttpResponseCode(404);
-                $priority = Zend_Log::NOTICE;
                 $this->view->message = 'Página não localizada.';
+                $mensagem = $errors->exception;
+                $priority = Zend_Log::NOTICE;
+                $this->logger->notice($mensagem);
                 break;
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_OTHER:
-                $this->_redirect('erro.html');
+                $mensagem = $errors->exception;
                 $priority = Zend_Log::CRIT;
-                $this->view->message = 'Erro na coneão com o banco de dados.';
+                 $this->logger->crit($mensagem);
+                $this->_redirect('erro.html');
                 break;
             default:
-                // application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $priority = Zend_Log::CRIT;
                 $this->view->message = 'Erro da aplicação';

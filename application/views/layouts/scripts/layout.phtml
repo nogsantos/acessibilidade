@@ -2,6 +2,7 @@
 /**
  * @author Fabricio Nogueira
  */
+$vEmpresa = $this->empresaDefault()->toViewSingle();
 ?>
 <!DOCTYPE html>
     <!--[if lt IE 7]>
@@ -51,9 +52,6 @@
         <div class="container">
             <div id="content">
                 <div class="row">
-                    <div class="col-md-pull-12">
-                        <span class="pull-right"><p class="text-muted"><?php print $this->usuario();?></p></span>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-pull-12">
@@ -66,7 +64,9 @@
         <footer>
             <div class="container">
                 <div id="content">
-                    <p>&copy; Grass <?php echo date('Y')?> <span class="pull-right">Desenvolvido por: <a href="http://www.nogsantos.com.br" target="_blank">Fabricio Nogueira</a></span> </p>
+                    <div class="col-md-2 pull-left">&copy; Grass <?php echo date('Y')?></div>
+                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vEmpresa['nm_empresa'] ;?></div>
+                    <div class="col-md-4 pull-right text-right"><?php print $this->usuario();?></div>
                 </div>
             </div>
         </footer>
@@ -77,4 +77,3 @@
         <?php echo $this->headScript() ?>
     </body>
 </html>
-

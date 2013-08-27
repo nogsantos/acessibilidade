@@ -36,12 +36,12 @@ class AuthController extends Zend_Controller_Action {
                      * Inicia o adaptador Zend_Auth para banco de dados
                      */
                     $authAdapter = new Zend_Auth_Adapter_DbTable(
-                            $dbAdapter,
-                            'login',
-                            'senha',
-                            'data_bloqueio'
+                            $dbAdapter
+                            , 'login'
+                            , 'senha'
+                            , 'id_empresa'
                     );
-                    $authAdapter->setTableName('pessoa.usuario')
+                    $authAdapter->setTableName('vw_login_usuario')
                                 ->setIdentityColumn('login')
                                 ->setCredentialColumn('senha')
                     ;
@@ -49,18 +49,10 @@ class AuthController extends Zend_Controller_Action {
                      * Define os dados para processar o login
                      */
                     $authAdapter->setIdentity($login)
-                                ->setCredential($senha);
-//                    $select = $authAdapter->getDbSelect();
-//                    $select->from(array('u'  => 'usuario'),array('login', 'senha'),'pessoa');
-//                    $select->join(array('pu' => 'perfil_usuario') , 'pu.fk_usuario = u.fk_pessoa', array(),'pessoa');
-//                    $select->join(array('pe' => 'perfil_empresa'), 'pe.fk_perfil = pu.fk_perfil', array(),'administrativo');
-//                    $select->join(array('e'  => 'empresa'), 'e.id_empresa = pe.fk_empresa', array(),'administrativo');
-//                    $select->where('u.data_bloqueio is null');
-//                    $select->where('u.login = ?', $login);
-//                    $select->where('u.senha = ?', $senha);
-//                    $select->where('e.id_empresa = ? ', (int) $empresa);
-//                    echo '<pre>';print_r($select->__toString());exit;
-                    
+                                ->setCredential($senha)
+                    ;
+                    $select = $authAdapter->getDbSelect();
+                    $select->where('id_empresa = ? ', (int) $empresa);
                     /*
                      * Efetua o login
                      */

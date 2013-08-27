@@ -116,7 +116,13 @@ create table administrativo.empresa(
     id_empresa bigserial not null primary key,
     nm_empresa varchar(250) not null,
     razao_social varchar(500) not null,
-    nr_cnpj bigint not null unique
+    nr_cnpj bigint not null unique,
+    empresa_matriz boolean, -- Confirma se é a empresa matriz.
+    fk_matriz bigint, -- Auto relacionamento, caso não seja matriz com a matriz.
+    prioridade_exibicao integer not null default (0), -- Define a prioridade de exibição.
+    data_cadastro timestamp with time zone not null default(now()),
+    data_bloqueio timestamp with time zone,
+    foreign key (fk_matriz) references administrativo.empresa (id_empresa)
 );
 
 create table administrativo.perfil_empresa(
@@ -160,8 +166,10 @@ insert into administrativo.action(fk_controller, codigo_action, nm_action, desc_
 insert into administrativo.action(fk_controller, codigo_action, nm_action, desc_action) values ('cad.usuario', 'editar', 'Editar', 'Funcão para edição.' );
 insert into administrativo.action(fk_controller, codigo_action, nm_action, desc_action) values ('cad.usuario', 'excluir', 'Excluir', 'Funcão para exclusão.' );
 
-insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj) values ('Grass Company', 'INC Grass Company SA',65437872000167);
-insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj) values ('Moon Inc', 'Dark Side Moon INC SA',57612881000119);
+insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj, empresa_matriz, fk_matriz,prioridade_exibicao, data_cadastro) values ('Grass Company', 'INC Grass Company SA',65437872000167, true, null, 0, now());
+insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj, empresa_matriz, fk_matriz,prioridade_exibicao, data_cadastro) values ('Grass Company II', 'INC Grass Company SA',65437872000166, false, (select id_empresa from administrativo.empresa where nr_cnpj = 65437872000167), 1, now());
+insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj, empresa_matriz, fk_matriz,prioridade_exibicao, data_cadastro) values ('Moon Inc', 'Dark Side Moon INC SA',57612881000119, false, (select id_empresa from administrativo.empresa where nr_cnpj = 65437872000167), 2, now());
+insert into administrativo.empresa(nm_empresa, razao_social, nr_cnpj, empresa_matriz, fk_matriz,prioridade_exibicao, data_cadastro) values ('Another Brink', 'Another Brink in the Wall',57612881000118, true, null, 1, now());
 
 insert into administrativo.perfil_empresa values(1,1);
 insert into administrativo.perfil_empresa values(1,2);
@@ -230,3 +238,16 @@ join pessoa.usuario u on u.fk_pessoa = pu.fk_usuario
 join pessoa.pessoa pes on pes.id_pessoa = u.fk_pessoa
 left join pessoa.fisica pf on pf.nr_cpf = u.fk_pessoa
 left join pessoa.juridica pj on pj.nr_cnpj = u.fk_pessoa
+
+/*View login usuário*/
+create view vw_login_usuario as
+    select 
+        e.id_empresa,
+        u.fk_pessoa,
+        u.login, 
+        u.senha 
+    from pessoa.usuario as u
+    join pessoa.perfil_usuario pu on pu.fk_usuario = u.fk_pessoa
+    join administrativo.perfil_empresa pe on pe.fk_perfil = pu.fk_perfil
+    join administrativo.empresa e on e.id_empresa = pe.fk_empresa
+    where u.data_bloqueio is null

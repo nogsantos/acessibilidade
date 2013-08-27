@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Descrição: Plugin defaults
+ * Descrição: Helper view defaults
  *
  *
  * @author Fabricio Nogueira
