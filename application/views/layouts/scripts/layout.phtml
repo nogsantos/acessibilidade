@@ -30,7 +30,7 @@
         <?php echo $this->headLink() ?>
     </head>
     <body>
-        <?php if (!empty($this->loggedInAs())) : ?>
+        <?php if (!empty($this->usuario())) : ?>
             <?php echo $this->layout()->navigation; ?>
          <?php else : ?>
         <div class="navbar navbar-inverse navbar-fixed-top">
@@ -52,7 +52,7 @@
             <div id="content">
                 <div class="row">
                     <div class="col-md-pull-12">
-                        <span class="pull-right"><p class="text-muted"><?php print $this->loggedInAs();?></p></span>
+                        <span class="pull-right"><p class="text-muted"><?php print $this->usuario();?></p></span>
                     </div>
                 </div>
                 <div class="row">

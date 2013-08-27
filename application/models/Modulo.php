@@ -17,7 +17,7 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
      * Atributos
      */
     protected $_name    = 'modulo';
-    protected $_schema  = 'public';
+    protected $_schema  = 'administrativo';
     protected $_primary = 'id_modulo';
     protected $sSql;
     protected $idModulo;
@@ -66,14 +66,14 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
                        array(
                            'modulo' => 'nm_modulo',
                            'codigo_modulo',
-                       ))
+                       ), $this->_schema)
                 ->join(array('c'=>'controller'), 
                         'c.fk_modulo = m.id_modulo',
                         array(
                             'controller'=> 'nm_controller',
                             'codigo_controller',
                             'id_controller',
-                        ))
+                        ), $this->_schema)
                 ->order(array('m.ordem', 'c.ordem'))
         ;
         return $this->fetchAll($this->sSql);

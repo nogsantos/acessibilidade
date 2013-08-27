@@ -14,7 +14,7 @@ class ErrorController extends Zend_Controller_Action {
             $this->view->message = 'You have reached the error page';
             return;
         }
-
+//        echo '<pre>';print_r($errors->type);exit;
         switch ($errors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
@@ -22,20 +22,25 @@ class ErrorController extends Zend_Controller_Action {
                 // 404 error -- controller or action not found
                 $this->getResponse()->setHttpResponseCode(404);
                 $priority = Zend_Log::NOTICE;
-                $this->view->message = 'Page not found';
+                $this->view->message = 'Página não localizada.';
+                break;
+            case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_OTHER:
+                $this->_redirect('erro.html');
+                $priority = Zend_Log::CRIT;
+                $this->view->message = 'Erro na coneão com o banco de dados.';
                 break;
             default:
                 // application error
                 $this->getResponse()->setHttpResponseCode(500);
                 $priority = Zend_Log::CRIT;
-                $this->view->message = 'Application error';
+                $this->view->message = 'Erro da aplicação';
                 break;
         }
 
         // Log exception, if logger available
-        if ($log = $this->getLog()) {
+        if ($log == $this->getLog()) {
             $log->log($this->view->message, $priority, $errors->exception);
-            $log->log('Request Parameters', $priority, $errors->request->getParams());
+            $log->log('Requisição de parametros', $priority, $errors->request->getParams());
         }
 
         // conditionally display exceptions

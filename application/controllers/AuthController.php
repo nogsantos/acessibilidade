@@ -24,64 +24,97 @@ class AuthController extends Zend_Controller_Action {
         /*
          * Verifica se existem dados de POST
          */
-        if ($this->getRequest()->isPost()) {
-            $data = $this->getRequest()->getPost();
-            if ($form->isValid($data)) {
-                $login     = $form->getValue('login');
-                $senha     = sha1($form->getValue('senha'));
-                $dbAdapter = Zend_Db_Table::getDefaultAdapter();
-                /*
-                 * Inicia o adaptador Zend_Auth para banco de dados
-                 */
-                $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
-                $authAdapter->setTableName('usuario')
-                            ->setIdentityColumn('login')
-                            ->setCredentialColumn('senha')
-                ;
-                /*
-                 * Define os dados para processar o login
-                 */
-                $authAdapter->setIdentity($login)
-                            ->setCredential($senha);
-                /*
-                 * Efetua o login
-                 */
-                $auth   = Zend_Auth::getInstance();
-                $result = $auth->authenticate($authAdapter);
-                /*
-                 * Verifica se o login foi efetuado com sucesso
-                 */
-                if ($result->isValid()) {
+        try {
+            if ($this->getRequest()->isPost()) {
+                $data = $this->getRequest()->getPost();
+                if ($form->isValid($data)) {
+                    $login     = $form->getValue('login');
+                    $senha     = sha1($form->getValue('senha'));
+                    $empresa   = $form->getValue('empresa');
+                    $dbAdapter = Zend_Db_Table::getDefaultAdapter();
                     /*
-                     * Armazena os dados do usuario em sessao, 
-                     * apenas desconsiderando a senha do usuario
+                     * Inicia o adaptador Zend_Auth para banco de dados
                      */
-                    $info    = $authAdapter->getResultRowObject(null, 'senha');
-                    $storage = $auth->getStorage();
-                    $storage->write($info);
-                    /*
-                     * Redireciona para o Controller protegido
-                     */
-                    return $this->_helper->redirector->goToRoute(
-                        array('controller' => 'index'), null, true
+                    $authAdapter = new Zend_Auth_Adapter_DbTable(
+                            $dbAdapter,
+                            'login',
+                            'senha',
+                            'data_bloqueio'
                     );
+                    $authAdapter->setTableName('pessoa.usuario')
+                                ->setIdentityColumn('login')
+                                ->setCredentialColumn('senha')
+                    ;
+                    /*
+                     * Define os dados para processar o login
+                     */
+                    $authAdapter->setIdentity($login)
+                                ->setCredential($senha);
+//                    $select = $authAdapter->getDbSelect();
+//                    $select->from(array('u'  => 'usuario'),array('login', 'senha'),'pessoa');
+//                    $select->join(array('pu' => 'perfil_usuario') , 'pu.fk_usuario = u.fk_pessoa', array(),'pessoa');
+//                    $select->join(array('pe' => 'perfil_empresa'), 'pe.fk_perfil = pu.fk_perfil', array(),'administrativo');
+//                    $select->join(array('e'  => 'empresa'), 'e.id_empresa = pe.fk_empresa', array(),'administrativo');
+//                    $select->where('u.data_bloqueio is null');
+//                    $select->where('u.login = ?', $login);
+//                    $select->where('u.senha = ?', $senha);
+//                    $select->where('e.id_empresa = ? ', (int) $empresa);
+//                    echo '<pre>';print_r($select->__toString());exit;
+                    
+                    /*
+                     * Efetua o login
+                     */
+                    $auth   = Zend_Auth::getInstance();
+                    $result = $auth->authenticate($authAdapter);
+                    /*
+                     * Verifica se o login foi efetuado com sucesso
+                     */
+                if ($result->isValid()) {
+                        /*
+                         * Armazena os dados do usuario em sessao, 
+                         * apenas desconsiderando a senha do usuario
+                         */
+                        $info    = $authAdapter->getResultRowObject(null, 'senha');
+                        $storage = $auth->getStorage();
+                        $storage->write($info);
+                        /*
+                         * Redireciona para o Controller protegido
+                         */
+                        return $this->_helper->redirector->goToRoute(
+                            array('controller' => 'index'), null, true
+                        );
+                    } else {
+                        /*
+                         * Dados invalidos
+                         */
+                        $this->_helper->FlashMessenger('
+                            <div class="alert alert-danger">
+                                Usu&aacute;rio ou senha inv&aacute;lidos!
+                            </div>
+                        ');
+                        $this->_redirect('/auth/login');
+                    }
                 } else {
                     /*
-                     * Dados invalidos
+                     * Formulario preenchido de forma incorreta
                      */
-                    $this->_helper->FlashMessenger('
-                        <div class="alert alert-danger">
-                            Usu&aacute;rio ou senha inv&aacute;lidos!
-                        </div>
-                    ');
-                    $this->_redirect('/auth/login');
+                    $form->populate($data);
                 }
-            } else {
-                /*
-                 * Formulario preenchido de forma incorreta
-                 */
-                $form->populate($data);
             }
+        } catch (Exception $exc) {
+            /*
+             * Grava no log os erros, caso hajam.
+             */
+            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $logger = new Zend_Log($writer);
+            $logger->crit($exc->getMessage());
+            $this->_helper->FlashMessenger('
+                <div class="alert alert-danger">
+                    Erro::0001
+                </div>
+            ');
+            $this->_redirect('/auth/login');
+            return false;
         }
     }
     /**
@@ -90,6 +123,7 @@ class AuthController extends Zend_Controller_Action {
     public function logoutAction() {
         $auth = Zend_Auth::getInstance();
         $auth->clearIdentity();
+        Zend_Session::destroy();
         return $this->_helper->redirector('index');
     }
 }

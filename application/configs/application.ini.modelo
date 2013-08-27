@@ -24,6 +24,23 @@ resources.translate.options.scan = "directory"
 resources.translate.options.logUntranslated = false
 resources.translate.disableNotices = true
 
+; Translate
+resources.translate.registry_key = "Zend_Translate"
+resources.translate.data = APPLICATION_PATH "/configs/lang"
+resources.translate.locale = "pt_BR"
+resources.translate.options.scan = Zend_Translate::LOCALE_DIRECTORY
+resources.translate.options.logUntranslated = true
+resources.translate.disableNotices = true
+
+; Log
+resources.log.stream.writerName = "Stream"
+resources.log.stream.writerParams.stream = APPLICATION_PATH "/../data/logs/application.log"
+resources.log.stream.writerParams.mode = "a"
+; Log Strategy
+log.path               = APPLICATION_PATH "/../data/logs"
+log.partitionStrategy  = "context"
+log.partitionFrequency = "yearly"
+
 resources.db.adapter = PDO_MYSQL
 resources.db.params.host = localhost
 resources.db.params.username = 
