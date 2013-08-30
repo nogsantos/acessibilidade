@@ -1,4 +1,7 @@
-begin;
+/**
+ * Funções.
+ *
+ */
 CREATE OR REPLACE FUNCTION nvl(character varying, character varying) RETURNS character varying AS 
 $$
 /**
@@ -15,5 +18,4 @@ $$
     end
 $$
 LANGUAGE 'sql' VOLATILE;
-
-commit;
+comment on function nvl is 'Substitui o valor do primeiro termo pelo segundo caso o primeiro valor esteja nulo.';
