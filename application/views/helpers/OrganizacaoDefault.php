@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Descrição: View Helper EmpresaDefault
+ * Descrição: View Helper OrganizacaoDefault
  *
  *
  * @author Fabricio Nogueira
@@ -11,22 +11,22 @@
  * @version 1.0.0
  *
  */
-class My_View_Helper_EmpresaDefault extends Zend_View_Helper_Abstract  {
+class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
     
-    protected $id_empresa;
-    protected $id_empresaIterator;
+    protected $id_organizacao;
+    protected $id_organizacaoIterator;
     
-    public function empresaDefault(){
+    public function organizacaoDefault(){
         try {
-            $auth       = Zend_Auth::getInstance();
-            $oEmpresa   = new Application_Model_Empresa();
+            $auth           = Zend_Auth::getInstance();
+            $oOrganizacao   = new Application_Model_Organizacao();
             if ($auth->hasIdentity()) {
-                $oEmpresa->setIdEmpresa($auth->getIdentity()->id_empresa);
+                $oOrganizacao->setIdOrganizacao($auth->getIdentity()->id_organizacao);
             }else{
-                $oEmpresa->setEmpresaMatriz(true);
+                $oOrganizacao->setOrganizacaoMatriz(true);
             }
-            $id_empresa = $oEmpresa->consultarDados();
-            $this->id_empresaIterator = new ArrayIterator($id_empresa->toArray());
+            $id_organizacao = $oOrganizacao->consultarDados();
+            $this->id_organizacaoIterator = new ArrayIterator($id_organizacao->toArray());
             return $this;
         } catch (Zend_Exception $exc) {
             /*
@@ -45,8 +45,8 @@ class My_View_Helper_EmpresaDefault extends Zend_View_Helper_Abstract  {
      * @return ArrayIterator
      */
     public function getIterator() {
-        $this->id_empresaIterator->rewind();
-        return $this->id_empresaIterator;
+        $this->id_organizacaoIterator->rewind();
+        return $this->id_organizacaoIterator;
     }
 
     /**
@@ -67,7 +67,7 @@ class My_View_Helper_EmpresaDefault extends Zend_View_Helper_Abstract  {
             $return = array();
             while ($iterator->valid()) {
                 $it = $iterator->current();
-                $return[$it['id_empresa']] = $it['nm_empresa'];
+                $return[$it['id_organizacao']] = $it['nm_organizacao'];
                 $iterator->next();
             }
             $iterator->rewind();
@@ -86,7 +86,7 @@ class My_View_Helper_EmpresaDefault extends Zend_View_Helper_Abstract  {
             $return = array();
             while ($iterator->valid()) {
                 $it = $iterator->current();
-                $return[$it['id_empresa']] = $it['nm_empresa'];
+                $return[$it['id_organizacao']] = $it['nm_organizacao'];
                 $iterator->next();
             }
             $iterator->rewind();
@@ -116,8 +116,8 @@ class My_View_Helper_EmpresaDefault extends Zend_View_Helper_Abstract  {
     public function getLabel($name = null) {
         $iterator = $this->getIterator();
         foreach ($iterator as $k => $it) {
-            if (@$it['id_empresa'] == $name)
-                return $it['nm_empresa'];
+            if (@$it['id_organizacao'] == $name)
+                return $it['nm_organizacao'];
         }
     }
 }

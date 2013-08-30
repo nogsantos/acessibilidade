@@ -2,7 +2,7 @@
 
 /**
  *
- * Descrição:Classe EmpresaController
+ * Descrição: Controller Organização
  *
  *
  * @author Fabricio Nogueira
@@ -12,7 +12,7 @@
  * @version 1.0.0
  *
  */
-class EmpresaController extends Zend_Controller_Action {
+class OrganizacaoController extends Zend_Controller_Action {
     
     public function init() {
     }

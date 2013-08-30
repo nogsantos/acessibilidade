@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Descrição:View Helper Empresa
+ * Descrição:View Helper Organizacao
  *
  *
  * @author Fabricio Nogueira
@@ -11,16 +11,16 @@
  * @version 1.0.0
  *
  */
-class My_View_Helper_Empresa extends Zend_View_Helper_Abstract {
+class My_View_Helper_Organizacao extends Zend_View_Helper_Abstract {
 
-    protected $id_empresa;
-    protected $id_empresaIterator;
+    protected $id_organizacao;
+    protected $id_organizacaoIterator;
 
-    public function empresa() {
+    public function organizacao() {
        try{
-            $oEmpresa   = new Application_Model_Empresa();
-            $id_empresa = $oEmpresa->listar();
-            $this->id_empresaIterator = new ArrayIterator($id_empresa->toArray());
+            $oOrganizacao   = new Application_Model_Organizacao();
+            $id_organizacao = $oOrganizacao->listar();
+            $this->id_organizacaoIterator = new ArrayIterator($id_organizacao->toArray());
             return $this;
         } catch (Zend_Exception $exc) {
             /*
@@ -38,8 +38,8 @@ class My_View_Helper_Empresa extends Zend_View_Helper_Abstract {
      * @return ArrayIterator
      */
     public function getIterator() {
-        $this->id_empresaIterator->rewind();
-        return $this->id_empresaIterator;
+        $this->id_organizacaoIterator->rewind();
+        return $this->id_organizacaoIterator;
     }
     /**
      * 
@@ -58,7 +58,7 @@ class My_View_Helper_Empresa extends Zend_View_Helper_Abstract {
             $return   = array();
             while ($iterator->valid()) {
                 $it = $iterator->current();
-                $return[$it['id_empresa']] = $it['nm_empresa'];
+                $return[$it['id_organizacao']] = $it['nm_organizacao'];
                 $iterator->next();
             }
             $iterator->rewind();
@@ -75,8 +75,8 @@ class My_View_Helper_Empresa extends Zend_View_Helper_Abstract {
     public function getLabel($name = null) {
         $iterator = $this->getIterator();
         foreach ($iterator as $k => $it) {
-            if (@$it['id_empresa'] == $name)
-                return $it['nm_empresa'];
+            if (@$it['id_organizacao'] == $name)
+                return $it['nm_organizacao'];
         }
     }
 }

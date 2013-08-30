@@ -8,8 +8,8 @@ class Form_Login extends Zend_Form {
 
     public function init(){
         $this->setName('login');
-        $empresa = new Zend_Form_Element_Text('empresa');
-        $empresa->setRequired(true)
+        $organizacao = new Zend_Form_Element_Text('organizacao');
+        $organizacao->setRequired(true)
                 ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
@@ -29,6 +29,6 @@ class Form_Login extends Zend_Form {
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setLabel('Logar')
             ->setAttrib('id', 'submitbutton');
-        $this->addElements(array($empresa, $login, $senha, $submit));
+        $this->addElements(array($organizacao, $login, $senha, $submit));
     }
 }

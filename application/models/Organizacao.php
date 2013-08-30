@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Descrição:Classe Empresa
+ * Descrição:Model Organização
  *
  *
  * @author Fabricio Nogueira
@@ -11,37 +11,37 @@
  * @version 1.0.0
  *
  */
-class Application_Model_Empresa extends Zend_Db_Table_Abstract {
+class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
     /*
      * Atributos
      */
-    protected $_name    = 'empresa';
+    protected $_name    = 'organizacao';
     protected $_schema  = 'administrativo';
-    protected $_primary = 'id_empresa';
-    protected $idEmpresa;
-    protected $nmEmpresa;
+    protected $_primary = 'id_organizacao';
+    protected $idOrganizacao;
+    protected $nmOrganizacao;
     protected $razaoSocial;
     protected $nrCnpj;
-    protected $empresaMatriz;
+    protected $organizacaoMatriz;
     protected $fkMatriz;
     protected $prioridadeExibicao;
     protected $dataCadastro;
     protected $dataBloqueio;
     
-    public function getIdEmpresa() {
-        return $this->idEmpresa;
+    public function getIdOrganizacao() {
+        return $this->idOrganizacao;
     }
 
-    public function setIdEmpresa($idEmpresa) {
-        $this->idEmpresa = $idEmpresa;
+    public function setIdOrganizacao($idOrganizacao) {
+        $this->idOrganizacao = $idOrganizacao;
     }
 
-    public function getNmEmpresa() {
-        return $this->nmEmpresa;
+    public function getNmOrganizacao() {
+        return $this->nmOrganizacao;
     }
 
-    public function setNmEmpresa($nmEmpresa) {
-        $this->nmEmpresa = $nmEmpresa;
+    public function setNmOrganizacao($nmOrganizacao) {
+        $this->nmOrganizacao = $nmOrganizacao;
     }
 
     public function getRazaoSocial() {
@@ -60,12 +60,12 @@ class Application_Model_Empresa extends Zend_Db_Table_Abstract {
         $this->nrCnpj = $nrCnpj;
     }
 
-    public function getEmpresaMatriz() {
-        return $this->empresaMatriz;
+    public function getOrganizacaoMatriz() {
+        return $this->organizacaoMatriz;
     }
 
-    public function setEmpresaMatriz($empresaMatriz) {
-        $this->empresaMatriz = $empresaMatriz;
+    public function setOrganizacaoMatriz($organizacaoMatriz) {
+        $this->organizacaoMatriz = $organizacaoMatriz;
     }
 
     public function getFkMatriz() {
@@ -100,7 +100,7 @@ class Application_Model_Empresa extends Zend_Db_Table_Abstract {
         $this->dataBloqueio = $dataBloqueio;
     }
     /**
-     * Lista as empresas cadastradas no sistema onde a data de bloqueio é nulo.
+     * Lista as organização cadastradas no sistema onde a data de bloqueio é nulo.
      */
     public function listar(){
         try{
@@ -108,8 +108,8 @@ class Application_Model_Empresa extends Zend_Db_Table_Abstract {
                     ->setIntegrityCheck(false)
                     ->from(array('m' => $this->_name),
                            array(
-                               'id_empresa',
-                               'nm_empresa',
+                               'id_organizacao',
+                               'nm_organizacao',
                            ), $this->_schema)
                     ->where('data_bloqueio is null')
                     ->order('prioridade_exibicao')
@@ -120,33 +120,33 @@ class Application_Model_Empresa extends Zend_Db_Table_Abstract {
         }
     }
     /**
-     * Consultar dados de todas as empresas cadastradas não bloqueadas.
+     * Consultar dados de todas as organizações cadastradas não bloqueadas.
      */
     public function consultarDados(){
         try {
             $sSql = $this->select()
                     ->setIntegrityCheck(false)
-                    ->from(array('e' => $this->_name),
+                    ->from(array('o' => $this->_name),
                            array(
-                               'id_empresa',
-                               'nm_empresa',
+                               'id_organizacao',
+                               'nm_organizacao',
                                'razao_social',
                                'nr_cnpj',
                                'data_cadastro',
                            ), $this->_schema)
-                    ->joinLeft(array('m'=>'empresa'), 'm.id_empresa = e.fk_matriz', 
+                    ->joinLeft(array('m'=>'organizacao'), 'm.id_organizacao = o.fk_matriz', 
                             array(
-                                'id_matriz' => 'id_empresa',
-                                'nm_matriz' => 'nm_empresa',
+                                'id_matriz' => 'id_organizacao',
+                                'nm_matriz' => 'nm_organizacao',
                             ) ,$this->_schema)
-                    ->where('e.data_bloqueio is null')
-                    ->order('e.prioridade_exibicao')
+                    ->where('o.data_bloqueio is null')
+                    ->order('o.prioridade_exibicao')
             ;
-            if(!empty($this->getIdEmpresa())){
-                $sSql->where('e.id_empresa = ?', $this->getIdEmpresa());
+            if(!empty($this->getIdOrganizacao())){
+                $sSql->where('o.id_organizacao = ?', $this->getIdOrganizacao());
             }
-            if($this->getEmpresaMatriz()){
-                $sSql->where('e.empresa_matriz = true');
+            if($this->getOrganizacaoMatriz()){
+                $sSql->where('o.organizacao_matriz = true');
             }
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Table_Exception $exc) {

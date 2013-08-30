@@ -16,7 +16,7 @@ class Application_Model_Usuario extends Zend_Db_Table_Abstract {
      * Atributos
      */
     protected $_name    = 'usuario';
-    protected $_schema  = 'pessoa';
+    protected $_schema  = 'administrativo';
     protected $_primary = 'fk_pessoa';
     protected $sSql;
     protected $fkPessoa;
@@ -98,9 +98,9 @@ class Application_Model_Usuario extends Zend_Db_Table_Abstract {
             $this->sSql = $this->select()
                 ->setIntegrityCheck(false)
                 ->from(array('u'  =>'usuario'), array(), $this->_schema)
-                ->join(array('p'  => 'pessoa'), 'p.id_pessoa = u.fk_pessoa', array(), $this->_schema)
-                ->joinLeft(array('pf' => 'fisica'), 'pf.nr_cpf = u.fk_pessoa', array(), $this->_schema)
-                ->joinLeft(array('pj' => 'juridica'), 'pj.nr_cnpj = u.fk_pessoa', array(), $this->_schema)
+                ->join(array('p'  => 'pessoa'), 'p.id_pessoa = u.fk_pessoa', array(), 'pessoa')
+                ->joinLeft(array('pf' => 'fisica'), 'pf.nr_cpf = u.fk_pessoa', array(), 'pessoa')
+                ->joinLeft(array('pj' => 'juridica'), 'pj.nr_cnpj = u.fk_pessoa', array(), 'pessoa')
                 ->join(array('pu' => 'perfil_usuario'), 'pu.fk_usuario = u.fk_pessoa', array(), $this->_schema)
                 ->join(array('pe' => 'perfil'), 'pe.id_perfil = pu.fk_perfil', array('perfil' => 'nm_perfil'), $this->_schema)
                 ->columns(array('nome' => 'nvl(pf.nm_pessoa, pj.nm_razao_social)'))

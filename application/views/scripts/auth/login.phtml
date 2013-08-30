@@ -24,9 +24,9 @@
                 <div class="panel-heading">Formul&aacute;rio de login</div>
                 <div class="panel-body">
                     <div class="form-group col-lg-12">
-                        <label for="empresa">Empresa</label>
-                        <select class="form-control" name="empresa" id="empresa">
-                        <?php foreach ($this->empresa()->toZendForm() as $key => $value) :?>
+                        <label for="organizacao">Organiza&ccedil;&atilde;o</label>
+                        <select class="form-control" name="organizacao" id="organizacao">
+                        <?php foreach ($this->organizacao()->toZendForm() as $key => $value) :?>
                             <option value="<?php print $key ?>"><?php print $value ?></option>
                         <?php endforeach;?>
                         </select>

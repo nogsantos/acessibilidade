@@ -28,10 +28,10 @@ class AuthController extends Zend_Controller_Action {
             if ($this->getRequest()->isPost()) {
                 $data = $this->getRequest()->getPost();
                 if ($form->isValid($data)) {
-                    $login     = $form->getValue('login');
-                    $senha     = sha1($form->getValue('senha'));
-                    $empresa   = $form->getValue('empresa');
-                    $dbAdapter = Zend_Db_Table::getDefaultAdapter();
+                    $login       = $form->getValue('login');
+                    $senha       = sha1($form->getValue('senha'));
+                    $organizacao = $form->getValue('organizacao');
+                    $dbAdapter   = Zend_Db_Table::getDefaultAdapter();
                     /*
                      * Inicia o adaptador Zend_Auth para banco de dados
                      */
@@ -39,7 +39,7 @@ class AuthController extends Zend_Controller_Action {
                             $dbAdapter
                             , 'login'
                             , 'senha'
-                            , 'id_empresa'
+                            , 'id_organizacao'
                     );
                     $authAdapter->setTableName('vw_login_usuario')
                                 ->setIdentityColumn('login')
@@ -52,7 +52,7 @@ class AuthController extends Zend_Controller_Action {
                                 ->setCredential($senha)
                     ;
                     $select = $authAdapter->getDbSelect();
-                    $select->where('id_empresa = ? ', (int) $empresa);
+                    $select->where('id_organizacao = ? ', (int) $organizacao);
                     /*
                      * Efetua o login
                      */

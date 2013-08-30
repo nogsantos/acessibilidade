@@ -2,7 +2,7 @@
 /**
  * @author Fabricio Nogueira
  */
-$vEmpresa = $this->empresaDefault()->toViewSingle();
+$vOrganizacao = $this->organizacaoDefault()->toViewSingle();
 ?>
 <!DOCTYPE html>
     <!--[if lt IE 7]>
@@ -63,7 +63,7 @@ $vEmpresa = $this->empresaDefault()->toViewSingle();
             <div class="container">
                 <div id="content">
                     <div class="col-md-2 pull-left">&copy; Grass <?php echo date('Y')?></div>
-                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vEmpresa['nm_empresa'] ;?></div>
+                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vOrganizacao['nm_organizacao'] ;?></div>
                     <div class="col-md-4 pull-right text-right"><?php print $this->usuario();?></div>
                 </div>
             </div>
