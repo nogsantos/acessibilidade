@@ -18,7 +18,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
      */
     public function _initPlugins() {
         $frontController = Zend_Controller_Front::getInstance();
+        /**
+         * Registra o plugin que verifica se há uma sessão ativa com um usuário
+         * válido.
+         */
         $frontController->registerPlugin(new Application_Plugin_HasIdentity());
+        /*
+         * Registrando na inicialização o plugin ACL
+         */
+//        $frontController->registerPlugin(new Application_Plugin_Acl());
     }
     /**
      * Retorna o componente Zend_Translate

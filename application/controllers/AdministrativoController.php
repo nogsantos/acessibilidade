@@ -28,7 +28,7 @@ class AdministrativoController extends Zend_Controller_Action {
     /**
      * Cadastro de modulos
      */
-    public function cadModuloAction(){
+    public function moduloAction(){
         /*
          * Monta o menu do usuário
          */
