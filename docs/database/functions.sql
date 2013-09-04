@@ -1,4 +1,3 @@
-begin;
 CREATE OR REPLACE FUNCTION nvl(character varying, character varying) RETURNS character varying AS 
 $$
 /**

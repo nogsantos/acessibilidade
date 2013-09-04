@@ -67,7 +67,7 @@ class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
             $return = array();
             while ($iterator->valid()) {
                 $it = $iterator->current();
-                $return[$it['id_organizacao']] = $it['nm_organizacao'];
+                $return[$it['cnpj_organizacao']] = $it['nome_organizacao'];
                 $iterator->next();
             }
             $iterator->rewind();
@@ -86,7 +86,7 @@ class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
             $return = array();
             while ($iterator->valid()) {
                 $it = $iterator->current();
-                $return[$it['id_organizacao']] = $it['nm_organizacao'];
+                $return[$it['cnpj_organizacao']] = $it['nome_organizacao'];
                 $iterator->next();
             }
             $iterator->rewind();
@@ -116,8 +116,8 @@ class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
     public function getLabel($name = null) {
         $iterator = $this->getIterator();
         foreach ($iterator as $k => $it) {
-            if (@$it['id_organizacao'] == $name)
-                return $it['nm_organizacao'];
+            if (@$it['cnpj_organizacao'] == $name)
+                return $it['nome_organizacao'];
         }
     }
 }

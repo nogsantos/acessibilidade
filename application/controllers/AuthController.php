@@ -37,13 +37,13 @@ class AuthController extends Zend_Controller_Action {
                      */
                     $authAdapter = new Zend_Auth_Adapter_DbTable(
                             $dbAdapter
-                            , 'login'
-                            , 'senha'
-                            , 'id_organizacao'
+                            , 'nome_login'
+                            , 'nome_senha'
+                            , 'cnpj_organizacao'
                     );
                     $authAdapter->setTableName('vw_login_usuario')
-                                ->setIdentityColumn('login')
-                                ->setCredentialColumn('senha')
+                                ->setIdentityColumn('nome_login')
+                                ->setCredentialColumn('nome_senha')
                     ;
                     /*
                      * Define os dados para processar o login
@@ -52,7 +52,7 @@ class AuthController extends Zend_Controller_Action {
                                 ->setCredential($senha)
                     ;
                     $select = $authAdapter->getDbSelect();
-                    $select->where('id_organizacao = ? ', (int) $organizacao);
+                    $select->where('cnpj_organizacao = ? ', (int) $organizacao);
                     /*
                      * Efetua o login
                      */
@@ -66,7 +66,7 @@ class AuthController extends Zend_Controller_Action {
                          * Armazena os dados do usuario em sessao, 
                          * apenas desconsiderando a senha do usuario
                          */
-                        $info    = $authAdapter->getResultRowObject(null, 'senha');
+                        $info    = $authAdapter->getResultRowObject(null, 'nome_senha');
                         $storage = $auth->getStorage();
                         $storage->write($info);
                         /*

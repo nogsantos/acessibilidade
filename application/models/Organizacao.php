@@ -17,7 +17,7 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
      */
     protected $_name    = 'organizacao';
     protected $_schema  = 'administrativo';
-    protected $_primary = 'id_organizacao';
+    protected $_primary = 'cnpj_organizacao';
     protected $idOrganizacao;
     protected $nmOrganizacao;
     protected $razaoSocial;
@@ -108,8 +108,8 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
                     ->setIntegrityCheck(false)
                     ->from(array('m' => $this->_name),
                            array(
-                               'id_organizacao',
-                               'nm_organizacao',
+                               'cnpj_organizacao',
+                               'nome_organizacao',
                            ), $this->_schema)
                     ->where('data_bloqueio is null')
                     ->order('prioridade_exibicao')
@@ -128,25 +128,21 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
                     ->setIntegrityCheck(false)
                     ->from(array('o' => $this->_name),
                            array(
-                               'id_organizacao',
-                               'nm_organizacao',
+                               'cnpj_organizacao',
+                               'nome_organizacao',
                                'razao_social',
-                               'nr_cnpj',
                                'data_cadastro',
                            ), $this->_schema)
-                    ->joinLeft(array('m'=>'organizacao'), 'm.id_organizacao = o.fk_matriz', 
+                    ->joinLeft(array('m'=>'organizacao'), 'm.cnpj_organizacao = o.fk_matriz', 
                             array(
-                                'id_matriz' => 'id_organizacao',
-                                'nm_matriz' => 'nm_organizacao',
+                                'id_matriz' => 'cnpj_organizacao',
+                                'nome_matriz' => 'nome_organizacao',
                             ) ,$this->_schema)
                     ->where('o.data_bloqueio is null')
                     ->order('o.prioridade_exibicao')
             ;
             if(!empty($this->getIdOrganizacao())){
-                $sSql->where('o.id_organizacao = ?', $this->getIdOrganizacao());
-            }
-            if($this->getOrganizacaoMatriz()){
-                $sSql->where('o.organizacao_matriz = true');
+                $sSql->where('o.cnpj_organizacao = ?', $this->getIdOrganizacao());
             }
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Table_Exception $exc) {

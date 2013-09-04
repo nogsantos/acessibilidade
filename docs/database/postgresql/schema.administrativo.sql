@@ -77,7 +77,6 @@ create table administrativo.organizacao(
     nm_organizacao varchar(250) not null,
     razao_social varchar(500) not null,
     nr_cnpj bigint not null,
-    organizacao_matriz boolean,
     fk_matriz bigint,
     prioridade_exibicao integer not null default (0), 
     data_cadastro timestamp with time zone not null default(now()),

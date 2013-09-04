@@ -23,11 +23,11 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <?php echo $this->headTitle(); ?>
         <?php echo $this->headMeta(); ?>
         <meta name="viewport" content="width=device-width">
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap.min.css'); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/bootstrap-theme.min.css'); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/font-awesome.min.css'); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/main.css'); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/default.css'); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/main.css')); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/default.css')); ?>
         <?php echo $this->headLink() ?>
     </head>
     <body>
@@ -63,7 +63,7 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
             <div class="container">
                 <div id="content">
                     <div class="col-md-2 pull-left">&copy; Grass <?php echo date('Y')?></div>
-                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vOrganizacao['nm_organizacao'] ;?></div>
+                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vOrganizacao['nome_organizacao'] ;?></div>
                     <div class="col-md-4 pull-right text-right"><?php print $this->usuario();?></div>
                 </div>
             </div>

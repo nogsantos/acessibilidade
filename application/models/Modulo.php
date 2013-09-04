@@ -64,17 +64,17 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
                 ->setIntegrityCheck(false)
                 ->from(array('m' => $this->_name),
                        array(
-                           'modulo' => 'nm_modulo',
+                           'modulo' => 'nome_modulo',
                            'codigo_modulo',
                        ), $this->_schema)
                 ->join(array('c'=>'controller'), 
                         'c.fk_modulo = m.id_modulo',
                         array(
-                            'controller'=> 'nm_controller',
+                            'controller'=> 'nome_controller',
                             'codigo_controller',
                             'id_controller',
                         ), $this->_schema)
-                ->order(array('m.ordem', 'c.ordem'))
+                ->order(array('m.numero_ordem', 'c.numero_ordem'))
         ;
         return $this->fetchAll($this->sSql);
     }

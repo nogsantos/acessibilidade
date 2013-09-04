@@ -30,6 +30,7 @@ insert into administrativo.perfil(nome_perfil, descricao_perfil) values('Adminis
 insert into administrativo.perfil(nome_perfil, descricao_perfil) values('Secretário', 'Secretário');
 insert into administrativo.perfil(nome_perfil, descricao_perfil) values('Pessoa Juridica', 'Visualização pessoas juridica');
 
+
 insert into administrativo.organizacao(cnpj_organizacao, nome_organizacao, razao_social, fk_matriz, prioridade_exibicao) values(63546143000113, 'Grass', 'Grass Company S/A', null, 0);
 insert into administrativo.organizacao(cnpj_organizacao, nome_organizacao, razao_social, fk_matriz, prioridade_exibicao) values(39131837000105, 'Lunatics', 'The Lunatics is on the grass', 63546143000113, 1);
 insert into administrativo.organizacao(cnpj_organizacao, nome_organizacao, razao_social, fk_matriz, prioridade_exibicao) values(92657468000171, 'War Machine', 'No line on the horizon', null, 2);
@@ -37,3 +38,4 @@ insert into administrativo.organizacao(cnpj_organizacao, nome_organizacao, razao
 insert into administrativo.perfil_organizacao values(63546143000113, (select id_perfil from administrativo.perfil where nome_perfil = 'Administrador geral'));
 insert into administrativo.perfil_organizacao values(63546143000113, (select id_perfil from administrativo.perfil where nome_perfil = 'Administrador regional'));
 commit;
+insert into administrativo.perfil_usuario values((select id_perfil from administrativo.perfil where nome_perfil = 'Administrador geral'), 99999999999);
