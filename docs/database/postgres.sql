@@ -1,120 +1,269 @@
-begin;
-CREATE OR REPLACE FUNCTION nvl(character varying, character varying) RETURNS character varying AS 
-$$
-/**
- * Substitui o valor do primeiro termo pelo segundo caso o primeiro valor esteja nulo.
- * Eschema Public
- *
- * @author Fabricio Nogueira
- * @since 14 AGO 2013
- */
-    select case 
-        when $1 is null 
-        then $2 
-        else $1 
-    end
-$$
-LANGUAGE 'sql' VOLATILE;
+create schema pessoa;
 
-commit;
+CREATE TABLE pessoa.pessoa (
+    id_pessoa bigint PRIMARY KEY,
+    nome_site varchar(300),
+    data_cadastro timestamp with time zone not null DEFAULT current_timestamp
+)WITHOUT OIDS;
 
-Pessoa
+CREATE TABLE public.endereco (
+    id_endereco bigserial PRIMARY KEY,
+    fk_municipio bigint,
+    nome_logradouro varchar(500),
+    nome_bairro varchar(300),
+    numero_lote bigint,
+    numero_quadra bigint,
+    numero_cep bigint
+)WITHOUT OIDS;
 
-CD_PESSOA	NUMBER(6,0)
-NM_PESSOA	VARCHAR2(60 BYTE)
-NM_LOGRADOURO	VARCHAR2(60 BYTE)
-NR_CEP	NUMBER(8,0)
-NR_TELEFONE1	VARCHAR2(10 BYTE)
-NR_TELEFONE2	VARCHAR2(10 BYTE)
-NR_TELEFONE3	VARCHAR2(10 BYTE)
-NR_DDD1	VARCHAR2(4 BYTE)
-NR_DDD2	VARCHAR2(4 BYTE)
-NR_DDD3	VARCHAR2(4 BYTE)
-NM_EMAIL	VARCHAR2(60 BYTE)
-NM_PAGINAWWW	VARCHAR2(60 BYTE)
-IN_TIPO_PESSOA	VARCHAR2(1 BYTE)
-BAIR_CD_BAIRRO	NUMBER(5,0)
-CID_CD_CIDADE	NUMBER(6,0)
-CD_CORRESPONDENTE	NUMBER(6,0)
-CD_PAIS	VARCHAR2(2 BYTE)
-SG_UF	VARCHAR2(2 BYTE)
-IN_TIPO_TELEFONE1	CHAR(1 BYTE)
-IN_TIPO_TELEFONE2	CHAR(1 BYTE)
-IN_TIPO_TELEFONE3	CHAR(1 BYTE)
-NM_CAIXAPOSTAL	VARCHAR2(5 BYTE)
-CH_COMP_LOGRAD	VARCHAR2(40 BYTE)
-CH_NM_BAIRRO	VARCHAR2(60 BYTE)
-CH_NM_CIDADE	VARCHAR2(60 BYTE)
+CREATE TABLE pessoa.pessoa_endereco (
+    fk_endereco bigint,
+    fk_pessoa bigint,
+    flag_principal Boolean,
+    tipo_endereco varchar(100),
+    FOREIGN KEY(fk_endereco) REFERENCES public.endereco (id_endereco),
+    FOREIGN KEY(fk_pessoa) REFERENCES pessoa.pessoa (id_pessoa), 
+    PRIMARY KEY(fk_endereco, fk_pessoa)
+)WITHOUT OIDS;
 
-pessoa fisica
+CREATE TABLE pessoa.pessoa_email (
+    fk_email bigint,
+    fk_pessoa bigint,
+    flag_principal Boolean,
+    tipo_email varchar(50),
+    FOREIGN KEY(fk_pessoa) REFERENCES pessoa.pessoa (id_pessoa),
+    PRIMARY KEY(fk_email, fk_pessoa)
+)WITHOUT OIDS;
 
-IN_SEXO	CHAR(1 BYTE)
-IN_ESTADO_CIVIL	VARCHAR2(2 BYTE)
-NR_CARTEIRA_IDENTIDADE	VARCHAR2(25 BYTE)
-SG_ORGAO_EXPEDIDOR_CI	VARCHAR2(15 BYTE)
-DT_EXPEDICAO_CI	DATE
-NM_MAE	VARCHAR2(60 BYTE)
-NM_PAI	VARCHAR2(60 BYTE)
-NR_DOCUMENTO_MILITAR	VARCHAR2(20 BYTE)
-NR_SERIE_DOCUMENTO_MILITAR	VARCHAR2(3 BYTE)
-NM_CATEGORIA_MILITAR	VARCHAR2(3 BYTE)
-NR_REGIAO_MILITAR	NUMBER(2,0)
-NR_TITULO_ELEITOR	VARCHAR2(13 BYTE)
-NR_ZONA_TITULO_ELEITOR	VARCHAR2(3 BYTE)
-NR_SECAO_TITULO_ELEITOR	VARCHAR2(4 BYTE)
-DT_NASCIMENTO	DATE
-NR_PASSAPORT	VARCHAR2(20 BYTE)
-IN_TIPO_PASSAPORT	VARCHAR2(1 BYTE)
-NM_ORGAO_EXPEDIDOR_PASSAPORT	VARCHAR2(20 BYTE)
-DT_EXPEDICAO_PASSAPORT	DATE
-DT_CONCESSAO_VISTO_PASSAPORT	DATE
-DT_EXPIRACAO_VISTO_PASSAPORT	DATE
-NR_SERIE_PASSAPORT	NUMBER(8,0)
-DT_CHEGADA_BRASIL	DATE
-NR_CPF	NUMBER(11,0)
-IN_ESCOLARIDADE	VARCHAR2(2 BYTE)
-PES_CD_PESSOA	NUMBER(6,0)
-PAIS_CD_PAIS	VARCHAR2(2 BYTE)
-CID_CD_CIDADE	NUMBER(6,0)
-SG_UF_TITULO_ELEITOR	VARCHAR2(2 BYTE)
-SG_UF_IDENTIDADE	VARCHAR2(2 BYTE)
-CD_PAIS_PASSAPORTE	VARCHAR2(2 BYTE)
-SG_UF_NASCIMENTO	VARCHAR2(2 BYTE)
-TRA_CD_TRATAMENTO	NUMBER(2,0)
-DS_TRATAMENTO	VARCHAR2(20 BYTE)
-DT_EXPEDICAO_MILITAR	DATE
-DT_EXPEDICAO_TITULO_ELEITOR	DATE
-IN_COR	VARCHAR2(1 BYTE)
-NM_TIPO_SANGUINEO	VARCHAR2(5 BYTE)
-NM_CONJUGE	VARCHAR2(60 BYTE)
-CD_CIDADE_TITULO_ELEITOR	NUMBER(6,0)
-NM_ORGAO_EXPEDIDOR_MILITAR	VARCHAR2(30 BYTE)
-NR_CARTEIRA_ESTRANGEIRO	VARCHAR2(20 BYTE)
-CD_PAIS_NACIONALIDADE	VARCHAR2(2 BYTE)
-ID_LATTES	VARCHAR2(30 BYTE)
-IN_TIPO_NACIONALIDADE	CHAR(2 BYTE)
-IN_NECESSIDADES_ESPECIAIS	VARCHAR2(3 BYTE)
-NR_PIS_PASEP	VARCHAR2(11 BYTE)
-CD_NECESSIDADES_ESPECIAIS	NUMBER(3,0)
-IN_TIPO_PIS_PASEP	NUMBER(1,0)
-CH_NM_CID_NASC	VARCHAR2(60 BYTE)
-CERTIDAO_CIVIL	NUMBER(1,0)
-TIPO_CERTIDAO_CIVIL	NUMBER(1,0)
-NUM_TERMO_CERTIDAO	VARCHAR2(8 BYTE)
-FOLHA_CERTIDAO_CIVIL	VARCHAR2(4 BYTE)
-LIVRO_CERTIDAO_CIVIL	VARCHAR2(8 BYTE)
-DT_EMISSAO_CERTIDAO	DATE
-UF_CARTORIO_CERTIDAO	CHAR(2 BYTE)
-MUNICIPIO_CARTORIO	NUMBER(7,0)
-CD_CARTORIO	VARCHAR2(6 BYTE)
-NUM_REGISTRO_CERTIDAO_NOVA	VARCHAR2(32 BYTE)
+create schema administrativo;
 
-pessoa juridica
+CREATE TABLE administrativo.perfil_usuario (
+    fk_perfil bigint,
+    fk_usuario bigint,
+    PRIMARY KEY(fk_perfil, fk_usuario)
+)WITHOUT OIDS;
 
-NR_CGC	VARCHAR2(14 BYTE)
-NM_FANTASIA	VARCHAR2(60 BYTE)
-PES_CD_PESSOA	NUMBER(6,0)
-PJ_TP_CD_CODIGO	VARCHAR2(2 BYTE)
-SG_SIGLA	VARCHAR2(20 BYTE)
-PJCLASS_NR_CODIGO	NUMBER(3,0)
-IN_CLASSIFICACAO	NUMBER(3,0)
+CREATE TABLE administrativo.organizacao_telefone (
+    fk_telefone bigint,
+    fk_organizacao bigint,
+    flag_principal Boolean,
+    tipo_telefone varchar(30),
+    PRIMARY KEY(fk_telefone, fk_organizacao)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.usuario (
+    fk_pessoa bigint PRIMARY KEY,
+    nome_login varchar(250) not null unique,
+    nome_senha varchar(50) not null,
+    data_bloqueio timestamp with time zone,
+    FOREIGN KEY(fk_pessoa) REFERENCES pessoa.pessoa (id_pessoa),
+    CONSTRAINT check_login_senha_usuario CHECK (length(nome_login) >= 4 AND length(nome_senha) >= 4)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.organizacao_endereco (
+    fk_organizacao bigint,
+    fk_endereco bigint,
+    flag_principal Boolean,
+    tipo_endereco varchar(50),
+    FOREIGN KEY(fk_endereco) REFERENCES public.endereco (id_endereco),
+    PRIMARY KEY(fk_organizacao, fk_endereco)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.organizacao (
+    cnpj_organizacao bigint PRIMARY KEY,
+    nome_organizacao varchar(300),
+    razao_social varchar(350),     
+    fk_matriz bigint,
+    prioridade_exibicao integer,
+    data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
+    data_bloqueio timestamp with time zone
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.perfil_organizacao (
+    fk_organizacao bigint,
+    fk_perfil bigint,
+    FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao),
+    PRIMARY KEY(fk_organizacao, fk_perfil)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.organizacao_modulo (
+    fk_modulo bigint,
+    fk_organizacao bigint,
+    FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao),
+    PRIMARY KEY(fk_modulo, fk_organizacao)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.perfil_modulo (
+    fk_modulo bigint,
+    fk_perfil bigint, 
+    PRIMARY KEY(fk_modulo, fk_perfil)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.modulo (
+    id_modulo bigserial PRIMARY KEY,
+    codigo_modulo varchar(250) unique,
+    nome_modulo varchar(300) unique,
+    descricao_modulo varchar(500),
+    numero_ordem bigint,
+    data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
+    data_bloqueio timestamp with time zone
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.controller (
+    id_controller bigserial PRIMARY KEY,
+    fk_modulo bigint,
+    codigo_controller varchar(250) unique,
+    nome_controller varchar(300) unique,
+    descricao_controller varchar(500),
+    numero_ordem bigint,
+    data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
+    data_bloqueio timestamp with time zone,
+    FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.action (
+    id_action bigserial PRIMARY KEY,
+    fk_controller bigint,
+    codigo_action varchar(250),
+    nome_action varchar(300),
+    descricao_action varchar(500),
+    data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
+    data_bloqueio timestamp with time zone,
+    FOREIGN KEY(fk_controller) REFERENCES administrativo.controller (id_controller)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.perfil_controller (
+    fk_controller bigint,
+    fk_perfil bigint,
+    FOREIGN KEY(fk_controller) REFERENCES administrativo.controller (id_controller),
+    PRIMARY KEY(fk_controller, fk_perfil)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.perfil (
+    id_perfil bigserial PRIMARY KEY,
+    nome_perfil varchar(300) unique,
+    descricao_perfil varchar(500)
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.perfil_action (
+    fk_perfil bigint,
+    fk_action bigint,
+    FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil),
+    FOREIGN KEY(fk_action) REFERENCES administrativo.action (id_action),
+    PRIMARY KEY(fk_perfil, fk_action)
+)WITHOUT OIDS;
+
+CREATE TABLE public.email (
+    id_email bigserial PRIMARY KEY,
+    nome_email varchar(300) unique
+)WITHOUT OIDS;
+
+CREATE TABLE administrativo.organizacao_email (
+    fk_organizacao bigint,
+    fk_email bigint,
+    flag_principal Boolean,
+    tipo_email varchar(100),
+    FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao),
+    FOREIGN KEY(fk_email) REFERENCES public.email (id_email),
+    PRIMARY KEY(fk_organizacao,fk_email)
+)WITHOUT OIDS;
+
+CREATE TABLE public.municipio (
+    id_municipio bigserial PRIMARY KEY,
+    nome_municipio varchar(300) unique,
+    sigla_uf char(2),
+    flag_capital Boolean
+)WITHOUT OIDS;
+
+CREATE TABLE pessoa.pessoa_telefone (
+    fk_telefone bigint not null,
+    fk_pessoa bigint not null,
+    flag_principal Boolean,
+    tipo_telefone varchar(100),
+    PRIMARY KEY(fk_telefone,fk_pessoa)
+)WITHOUT OIDS;
+
+CREATE TABLE public.telefone (
+    id_telefone bigserial PRIMARY KEY,
+    codigo_pais bigint,
+    numero_ddd bigint,
+    numero_telefone bigint,
+    tipo_telefone varchar(100),
+    nome_operadora varchar(100)
+)WITHOUT OIDS;
+
+CREATE TABLE pessoa.fisica (
+    numero_cpf bigint PRIMARY KEY,
+    nome_pessoa_fisica varchar(300),
+    descricao_sexo char(1),
+    descricao_estado_civil varchar(30),
+    numero_rg bigint,
+    nome_orgao_expeditor varchar(300),
+    data_expedicao timestamp with time zone,
+    nome_mae varchar(300),
+    nome_pai varchar(300),
+    data_nascimento timestamp with time zone,
+    numero_passaporte varchar(150),
+    tipo_passaporte varchar(150),
+    nome_orgao_expedidor_passaporte varchar(300),
+    data_expedicao_passaporte timestamp with time zone,
+    data_concessao_passaporte timestamp with time zone,
+    data_expiracao_passaporte timestamp with time zone,
+    numero_serie_passaporte bigint,
+    nome_pais_passaporte varchar(300),
+    nome_forma_tratamento varchar(300),
+    FOREIGN KEY(numero_cpf) REFERENCES pessoa.pessoa (id_pessoa),
+    CONSTRAINT check_sexo CHECK (descricao_sexo = 'M' OR descricao_sexo = 'F')
+)WITHOUT OIDS;
+
+CREATE TABLE pessoa.juridica (
+    numero_cnpj bigint PRIMARY KEY,
+    numero_cgc varchar(100),
+    nome_pessoa_juridica varchar(300),
+    nome_fantasia varchar(300),
+    FOREIGN KEY(numero_cnpj) REFERENCES pessoa.pessoa (id_pessoa)
+)WITHOUT OIDS;
+
+ALTER TABLE public.endereco ADD FOREIGN KEY(fk_municipio) REFERENCES public.municipio (id_municipio);
+ALTER TABLE pessoa.pessoa_email ADD FOREIGN KEY(fk_email) REFERENCES public.email (id_email);
+ALTER TABLE administrativo.perfil_usuario ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
+ALTER TABLE administrativo.perfil_usuario ADD FOREIGN KEY(fk_usuario) REFERENCES administrativo.usuario (fk_pessoa);
+ALTER TABLE administrativo.organizacao_telefone ADD FOREIGN KEY(fk_telefone) REFERENCES public.telefone (id_telefone);
+ALTER TABLE administrativo.organizacao_telefone ADD FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao);
+ALTER TABLE administrativo.organizacao_endereco ADD FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao);
+ALTER TABLE administrativo.organizacao ADD FOREIGN KEY(fk_matriz) REFERENCES administrativo.organizacao (cnpj_organizacao);
+ALTER TABLE administrativo.perfil_organizacao ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
+ALTER TABLE administrativo.organizacao_modulo ADD FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo);
+ALTER TABLE administrativo.perfil_modulo ADD FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo);
+ALTER TABLE administrativo.perfil_modulo ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
+ALTER TABLE administrativo.perfil_controller ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
+ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_telefone) REFERENCES public.telefone (id_telefone);
+ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_pessoa) REFERENCES public.telefone (id_telefone);
+
+comment on table pessoa.pessoa is 'Tabela Pessoa é a especialização de pessoas no sistema.';
+comment on column pessoa.pessoa.id_pessoa is 'Chave principal de identificação da pessoa no sistema, pode ser um cpf(fisica) cnpj(juridica)';
+comment on table pessoa.fisica is 'Generalização de pessoa identificada pelo cpf.';
+comment on table pessoa.juridica is 'Generalização de pessoa identificada pelo cnpj.';
+comment ON TABLE administrativo.modulo IS 'Módulos disponíveis no sistema.';
+COMMENT ON COLUMN administrativo.modulo.codigo_modulo IS 'String identificadora do módulo.';
+COMMENT ON COLUMN administrativo.modulo.descricao_modulo IS 'Texto descritivo do módulo.';
+COMMENT ON COLUMN administrativo.modulo.numero_ordem IS 'Ordenação para exibição do módulo.';
+comment ON TABLE administrativo.controller IS 'Controladores do sistema.';
+COMMENT ON COLUMN administrativo.controller.codigo_controller IS 'String identificadora do controller';
+COMMENT ON COLUMN administrativo.controller.descricao_controller IS 'Texto descritivo para o controller';
+COMMENT ON COLUMN administrativo.controller.numero_ordem IS 'Ordenação para exibição do controller.';
+comment ON TABLE administrativo.action IS 'Ações do sistema, cadastrar, editar, excluir etc.';
+comment on table administrativo.usuario is 'Generalização de pessoa, contém informações de acesso ao sistema.';
+comment on table administrativo.perfil is 'Definição do perfil dos usuários no sistema.';
+comment on table administrativo.perfil_usuario is 'Tabela intermediária entre perfil e usuário, permitindo ao usuário exercer mais de um papel no sistema.';
+comment on table administrativo.organizacao is 'Cadastro de organizações no sistema.';
+comment on column administrativo.organizacao.fk_matriz is 'Caso seja uma filial, informa quem é a matriz.';
+comment on column administrativo.organizacao.prioridade_exibicao is 'Define a prioridade de exibição para seleção no formulário de login do sistema.';
+comment on table administrativo.organizacao_telefone is 'Possibilita o cadastro de n telefones por empresa.';
+comment on column administrativo.organizacao_telefone.flag_principal is 'Define dentre os telefones cadastrados para a empresa, qual será o principal.';
+comment on table administrativo.perfil_organizacao is 'Tabela intermediária que permite um perfil ter acesso a mais de uma organização do sistema.';
+comment on table public.endereco is 'Cadastro global de endereços para as entidades que necessitem dessa opção no sistema.';
+comment on table public.telefone is 'Cadastro global de telefones para as entidades que necessitem dessa opção no sistema.';
+comment on column public.telefone.tipo_telefone is 'Informa o tipo de telefone, fixo, fax, celular, trabalho, residencial etc.';
+comment on table public.email is 'Cadastro global de endereços de email para as entidades que necessitem dessa opção no sistema.';
+comment on table public.municipio is 'Municípios disponíveis no sistema.';
