@@ -9,44 +9,40 @@
  *
  */
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">Cadastro de modulos</div>
-    <div class="panel-body">
-        <div class="row-fluid">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td rowspan="2">1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@TwBootstrap</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="page-header">
+    <h1>M&oacute;dulos <small>Listagem de m&oacute;dulos</small></h1>
+</div>
+<div class="row-fluid">
+    <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTable data-table" id="table-modulo" width="100%">
+        <thead>
+            <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+                <th>Engine version</th>
+                <th>CSS grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php for($i=0;$i<100;$i++):?>
+                <tr class="table-line" id="<?php print $i?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'cad.modulo','id_modulo'=>$i))?>">
+                    <td><?php print $i?></td>
+                    <td>Internet
+                        Explorer 4.0</td>
+                    <td>Win 95+</td>
+                    <td class="center"> 4</td>
+                    <td class="center">X</td>
+                </tr>
+            <?php endfor;?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Rendering engine</th>
+                <th>Browser</th>
+                <th>Platform(s)</th>
+                <th>Engine version</th>
+                <th>CSS grade</th>
+            </tr>
+        </tfoot>
+    </table>
 </div>

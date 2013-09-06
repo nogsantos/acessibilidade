@@ -26,9 +26,13 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css')); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/main.css')); ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/default.css')); ?>
         <?php echo $this->headLink() ?>
+        <script type="text/javascript">
+            var baseUrl = '<?php echo $this->baseUrl(); ?>';
+        </script>
     </head>
     <body>
         <?php if (!empty($this->usuario())) : ?>
@@ -69,9 +73,13 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
             </div>
         </footer>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/jquery-1.10.2.min.js')?>"></script>
+        <script src="<?php print $this->baseUrl('/js/jquery-countdown/jquery.countdown.min.js'); ?>"></script>
+        <script src="<?php print $this->baseUrl('/js/jquery-countdown/jquery.countdown-pt-BR.js'); ?>"></script>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/bootstrap.min.js')?>"></script>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/bootbox.js')?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl('/jquery-ui-1.10.3.custom/js/jquery-ui-1.10.3.custom.min.js')?>"></script>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/layout.js')?>"></script>
+        <script type="text/javascript" src="<?php print $this->baseUrl('/js/default.js')?>"></script>
         <?php echo $this->headScript() ?>
     </body>
 </html>

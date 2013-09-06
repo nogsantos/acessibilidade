@@ -20,4 +20,7 @@ footer {
     padding-top: 10px;
     bottom: 0;
     position: fixed;
+    z-index: 999 !important;
 }
+.table-tr-selected{background-color: #FCF8E3 !important;}
+.table-line{cursor: pointer !important}
