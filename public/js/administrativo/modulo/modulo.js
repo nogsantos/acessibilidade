@@ -50,24 +50,20 @@ jQuery(function() {
      */
     jQuery(document).on("dblclick", "#table-modulo tbody tr", function() {
         var action = jQuery(this).attr("rel");
-        console.log(action);
-        window.location = action;
-//        jQuery.ajax({
-//            cache: false,
-//            url  : baseUrl + '/administrativo/cad.modulo?id_modulo=' + id_modulo,
-//            success: function(html, textStatus) {
-//                if (textStatus === "error") {
-//                    return;
-//                }
-//               bootbox.dialog({
-//                    message : html,
-//                    title   : 'Editar Modulo',
-//                    backdrop: false,
-//                    onEscape: function() {
-//                        
-//                    }
-//                });
-//            }
-//        });
+        jQuery.ajax({
+            cache: false,
+            url  :  action,
+            success: function(html, textStatus) {
+                if (textStatus === "error") {
+                    return;
+                }
+               bootbox.dialog({
+                    message  : html,
+                    title    : 'Editar Modulo',
+                    backdrop : false,
+                    size     : "g"
+                });
+            }
+        });
     });
 });

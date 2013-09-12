@@ -7,11 +7,11 @@
 window.bootbox = window.bootbox || (function init($, undefined) {
   "use strict";
 
-  // the base DOM structure needed to create a modal
+    // the base DOM structure needed to create a modal
   var templates = {
     dialog:
       "<div class='bootbox modal' tabindex='-1' role='dialog'>" +
-        "<div class='modal-dialog'>" +
+        "<div id='mDialog' class='modal-dialog'>" +
           "<div class='modal-content'>" +
             "<div class='modal-body'><div class='bootbox-body'></div></div>" +
           "</div>" +
@@ -404,8 +404,26 @@ window.bootbox = window.bootbox || (function init($, undefined) {
       body.after(templates.footer);
       dialog.find(".modal-footer").html(buttonStr);
     }
-
-
+    /*
+     * Possibilita definir a largura do formulário em três tamanhos padrões
+     * P, M ou G através do parametro size
+     */
+    if(options.size){
+        switch (options.size) {
+            case 'p':
+                dialog.find("#mDialog").addClass("dialogP");
+                break;
+            case 'm':
+                dialog.find("#mDialog").addClass("dialogM");
+                break;
+            case 'g':
+                dialog.find("#mDialog").addClass("dialogG");
+                break;
+            default:
+                dialog.find("#mDialog").addClass("dialogP");
+                break;
+        }
+    }
     /**
      * Bootstrap event listeners; used handle extra
      * setup & teardown required after the underlying

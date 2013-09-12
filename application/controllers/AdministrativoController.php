@@ -14,21 +14,26 @@
 class AdministrativoController extends Zend_Controller_Action {
     
     public function init(){
-        /*
-         * Monta o menu principal
-         */
-        $this->_helper->actionStack('navigation', 'Menu');
+        
     }
     /**
      * Index
      */
     public function indexAction(){
-         $this->_redirect('index');
+        /*
+         * Monta o menu principal
+         */
+        $this->_helper->actionStack('navigation', 'Menu');
+        $this->_redirect('index');
     }
     /**
      * Cadastro de modulos
      */
     public function moduloAction(){
+      /*
+       * Monta o menu principal
+       */
+       $this->_helper->actionStack('navigation', 'Menu');
        /*
         * Grid
         */
@@ -64,7 +69,7 @@ class AdministrativoController extends Zend_Controller_Action {
 //        $this->_helper->actionStack('usuario', 'Menu');
     }
     public function cadModuloAction(){
-//        $this->_helper->layout()->disableLayout();
+        $this->_helper->layout()->disableLayout();
     }
     /**
      * Cadastro de Controllers

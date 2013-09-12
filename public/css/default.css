@@ -24,3 +24,6 @@ footer {
 }
 .table-tr-selected{background-color: #FCF8E3 !important;}
 .table-line{cursor: pointer !important}
+.dialogP{width: 40% !important;}
+.dialogM{width: 60% !important;}
+.dialogG{width: 80% !important;}
