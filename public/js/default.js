@@ -56,5 +56,11 @@ jQuery(function() {
 
             return false;
         }
-    })
+    });
 });
+/**
+ * Retornar a página anterior
+ */
+function goBack(){
+    window.history.back();
+}

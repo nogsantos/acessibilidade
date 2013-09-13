@@ -19,7 +19,7 @@ class ErrorController extends Zend_Controller_Action {
         $errors = $this->_getParam('error_handler');
 
         if (!$errors || !$errors instanceof ArrayObject) {
-            $this->view->message = 'You have reached the error page';
+            $this->view->message = 'Você chegou a página de erro';
             return;
         }
         switch ($errors->type) {
@@ -34,8 +34,9 @@ class ErrorController extends Zend_Controller_Action {
                 break;
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_OTHER:
                 $mensagem = $errors->exception;
+                $this->view->message = $mensagem;
                 $priority = Zend_Log::CRIT;
-                 $this->logger->crit($mensagem);
+                $this->logger->crit($mensagem);
                 $this->_redirect('erro.html');
                 break;
             default:

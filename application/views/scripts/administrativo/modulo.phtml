@@ -12,36 +12,46 @@
 <div class="page-header">
     <h1>M&oacute;dulos <small>Listagem de m&oacute;dulos</small></h1>
 </div>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <button type="button" class="btn btn-default navbar-btn">Novo</button>
+        <button type="button" class="btn btn-default navbar-btn">Excluir selecionado</button>
+        <button type="button" class="btn btn-default navbar-btn">Imprimir Listagem</button>
+    </div>
+</nav>
 <div class="row-fluid">
     <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTable data-table" id="table-modulo" width="100%">
         <thead>
             <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
+                <th>C&oacute;digo</th>
+                <th>Nome</th>
+                <th>Descri&ccedil;&atilde;o</th>
+                <th>Ordem</th>
+                <th>Data Cadastro</th>
+                <th>Data Bloqueio</th>
             </tr>
         </thead>
         <tbody>
-            <?php for($i=0;$i<100;$i++):?>
-                <tr class="table-line" id="<?php print $i?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'cad.modulo','id_modulo'=>$i))?>">
-                    <td><?php print $i?></td>
-                    <td>Internet
-                        Explorer 4.0</td>
-                    <td>Win 95+</td>
-                    <td class="center"> 4</td>
-                    <td class="center">X</td>
-                </tr>
-            <?php endfor;?>
+            <tr>
+                <td colspan="6" class="dataTables_empty">Carregando...</td>
+            </tr>
         </tbody>
         <tfoot>
             <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
+                <th>C&oacute;digo</th>
+                <th>Nome</th>
+                <th>Descri&ccedil;&atilde;o</th>
+                <th>Ordem</th>
+                <th>Data Cadastro</th>
+                <th>Data Bloqueio</th>
             </tr>
         </tfoot>
     </table>

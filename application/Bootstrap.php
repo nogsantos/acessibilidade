@@ -11,7 +11,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
                     'namespace' => '',
                 )
         );
-       return $autoloader;
+        return $autoloader;
     }
     /**
      * Inicializacao dos plugins

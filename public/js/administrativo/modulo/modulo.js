@@ -19,7 +19,9 @@ jQuery(function() {
         "bJQueryUI"      : true,
         "sPaginationType": "bootstrap",
         "sDom"           : '<"top"fl>rt<"bottom"pi><"clear">',
-        "oLanguage": {
+        "bServerSide"    : true,
+        "sAjaxSource"    : baseUrl + '/administrativo/modulo.grid',
+        "oLanguage"     : {
             "sLengthMenu"  : "_MENU_",
             "sZeroRecords" : "Nenhum registro localizado",
             "sInfo"        : "Visualizando de _START_ a _END_ de _TOTAL_ registros",
@@ -51,6 +53,7 @@ jQuery(function() {
     jQuery(document).on("dblclick", "#table-modulo tbody tr", function() {
         var action = jQuery(this).attr("rel");
         jQuery.ajax({
+            type: "POST",
             cache: false,
             url  :  action,
             success: function(html, textStatus) {
