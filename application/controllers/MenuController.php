@@ -26,10 +26,16 @@ class MenuController extends Zend_Controller_Action {
         $vItensMenu = $oMenu->retornarMenuDinamico();
         $this->view->itensMenu = $vItensMenu;
     }
-    /*
-     * 
+    /**
+     * Retorna menu para formulário.
      */
-    public function usuarioAction(){
-        
+    public function navigationFormularioAction(){
+        $this->_helper->viewRenderer->setResponseSegment('navigation-formulario');
+    }
+    /**
+     * Retorna o menu para a listagem.
+     */
+    public function navigationListagemAction(){
+        $this->_helper->viewRenderer->setResponseSegment('navigation-listagem');
     }
 }

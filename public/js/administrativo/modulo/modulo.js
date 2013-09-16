@@ -12,20 +12,25 @@
  */
 jQuery(function() {
     /*
+     * Variaveis e objetos
+     */
+    var oTable = jQuery('#table-modulo'),
+        bt_novo_modulo = jQuery("#bt_novo_modulo"),
+        bt_excluir_modulo = jQuery("#bt_excluir_modulo"),
+        id_modulo = ""
+    ;
+    /*
      * Configurações do Grid.
      */
-    var oTable = jQuery('#table-modulo');
     oTable.dataTable({
         "bJQueryUI"      : true,
         "sPaginationType": "bootstrap",
         "sDom"           : '<"top"fl>rt<"bottom"pi><"clear">',
-        "bServerSide"    : true,
-        "sAjaxSource"    : baseUrl + '/administrativo/modulo.grid',
         "oLanguage"     : {
             "sLengthMenu"  : "_MENU_",
             "sZeroRecords" : "Nenhum registro localizado",
-            "sInfo"        : "Visualizando de _START_ a _END_ de _TOTAL_ registros",
-            "sInfoEmpty"   : "Visualizando de 0 a 0 de 0 registros",
+            "sInfo"        : "Visualizando _END_ de _TOTAL_ registros",
+            "sInfoEmpty"   : "Visualizando 0 de 0 registros",
             "sInfoFiltered": "(filtro de _MAX_ registros totais)",
             "sSearch"      : ""
         }
@@ -37,9 +42,13 @@ jQuery(function() {
         var anSelected ='#' + jQuery(this).attr("id");
         if ( jQuery(anSelected).hasClass('table-tr-selected') ) {
             jQuery(anSelected).removeClass('table-tr-selected');
+            bt_excluir_modulo.addClass("disabled");
+            id_modulo = "";
         }else {
             jQuery('#table-modulo tbody tr.table-tr-selected').removeClass('table-tr-selected');
             jQuery(anSelected).addClass('table-tr-selected');
+            bt_excluir_modulo.removeClass("disabled");
+            id_modulo = jQuery(this).attr("id");
         }
     });
     /*
@@ -53,7 +62,7 @@ jQuery(function() {
     jQuery(document).on("dblclick", "#table-modulo tbody tr", function() {
         var action = jQuery(this).attr("rel");
         jQuery.ajax({
-            type: "POST",
+            type : "POST",
             cache: false,
             url  :  action,
             success: function(html, textStatus) {
@@ -64,9 +73,50 @@ jQuery(function() {
                     message  : html,
                     title    : 'Editar Modulo',
                     backdrop : false,
-                    size     : "g"
+                    size     : "p"
                 });
             }
         });
+    });
+    /*
+     * Botão novo modulo
+     */
+    bt_novo_modulo.click(function() {
+        var action = jQuery(this).attr("rel");
+        jQuery.ajax({
+            type : "POST",
+            cache: false,
+            url  :  action,
+            success: function(html, textStatus) {
+                if (textStatus === "error") {
+                    return;
+                }
+               bootbox.dialog({
+                    message  : html,
+                    title    : 'Cadastrar Modulo',
+                    backdrop : false,
+                    size     : "p"
+                });
+            }
+        });
+    });
+    /*
+     * Botão excluir modulo
+     */
+    bt_excluir_modulo.click(function() {
+        if(id_modulo !== ""){
+            var action = baseUrl + '/administrativo/excluir.modulo/id_modulo/'+id_modulo;
+            jQuery.ajax({
+                type : "POST",
+                cache: false,
+                url  :  action,
+                success: function(html, textStatus) {
+                    if (textStatus === "error") {
+                        return;
+                    }
+                    location.reload();
+                }
+            });
+        }
     });
 });

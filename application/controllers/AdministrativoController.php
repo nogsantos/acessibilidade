@@ -11,12 +11,57 @@
  * @version 1.0.0
  *
  */
-class AdministrativoController extends MainController {
+class AdministrativoController extends Zend_Controller_Action {
     
     protected $frontController;
     
     public function init(){
         parent::init();
+        
+        $this->view->menssagens = $this->_helper->flashMessenger->getMessages();
+        
+        $this->frontController = Zend_Controller_Front::getInstance();
+        if (!is_object($this->view)) {
+            $this->_setInvokeArgs(array('noViewRenderer' => true));
+        }
+        $this->initView();
+        $this->_request->setBaseUrl();
+        $this->view->baseUrl        = $this->_request->getBaseUrl();
+        $this->view->actionName     = $this->_request->getActionName();
+        $this->view->controllerName = $this->_request->getControllerName();
+        /*
+         * Caso não esteja habilitado o rewrite, remove o index.php da url
+         */
+        if (stristr($this->view->baseUrl, "index.php")) {
+            $this->view->baseUrl = substr(
+                $this->view->baseUrl, 
+                0, 
+                strpos($this->view->baseUrl, "index.php") - 1
+            );
+        }
+        $module = explode(
+            DIRECTORY_SEPARATOR,
+            $this->frontController->getModuleDirectory()
+        );
+        $this->view->moduleName = $module[count($module) - 1];
+        $this->moduleDir        = $this->frontController->getModuleDirectory();
+        $this->view->moduleDir  = $this->moduleDir;
+        $this->frontController->setParams($this->_request->getParams());
+        $this->viewBasePath = $this->view->getScriptPaths();
+        $this->viewBasePath = $this->viewBasePath[0];
+        if (isset($this->cParams)) {
+            if (is_array($this->cParams)) {
+                foreach ($this->cParams as $k => $v) {
+                    $this->frontController->setParam($k, $v);
+                }
+            }
+        }
+        /*
+         * seta a variável _zendLocale 
+         */
+        if (Zend_Registry::isRegistered('Zend_Locale')) {
+            $this->_zendLocale = Zend_Registry::get("Zend_Locale");
+        }
     }
     /**
      * Index
@@ -66,199 +111,120 @@ class AdministrativoController extends MainController {
             '/js/administrativo/modulo/modulo.js'
         );
         /*
-         * Monta o menu do usuário
+         * Listagem dos módulos cadastrados.
          */
-//        $this->_helper->actionStack('usuario', 'Menu');
-//         
-//       /*
-//        * Implementações GRID 
-//        */  
-//       /* 
-//        * Array com as colunas visiveis do banco de dados que serão retornadas para o grid.
-//        * Utilize um espaço para inserir um campo que não está no banco de dados
-//        * um contador ou uma imagem estática, por exemplo.
-//        */
-//        $aColumns = array(
-//            'codigo_modulo', 
-//            'nome_modulo', 
-//            'descricao_modulo', 
-//            'numero_ordem', 
-//            'data_cadastro',
-//            'data_bloqueio',
-//        );
-//        /* 
-//         * Indexed column (used for fast and accurate table cardinality) 
-//         */
-//	$sIndexColumn = 'id_modulo';
-//        /*
-//         *  DB table to use 
-//         */
-//	$sTable = 'ajax';
-//        /* 
-//	 * Paging
-//	 */
-//	$sLimit = "";
-//	if ( isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1' ){
-//            $sLimit = "LIMIT ".
-//                    intval( $_GET['iDisplayStart'] ).", ".
-//                    intval( $_GET['iDisplayLength'] );
-//	}
-//	/*
-//	 * Ordering
-//	 */
-//	$sOrder = "";
-//	if ( isset( $_GET['iSortCol_0'] ) ){
-//            $sOrder = "ORDER BY  ";
-//            for ( $i=0 ; $i<intval( $_GET['iSortingCols'] ) ; $i++ ){
-//                if ( $_GET[ 'bSortable_'.intval($_GET['iSortCol_'.$i]) ] == "true" ){
-//                    $sOrder .= "`".$aColumns[ intval( $_GET['iSortCol_'.$i] ) ]."` ".
-//                    ($_GET['sSortDir_'.$i]==='asc' ? 'asc' : 'desc') .", ";
-//                }
-//            }
-//            $sOrder = substr_replace( $sOrder, "", -2 );
-//                if ( $sOrder == "ORDER BY" ){
-//                    $sOrder = "";
-//		}
-//	}
-//        /* 
-//	 * Filtering
-//	 * NOTE this does not match the built-in DataTables filtering which does it
-//	 * word by word on any field. It's possible to do here, but concerned about efficiency
-//	 * on very large tables, and MySQL's regex functionality is very limited
-//	 */
-//	$sWhere = "";
-//	if ( isset($_GET['sSearch']) && $_GET['sSearch'] != "" ){
-//            $sWhere = "WHERE (";
-//            for ( $i=0 ; $i<count($aColumns) ; $i++ ){
-//                $sWhere .= "`".$aColumns[$i]."` LIKE '%".mysql_real_escape_string( $_GET['sSearch'] )."%' OR ";
-//            }
-//            $sWhere = substr_replace( $sWhere, "", -3 );
-//            $sWhere .= ')';
-//	}
-//        /* 
-//         * Individual column filtering 
-//         */
-//	for ( $i=0 ; $i<count($aColumns) ; $i++ ){
-//            if ( isset($_GET['bSearchable_'.$i]) && 
-//                    $_GET['bSearchable_'.$i] == "true" && 
-//                    $_GET['sSearch_'.$i] != '' ){
-//                if ( $sWhere == "" ){
-//                    $sWhere = "WHERE ";
-//                }else{
-//                    $sWhere .= " AND ";
-//                }
-//                $sWhere .= "`".$aColumns[$i]."` LIKE '%".mysql_real_escape_string($_GET['sSearch_'.$i])."%' ";
-//            }
-//	}
-    }
-    /**
-     * 
-     */
-    public function moduloGridAction(){
-//        $this->_helper->setParam('noViewRenderer', true);
-//        $this->_helper->layout()->disableLayout();
-        $this->disableViewAndLayout();
-        echo '
-            {
-                "sEcho": 1,
-                "iTotalRecords": "57",
-                "iTotalDisplayRecords": "57",
-                "aaData": [
-                  [
-                    "Gecko",
-                    "Firefox 1.0",
-                    "Win 98+ / OSX.2+",
-                    "1.7",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Firefox 1.5",
-                    "Win 98+ / OSX.2+",
-                    "1.8",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Firefox 2.0",
-                    "Win 98+ / OSX.2+",
-                    "1.8",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Firefox 3.0",
-                    "Win 2k+ / OSX.3+",
-                    "1.9",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Camino 1.0",
-                    "OSX.2+",
-                    "1.8",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Camino 1.5",
-                    "OSX.3+",
-                    "1.8",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Netscape 7.2",
-                    "Win 95+ / Mac OS 8.6-9.2",
-                    "1.7",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Netscape Browser 8",
-                    "Win 98SE+",
-                    "1.7",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Netscape Navigator 9",
-                    "Win 98+ / OSX.2+",
-                    "1.8",
-                    "A",
-                    "A"
-                  ],
-                  [
-                    "Gecko",
-                    "Mozilla 1.0",
-                    "Win 95+ / OSX.1+",
-                    "1",
-                    "A",
-                    "A"
-                  ]
-                ]
-              }
-        ';
+        $oModulo = new Application_Model_Modulo();
+        $this->view->oModulo = $oModulo->listarModulos();
     }
     /**
      * Cadastro de módulo
      */
-    public function cadModuloAction(){
+    public function formModuloAction(){
         /*
          * O formulário deve ser acessado apenas via modal.
          */
         if ($this->getRequest()->getMethod() === "GET"){
-            throw new Exception(Custom_Erros_Mensagens::ERRO_ACESSO_INDEVIDO);
+            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
         }else{
+           /*
+            * Script da página
+            */
+            $this->view->headScript()->appendFile(
+                Zend_Controller_Front::getInstance()->getBaseUrl().
+                    '/js/administrativo/modulo/form-modulo.js'
+            );
+           /*
+            * Monta o menu do usuário
+            */
+            $this->_helper->actionStack('navigation-formulario', 'Menu');
             $this->_helper->layout()->disableLayout();
+            /*
+             * Preenchendo os dados no formulário.
+             */
+            $oModulo = new Application_Model_Modulo();
+            $oModulo->setIdModulo($this->getParam('id_modulo'));
+            $this->view->oModulo = $oModulo->consultarModulo();
+        }
+    }
+    /**
+     * Salvar modulo
+     */
+    public function salvarModuloAction(){
+        /*
+         * O formulário deve ser acessado apenas via modal.
+         */
+        if ($this->getRequest()->getMethod() === "GET"){
+            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
+        }else{
+            $this->disableViewAndLayout();
+            $oModuloForm = new Form_Modulo();
+            if ($this->getRequest()->isPost()) {
+                $vDados = $this->getRequest()->getPost();
+                if ($oModuloForm->isValid($vDados)) {
+                    $oModulo = new Application_Model_Modulo();
+                    $oModulo->setIdModulo($oModuloForm->getValue('id_modulo'));
+                    $oModulo->setCodigoModulo($oModuloForm->getValue('codigo_modulo'));
+                    $oModulo->setNomeModulo($oModuloForm->getValue('nome_modulo'));
+                    $oModulo->setDescricaoModulo($oModuloForm->getValue('descricao_modulo'));
+                    $oModulo->setNumeroOrdem($oModuloForm->getValue('numero_ordem'));
+                    $oModulo->setDataBloqueio($oModuloForm->getValue('data_bloqueio'));
+                    $retorno = "";
+                    if(empty($oModuloForm->getValue('id_modulo'))){
+                        /*
+                         * Cadastro
+                         */
+                        $retorno = $oModulo->cadastrar();
+                    }else{
+                        /*
+                         * Edição
+                         */
+                        $retorno = $oModulo->editar();
+                    }
+                    if(!$retorno){
+                        $this->_helper->flashMessenger->addMessage('
+                            <div class="alert alert-danger">
+                                '.$retorno.'
+                            </div>
+                        ');
+                    }else{
+                        $this->_helper->flashMessenger->addMessage('
+                            <div class="alert alert-success">
+                                '.Custom_Mensagens::ACAO_SUCESSO.'
+                            </div>
+                        ');
+                    }
+                    $this->_helper->redirector('modulo');
+                }
+            }
+        }
+    }
+    /**
+     * Excluir módulo
+     */
+    public function excluirModuloAction(){
+        /*
+         * O formulário deve ser acessado apenas via modal.
+         */
+        if ($this->getRequest()->getMethod() === "GET"){
+            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
+        }else{
+            $this->disableViewAndLayout();
+            $oModulo = new Application_Model_Modulo();
+            $oModulo->setIdModulo($this->getParam('id_modulo'));
+            $retorno = $oModulo->excluir();
+        }
+        if (!$retorno) {
+            $this->_helper->flashMessenger->addMessage('
+                <div class="alert alert-danger">
+                    ' . $retorno . '
+                </div>
+            ');
+        } else {
+            $this->_helper->flashMessenger->addMessage('
+                <div class="alert alert-success">
+                    '.Custom_Mensagens::ACAO_SUCESSO.'
+                </div>
+            ');
         }
     }
     /**
@@ -282,5 +248,13 @@ class AdministrativoController extends MainController {
     public function usuarioAction(){
         
     }
-   
+    /**
+     * método que desabilita a view e o layout
+     */
+    protected function disableViewAndLayout() {
+        if ($this->_helper->hasHelper('layout')) {
+            $this->_helper->layout()->disableLayout();
+        }
+        $this->frontController->setParam('noViewRenderer', true);
+    }
 }

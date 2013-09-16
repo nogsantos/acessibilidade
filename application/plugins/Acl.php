@@ -2,7 +2,7 @@
 /**
  *
  * Descrição:Classe ApplicationAcl
- * Plugin para controle de acesso aos (ACL)
+ * Plugin para listagem de controle de acesso (ACL)
  *
  * @author Fabricio Nogueira
  *

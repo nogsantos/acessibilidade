@@ -15,18 +15,22 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">Alterar Navega&ccedil;&atilde;o</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
     </div>
     <div class="collapse navbar-collapse navbar-ex2-collapse">
-        <button type="button" class="btn btn-default navbar-btn">Novo</button>
-        <button type="button" class="btn btn-default navbar-btn">Excluir selecionado</button>
-        <button type="button" class="btn btn-default navbar-btn">Imprimir Listagem</button>
+        <button type="button" class="btn btn-default navbar-btn" id="bt_novo_modulo" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'form.modulo'))?>"><i class="icon-file-alt"></i> Novo Modulo</button>
+        <button type="button" class="btn btn-default navbar-btn disabled" id="bt_excluir_modulo" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'excluir.modulo'))?>"><i class="icon-remove"></i> Excluir Selecionado</button>
     </div>
 </nav>
+<?php if (count($this->menssagens)) : ?>
+    <?php foreach ($this->menssagens as $menssagens) : ?>
+        <?php print $menssagens; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 <div class="row-fluid">
     <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTable data-table" id="table-modulo" width="100%">
         <thead>
@@ -40,19 +44,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td colspan="6" class="dataTables_empty">Carregando...</td>
+            <?php foreach ($this->oModulo as $modulo ) : ?>
+            <tr class="table-line" id="<?php print $modulo['id_modulo']?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'form.modulo','id_modulo'=>$modulo['id_modulo']))?>">
+                <td><?php print $modulo['codigo_modulo'] ?></td>
+                <td><?php print $modulo['nome_modulo'] ?></td>
+                <td><?php print $modulo['descricao_modulo'] ?></td>
+                <td class="text-center"><?php print $modulo['numero_ordem'] ?></td>
+                <td class="text-center"><?php print $modulo['data_cadastro'] ?></td>
+                <td class="text-center"><?php print $modulo['data_bloqueio'] ?></td>
             </tr>
+            <?php endforeach;?>
         </tbody>
-        <tfoot>
-            <tr>
-                <th>C&oacute;digo</th>
-                <th>Nome</th>
-                <th>Descri&ccedil;&atilde;o</th>
-                <th>Ordem</th>
-                <th>Data Cadastro</th>
-                <th>Data Bloqueio</th>
-            </tr>
-        </tfoot>
     </table>
 </div>

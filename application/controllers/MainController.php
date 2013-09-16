@@ -37,7 +37,8 @@ abstract class MainController extends Zend_Controller_Action {
                 strpos($this->view->baseUrl, "index.php") - 1
             );
         }
-        $module = explode(DIRECTORY_SEPARATOR,
+        $module = explode(
+            DIRECTORY_SEPARATOR,
             $this->frontController->getModuleDirectory()
         );
         $this->view->moduleName = $module[count($module) - 1];
@@ -48,7 +49,7 @@ abstract class MainController extends Zend_Controller_Action {
         $this->viewBasePath = $this->viewBasePath[0];
         if (isset($this->cParams)) {
             if (is_array($this->cParams)) {
-                foreach ($this->cParams AS $k => $v) {
+                foreach ($this->cParams as $k => $v) {
                     $this->frontController->setParam($k, $v);
                 }
             }
