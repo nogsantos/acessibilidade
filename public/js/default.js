@@ -15,7 +15,7 @@ jQuery(function() {
         bootbox.dialog(jqXHR.responseText, [], {header: 'ERRO!'});
     }
 
-    $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    jQuery.ajaxPrefilter(function(options, originalOptions, jqXHR) {
         var postAjax = setTimeout(function() {
             // Recarrega o Timeout
             if (jqXHR.readyState == 4) {
@@ -23,7 +23,7 @@ jQuery(function() {
 
                 if (originalOptions.dataType != "script" && ((jqXHR.status == 500 && jqXHR.responseText.length > 0) || jqXHR.responseText.length > 0))
                 {
-                    var timeOut = $("body").data("sessionTimeout")
+                    var timeOut = jQuery("body").data("sessionTimeout")
 
                     if (!timeOut)
                         return;
@@ -34,12 +34,12 @@ jQuery(function() {
                     ts.setHours(ts.getHours() + parseInt(timeOut[0]));
 
                     if (typeof ts == "object")
-                        $('.userTimeout').countdown('option', {until: ts});
+                        jQuery('.userTimeout').countdown('option', {until: ts});
                 }
             }
-        }, 500)
+        }, 500);
     });
-    $.ajaxSetup({
+    jQuery.ajaxSetup({
         cache: false,
         error: function(jqXHR, textStatus, errorThrown) {
             if (jqXHR.responseText.length > 0) {

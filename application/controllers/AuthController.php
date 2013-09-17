@@ -97,7 +97,9 @@ class AuthController extends Zend_Controller_Action {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/login-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);
             $logger->crit($exc->getMessage());
             $this->_helper->FlashMessenger('

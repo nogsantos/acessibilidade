@@ -18,6 +18,11 @@ abstract class MainController extends Zend_Controller_Action {
 
     public function init() {
         parent::init();
+        /**
+         * Mensagens para views.
+         */
+        $this->view->menssagens = $this->_helper->flashMessenger->getMessages();
+        
         $this->frontController = Zend_Controller_Front::getInstance();
         if (!is_object($this->view)) {
             $this->_setInvokeArgs(array('noViewRenderer' => true));
@@ -30,11 +35,11 @@ abstract class MainController extends Zend_Controller_Action {
         /*
          * Caso não esteja habilitado o rewrite, remove o index.php da url
          */
-        if (stristr($this->view->baseUrl, "index.php")) {
+        if (stristr($this->view->baseUrl, 'index.php')) {
             $this->view->baseUrl = substr(
                 $this->view->baseUrl, 
                 0, 
-                strpos($this->view->baseUrl, "index.php") - 1
+                strpos($this->view->baseUrl, 'index.php') - 1
             );
         }
         $module = explode(
@@ -58,7 +63,7 @@ abstract class MainController extends Zend_Controller_Action {
          * seta a variável _zendLocale 
          */
         if (Zend_Registry::isRegistered('Zend_Locale')) {
-            $this->_zendLocale = Zend_Registry::get("Zend_Locale");
+            $this->_zendLocale = Zend_Registry::get('Zend_Locale');
         }
     }
     /**
@@ -73,7 +78,7 @@ abstract class MainController extends Zend_Controller_Action {
     /**
      * traz o locale pra view
      */
-    private function setLocaleToView() {
+    public function setLocaleToView() {
         $localeType = new Zend_Session_Namespace('locale');
         if (isset($localeType->translate)) {
             $msgs = $localeType->translate->getMessages();

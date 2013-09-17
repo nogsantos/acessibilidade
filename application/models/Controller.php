@@ -1,8 +1,7 @@
 <?php
-
 /**
  *
- * Descrição:Classe Modulo
+ * Descrição:Classe Controller
  *
  *
  * @author Fabricio Nogueira
@@ -12,52 +11,52 @@
  * @version 1.0.0
  *
  */
-class Application_Model_Modulo extends Zend_Db_Table_Abstract {
+class Application_Model_Controller extends Zend_Db_Table_Abstract {
     /*
      * Atributos
      */
-    protected $_name    = 'modulo';
+    protected $_name    = 'controller';
     protected $_schema  = 'administrativo';
-    protected $_primary = 'id_modulo';
+    protected $_primary = 'id_controller';
     protected $sSql;
-    protected $idModulo;
-    protected $codigoModulo;
-    protected $nomeModulo;
-    protected $descricaoModulo;
+    protected $idController;
+    protected $codigoController;
+    protected $nomeController;
+    protected $descricaoController;
     protected $numeroOrdem;
     protected $dataCadastro;
     protected $dataBloqueio;
     
-    public function getIdModulo() {
-        return $this->idModulo;
+    public function getIdController() {
+        return $this->idController;
     }
 
-    public function setIdModulo($idModulo) {
-        $this->idModulo = $idModulo;
+    public function setIdController($idController) {
+        $this->idController = $idController;
     }
 
-    public function getCodigoModulo() {
-        return $this->codigoModulo;
+    public function getCodigoController() {
+        return $this->codigoController;
     }
 
-    public function setCodigoModulo($codigoModulo) {
-        $this->codigoModulo = $codigoModulo;
+    public function setCodigoController($codigoController) {
+        $this->codigoController = $codigoController;
     }
 
-    public function getNomeModulo() {
-        return $this->nomeModulo;
+    public function getNomeController() {
+        return $this->nomeController;
     }
 
-    public function setNomeModulo($nomeModulo) {
-        $this->nomeModulo = $nomeModulo;
+    public function setNomeController($nomeController) {
+        $this->nomeController = $nomeController;
     }
 
-    public function getDescricaoModulo() {
-        return $this->descricaoModulo;
+    public function getDescricaoController() {
+        return $this->descricaoController;
     }
 
-    public function setDescricaoModulo($descricaoModulo) {
-        $this->descricaoModulo = $descricaoModulo;
+    public function setDescricaoController($descricaoController) {
+        $this->descricaoController = $descricaoController;
     }
     public function getNumeroOrdem() {
         return $this->numeroOrdem;
@@ -91,44 +90,46 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
         try{
             $this->sSql = $this->select()
                     ->setIntegrityCheck(false)
-                    ->from(array('m' => $this->_name),
+                    ->from(array('c' => $this->_name),
                            array(
-                               'modulo' => 'nome_modulo',
-                               'codigo_modulo',
+                               'controller' => 'nome_controller',
+                               'codigo_controller',
                            ), $this->_schema)
-                    ->join(array('c'=>'controller'), 
-                            'c.fk_modulo = m.id_modulo',
+                    ->join(array('a'=>'action'), 
+                            'a.fk_controller = c.id_controller',
                             array(
-                                'controller'=> 'nome_controller',
-                                'codigo_controller',
-                                'id_controller',
+                                'action'=> 'nome_action',
+                                'id_action',
                             ), $this->_schema)
-                    ->order(array('m.numero_ordem', 'c.numero_ordem'))
+                    ->where('a.tipo_action = ? ','F')
+                    ->order(array('c.numero_ordem'))
             ;
             return $this->fetchAll($this->sSql);
         } catch (Zend_Db_Exception $e) {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
      * Retorna listagem de modulos
      */
-    public function listarModulos(){
+    public function listarControllers(){
         try {
             $this->sSql = $this->select()
                     ->setIntegrityCheck(false)
                     ->from($this->_name,
                             array(
-                                'id_modulo',
-                                'codigo_modulo',
-                                'nome_modulo',
-                                'descricao_modulo',
+                                'id_controller',
+                                'codigo_controller',
+                                'nome_controller',
+                                'descricao_controller',
                                 'numero_ordem',
                                 'data_cadastro' => 'to_char(data_cadastro,\'dd/mm/YYYY\')',
                                 'data_bloqueio' => 'nvl(to_char(data_bloqueio,\'dd/mm/YYYY\'),\'Ativo\')',
@@ -140,42 +141,46 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
      * 
      */
-    public function consultarModulo(){
+    public function consultarController(){
         try {
             $this->sSql = $this->select()
                     ->setIntegrityCheck(false)
                     ->from($this->_name,
                             array(
-                                'id_modulo',
-                                'codigo_modulo',
-                                'nome_modulo',
-                                'descricao_modulo',
+                                'id_controller',
+                                'codigo_controller',
+                                'nome_controller',
+                                'descricao_controller',
                                 'numero_ordem',
                                 'data_cadastro' => 'to_char(data_cadastro,\'dd/mm/YYYY\')',
                                 'data_bloqueio' => 'nvl(to_char(data_bloqueio,\'dd/mm/YYYY\'),\'Ativo\')',
                             ),
                             $this->_schema
                     )
-                    ->where('id_modulo = ?', (int) $this->idModulo)
+                    ->where('id_controller = ?', (int) $this->idController)
             ;
             return $this->fetchRow($this->sSql);
         } catch (Zend_Db_Exception $e) {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
@@ -184,21 +189,24 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
     public function cadastrar(){
         try {
             $vDados = array(
-                'codigo_modulo'    => $this->codigoModulo,
-                'nome_modulo'      => $this->nomeModulo,
-                'descricao_modulo' => $this->descricaoModulo,
-                'numero_ordem'     => $this->numeroOrdem,
-                'data_bloqueio'    => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
+                'codigo_controller'    => $this->codigoController,
+                'nome_controller'      => $this->nomeController,
+                'descricao_controller' => $this->descricaoController,
+                'numero_ordem'         => $this->numeroOrdem,
+                'data_bloqueio'        => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
             );
-            return $this->insert($vDados);
+            $this->insert($vDados);
+            return true;
         } catch (Zend_Db_Exception $e) {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
@@ -207,21 +215,24 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
     public function editar(){
         try {
             $vDados = array(
-                'codigo_modulo'    => $this->codigoModulo,
-                'nome_modulo'      => $this->nomeModulo,
-                'descricao_modulo' => $this->descricaoModulo,
-                'numero_ordem'     => $this->numeroOrdem,
-                'data_bloqueio'    => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
+                'codigo_controller'    => $this->codigoController,
+                'nome_controller'      => $this->nomeController,
+                'descricao_controller' => $this->descricaoController,
+                'numero_ordem'         => $this->numeroOrdem,
+                'data_bloqueio'        => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
             );
-            return $this->update($vDados, 'id_modulo = '.(int) $this->idModulo);
+            $this->update($vDados, 'id_controller = '.(int) $this->idController);
+            return true;
         } catch (Zend_Db_Exception $e) {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
@@ -229,15 +240,18 @@ class Application_Model_Modulo extends Zend_Db_Table_Abstract {
      */
     public function excluir(){
         try {
-           return $this->delete("id_modulo = ".(int) $this->idModulo);
+            $this->delete('id_controller = '.(int) $this->idController);
+            return true;
         } catch (Zend_Db_Exception $e) {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/controller-'.date('w').'.log'
+            );
             $logger = new Zend_Log($writer);            
             $logger->crit($e->getMessage());
-            return Custom_Mensagens::ERRO_DADOS;
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
 }

@@ -1,0 +1,18 @@
+/**
+ *
+ * Descrição:Css forms estilos para os formulários.
+ *
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 17-Sep-2013
+ *
+ * @version 1.0.0
+ *
+ */
+
+.field-error{
+    background-color: #F2DEDE;
+    border-color: #B94A48;
+    color: #B94A48;
+}

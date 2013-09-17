@@ -11,57 +11,11 @@
  * @version 1.0.0
  *
  */
-class AdministrativoController extends Zend_Controller_Action {
-    
-    protected $frontController;
+require_once 'MainController.php';
+class AdministrativoController extends MainController {
     
     public function init(){
         parent::init();
-        
-        $this->view->menssagens = $this->_helper->flashMessenger->getMessages();
-        
-        $this->frontController = Zend_Controller_Front::getInstance();
-        if (!is_object($this->view)) {
-            $this->_setInvokeArgs(array('noViewRenderer' => true));
-        }
-        $this->initView();
-        $this->_request->setBaseUrl();
-        $this->view->baseUrl        = $this->_request->getBaseUrl();
-        $this->view->actionName     = $this->_request->getActionName();
-        $this->view->controllerName = $this->_request->getControllerName();
-        /*
-         * Caso não esteja habilitado o rewrite, remove o index.php da url
-         */
-        if (stristr($this->view->baseUrl, "index.php")) {
-            $this->view->baseUrl = substr(
-                $this->view->baseUrl, 
-                0, 
-                strpos($this->view->baseUrl, "index.php") - 1
-            );
-        }
-        $module = explode(
-            DIRECTORY_SEPARATOR,
-            $this->frontController->getModuleDirectory()
-        );
-        $this->view->moduleName = $module[count($module) - 1];
-        $this->moduleDir        = $this->frontController->getModuleDirectory();
-        $this->view->moduleDir  = $this->moduleDir;
-        $this->frontController->setParams($this->_request->getParams());
-        $this->viewBasePath = $this->view->getScriptPaths();
-        $this->viewBasePath = $this->viewBasePath[0];
-        if (isset($this->cParams)) {
-            if (is_array($this->cParams)) {
-                foreach ($this->cParams as $k => $v) {
-                    $this->frontController->setParam($k, $v);
-                }
-            }
-        }
-        /*
-         * seta a variável _zendLocale 
-         */
-        if (Zend_Registry::isRegistered('Zend_Locale')) {
-            $this->_zendLocale = Zend_Registry::get("Zend_Locale");
-        }
     }
     /**
      * Index
@@ -74,9 +28,9 @@ class AdministrativoController extends Zend_Controller_Action {
         $this->_redirect('index');
     }
     /**
-     * Cadastro de modulos
+     * Index Cadastro de modulos.
      */
-    public function moduloAction(){
+    public function controllerAction(){
       /*
        * Monta o menu principal
        */
@@ -108,30 +62,44 @@ class AdministrativoController extends Zend_Controller_Action {
           */
          $this->view->headScript()->appendFile(
             Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/administrativo/modulo/modulo.js'
+            '/js/administrativo/controller/controller.js'
         );
         /*
          * Listagem dos módulos cadastrados.
          */
-        $oModulo = new Application_Model_Modulo();
-        $this->view->oModulo = $oModulo->listarModulos();
+        $oController = new Application_Model_Controller();
+        $this->view->oController = $oController->listarControllers();
     }
     /**
      * Cadastro de módulo
      */
-    public function formModuloAction(){
+    public function controllerFormAction(){
         /*
          * O formulário deve ser acessado apenas via modal.
          */
         if ($this->getRequest()->getMethod() === "GET"){
-            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
+            throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
            /*
             * Script da página
             */
             $this->view->headScript()->appendFile(
                 Zend_Controller_Front::getInstance()->getBaseUrl().
-                    '/js/administrativo/modulo/form-modulo.js'
+                '/js/administrativo/controller/controller-form.js'
+            );
+           /*
+            * Script para formulários
+            */
+            $this->view->headScript()->appendFile(
+                Zend_Controller_Front::getInstance()->getBaseUrl().
+                '/js/numeros.js'
+            );
+            /*
+             * Estilo para formulários.
+             */
+            $this->view->headLink()->setStylesheet(
+                Zend_Controller_Front::getInstance()->getBaseUrl() .
+                '/css/forms.css'
             );
            /*
             * Monta o menu do usuário
@@ -141,44 +109,43 @@ class AdministrativoController extends Zend_Controller_Action {
             /*
              * Preenchendo os dados no formulário.
              */
-            $oModulo = new Application_Model_Modulo();
-            $oModulo->setIdModulo($this->getParam('id_modulo'));
-            $this->view->oModulo = $oModulo->consultarModulo();
+            $oController = new Application_Model_Controller();
+            $oController->setIdController($this->getParam('id_controller'));
+            $this->view->oController = $oController->consultarController();
         }
     }
     /**
      * Salvar modulo
      */
-    public function salvarModuloAction(){
+    public function salvarControllerAction(){
         /*
          * O formulário deve ser acessado apenas via modal.
          */
         if ($this->getRequest()->getMethod() === "GET"){
-            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
+            throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
             $this->disableViewAndLayout();
-            $oModuloForm = new Form_Modulo();
+            $oControllerForm = new Form_Controller();
             if ($this->getRequest()->isPost()) {
                 $vDados = $this->getRequest()->getPost();
-                if ($oModuloForm->isValid($vDados)) {
-                    $oModulo = new Application_Model_Modulo();
-                    $oModulo->setIdModulo($oModuloForm->getValue('id_modulo'));
-                    $oModulo->setCodigoModulo($oModuloForm->getValue('codigo_modulo'));
-                    $oModulo->setNomeModulo($oModuloForm->getValue('nome_modulo'));
-                    $oModulo->setDescricaoModulo($oModuloForm->getValue('descricao_modulo'));
-                    $oModulo->setNumeroOrdem($oModuloForm->getValue('numero_ordem'));
-                    $oModulo->setDataBloqueio($oModuloForm->getValue('data_bloqueio'));
-                    $retorno = "";
-                    if(empty($oModuloForm->getValue('id_modulo'))){
+                if ($oControllerForm->isValid($vDados)) {
+                    $oController = new Application_Model_Controller();
+                    $oController->setIdController($oControllerForm->getValue('id_controller'));
+                    $oController->setCodigoController($oControllerForm->getValue('codigo_controller'));
+                    $oController->setNomeController($oControllerForm->getValue('nome_controller'));
+                    $oController->setDescricaoController($oControllerForm->getValue('descricao_controller'));
+                    $oController->setNumeroOrdem($oControllerForm->getValue('numero_ordem'));
+                    $oController->setDataBloqueio($oControllerForm->getValue('data_bloqueio'));
+                    if(empty($oControllerForm->getValue('id_controller'))){
                         /*
                          * Cadastro
                          */
-                        $retorno = $oModulo->cadastrar();
+                        $retorno = $oController->cadastrar();
                     }else{
                         /*
                          * Edição
                          */
-                        $retorno = $oModulo->editar();
+                        $retorno = $oController->editar();
                     }
                     if(!$retorno){
                         $this->_helper->flashMessenger->addMessage('
@@ -189,11 +156,14 @@ class AdministrativoController extends Zend_Controller_Action {
                     }else{
                         $this->_helper->flashMessenger->addMessage('
                             <div class="alert alert-success">
-                                '.Custom_Mensagens::ACAO_SUCESSO.'
+                                '.Custom_Mensagem::ACAO_SUCESSO.'
                             </div>
                         ');
                     }
-                    $this->_helper->redirector('modulo');
+                    /*
+                     * Redirecionamento para a listagem
+                     */
+                    $this->_helper->redirector('controller');
                 }
             }
         }
@@ -201,60 +171,74 @@ class AdministrativoController extends Zend_Controller_Action {
     /**
      * Excluir módulo
      */
-    public function excluirModuloAction(){
+    public function excluirControllerAction(){
         /*
          * O formulário deve ser acessado apenas via modal.
          */
         if ($this->getRequest()->getMethod() === "GET"){
-            throw new Exception(Custom_Mensagens::ERRO_ACESSO_INDEVIDO);
+            throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
             $this->disableViewAndLayout();
-            $oModulo = new Application_Model_Modulo();
-            $oModulo->setIdModulo($this->getParam('id_modulo'));
-            $retorno = $oModulo->excluir();
+            $oController = new Application_Model_Controller();
+            $oController->setIdController($this->getParam('id_controller'));
+            $retorno = $oController->excluir();
+            if(!$retorno){
+                $this->_helper->flashMessenger->addMessage('
+                    <div class="alert alert-danger">
+                        ' . $retorno . '
+                    </div>
+                ');
+            } else {
+                $this->_helper->flashMessenger->addMessage('
+                    <div class="alert alert-success">
+                        '.Custom_Mensagem::ACAO_SUCESSO.'
+                    </div>
+                ');
+            }
         }
-        if (!$retorno) {
-            $this->_helper->flashMessenger->addMessage('
-                <div class="alert alert-danger">
-                    ' . $retorno . '
-                </div>
-            ');
-        } else {
-            $this->_helper->flashMessenger->addMessage('
-                <div class="alert alert-success">
-                    '.Custom_Mensagens::ACAO_SUCESSO.'
-                </div>
-            ');
-        }
-    }
-    /**
-     * Cadastro de Controllers
-     */
-    public function controllerAction(){
-        
     }
     /**
      * Cadasro de Actions
      */
     public function actionAction(){
         /*
-         * Monta o menu do usuário
-         */
-        $this->_helper->actionStack('usuario', 'Menu');
+       * Monta o menu principal
+       */
+       $this->_helper->actionStack('navigation', 'Menu');
+       /*
+        * Grid
+        */
+        $this->view->headLink()->setStylesheet(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/DataTables-1.9.4/media/css/jquery.dataTables.css'
+        );
+        $this->view->headLink()->setStylesheet(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css'
+        );
+         $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/DataTables-1.9.4/media/js/jquery.dataTables.js'
+        );
+         /*
+          * Paginador do grid
+          */
+         $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/DataTables-1.9.4/media/js/paginador.js'
+        );
+         /*
+          * Script da página
+          */
+         $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/js/administrativo/action/action.js'
+        );
     }
     /**
      * 
      */
     public function usuarioAction(){
         
-    }
-    /**
-     * método que desabilita a view e o layout
-     */
-    protected function disableViewAndLayout() {
-        if ($this->_helper->hasHelper('layout')) {
-            $this->_helper->layout()->disableLayout();
-        }
-        $this->frontController->setParam('noViewRenderer', true);
     }
 }

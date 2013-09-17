@@ -32,7 +32,7 @@ class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
             /*
              * Grava no log os erros, caso hajam.
              */
-            $writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+            $writer = new Zend_Log_Writer_Stream(Custom_Path::LOG);
             $logger = new Zend_Log($writer);
             $logger->crit($exc->getMessage());
             $r = new Zend_Controller_Action_Helper_Redirector;

@@ -22,7 +22,7 @@ class MenuController extends Zend_Controller_Action {
      */
     public function navigationAction(){
         $this->_helper->viewRenderer->setResponseSegment('navigation');
-        $oMenu      = new Application_Model_Modulo();
+        $oMenu      = new Application_Model_Controller();
         $vItensMenu = $oMenu->retornarMenuDinamico();
         $this->view->itensMenu = $vItensMenu;
     }

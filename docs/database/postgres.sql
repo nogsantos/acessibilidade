@@ -86,50 +86,30 @@ CREATE TABLE administrativo.perfil_organizacao (
     PRIMARY KEY(fk_organizacao, fk_perfil)
 )WITHOUT OIDS;
 
-CREATE TABLE administrativo.organizacao_modulo (
-    fk_modulo bigint,
-    fk_organizacao bigint,
-    FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao),
-    PRIMARY KEY(fk_modulo, fk_organizacao)
-)WITHOUT OIDS;
-
-CREATE TABLE administrativo.perfil_modulo (
-    fk_modulo bigint,
-    fk_perfil bigint, 
-    PRIMARY KEY(fk_modulo, fk_perfil)
-)WITHOUT OIDS;
-
-CREATE TABLE administrativo.modulo (
-    id_modulo bigserial PRIMARY KEY,
-    codigo_modulo varchar(250) unique,
-    nome_modulo varchar(300) unique,
-    descricao_modulo varchar(500),
-    numero_ordem bigint,
+CREATE TABLE administrativo.controller (
+    id_controller bigserial PRIMARY KEY,
+    nome_controller varchar(300) unique,
+    codigo_controller varchar(250) unique,
+    descricao_controller varchar(500),
+    numero_ordem integer,
     data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
     data_bloqueio timestamp with time zone
 )WITHOUT OIDS;
 
-CREATE TABLE administrativo.controller (
-    id_controller bigserial PRIMARY KEY,
-    fk_modulo bigint,
-    codigo_controller varchar(250) unique,
-    nome_controller varchar(300) unique,
-    descricao_controller varchar(500),
-    numero_ordem bigint,
-    data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
-    data_bloqueio timestamp with time zone,
-    FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo)
-)WITHOUT OIDS;
-
 CREATE TABLE administrativo.action (
-    id_action bigserial PRIMARY KEY,
     fk_controller bigint,
-    codigo_action varchar(250),
-    nome_action varchar(300),
+    id_action varchar(50) PRIMARY KEY,
+    rel_controller varchar(100),
+    rel_action varchar(100),
+    class_icone varchar(100),
+    nome_action varchar(300) not null,
+    tipo_action char(1) not null,
     descricao_action varchar(500),
+    numero_ordem integer,
     data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
     data_bloqueio timestamp with time zone,
-    FOREIGN KEY(fk_controller) REFERENCES administrativo.controller (id_controller)
+    FOREIGN KEY(fk_controller) REFERENCES administrativo.controller (id_controller),
+    CONSTRAINT check_sexo CHECK (tipo_action = 'B' OR tipo_action = 'F' OR tipo_action = 'U')
 )WITHOUT OIDS;
 
 CREATE TABLE administrativo.perfil_controller (
@@ -253,6 +233,12 @@ COMMENT ON COLUMN administrativo.controller.codigo_controller IS 'String identif
 COMMENT ON COLUMN administrativo.controller.descricao_controller IS 'Texto descritivo para o controller';
 COMMENT ON COLUMN administrativo.controller.numero_ordem IS 'Ordenação para exibição do controller.';
 comment ON TABLE administrativo.action IS 'Ações do sistema, cadastrar, editar, excluir etc.';
+comment ON COLUMN administrativo.action.id_action IS 'Identificador da action, será utilizado para manipulações via javascript';
+comment ON COLUMN administrativo.action.rel_controller IS 'Usado para definir o controller da action.';
+comment ON COLUMN administrativo.action.rel_action IS 'Nome da action no controller.';
+comment ON COLUMN administrativo.action.class_icone IS 'Classe que será utilizada para adicionar um icone caso a action seja um botão.';
+comment ON COLUMN administrativo.action.nome_action IS 'Nome visual da action.';
+comment ON COLUMN administrativo.action.tipo_action IS 'Define se a action será um botão, formulário ou função. B=Botão, F=Formulário, U=Função.';
 comment on table administrativo.usuario is 'Generalização de pessoa, contém informações de acesso ao sistema.';
 comment on table administrativo.perfil is 'Definição do perfil dos usuários no sistema.';
 comment on table administrativo.perfil_usuario is 'Tabela intermediária entre perfil e usuário, permitindo ao usuário exercer mais de um papel no sistema.';

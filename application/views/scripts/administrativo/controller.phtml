@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * Descrição:cad-pessoa-juridica
- *
+ * Descrição: View Listagem de controladores (controllers) dos sistema.
  *
  * @author Fabricio Nogueira
  *
@@ -12,11 +11,51 @@
  *
  */
 ?>
-<div class="panel panel-default">
-    <div class="panel-heading">Cadastro de pessoa juridica</div>
-    <div class="panel-body">
-        <div class="row-fluid">
-            Formulario
-        </div>
+<div class="page-header">
+    <h1>Controladores <small>Listagem de controladores</small></h1>
+</div>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+            <span class="sr-only">Alterar Navega&ccedil;&atilde;o</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
     </div>
+    <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <button type="button" class="btn btn-default navbar-btn" id="bt_novo_controller" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'controller.form'))?>"><i class="icon-file-alt"></i> Novo Controlador</button>
+        <button type="button" class="btn btn-default navbar-btn disabled" id="bt_excluir_controller" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'excluir.controller'))?>"><i class="icon-remove"></i> Excluir Selecionado</button>
+    </div>
+</nav>
+<?php if (count($this->menssagens)) : ?>
+    <?php foreach ($this->menssagens as $menssagens) : ?>
+        <?php print $menssagens; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+<div class="row-fluid">
+    <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered dataTable data-table" id="table-controller" width="100%">
+        <thead>
+            <tr>
+                <th>C&oacute;digo</th>
+                <th>Nome</th>
+                <th>Descri&ccedil;&atilde;o</th>
+                <th>Ordem</th>
+                <th>Data Cadastro</th>
+                <th>Data Bloqueio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->oController as $controller ) : ?>
+            <tr class="table-line" id="<?php print $controller['id_controller']?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'controller.form','id_controller'=>$controller['id_controller']))?>">
+                <td><?php print $controller['codigo_controller'] ?></td>
+                <td><?php print $controller['nome_controller'] ?></td>
+                <td><?php print $controller['descricao_controller'] ?></td>
+                <td class="text-center"><?php print $controller['numero_ordem'] ?></td>
+                <td class="text-center"><?php print $controller['data_cadastro'] ?></td>
+                <td class="text-center"><?php print $controller['data_bloqueio'] ?></td>
+            </tr>
+            <?php endforeach;?>
+        </tbody>
+    </table>
 </div>

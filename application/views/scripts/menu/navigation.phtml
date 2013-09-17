@@ -11,13 +11,13 @@
  * @version 1.0.0
  *
  */
-$vModulo = array();
+$vController = array();
 foreach ($this->itensMenu as $value) {
-    $vModulo[$value[modulo]] = $value[modulo];
+    $vController[$value['controller']] = $value['controller'];
 }
 $vMenu = array();
 foreach ($this->itensMenu as $value) {
-    $vMenu[$vModulo[$value[modulo]]][$value[codigo_modulo]][$value[controller]] = $value[codigo_controller];
+    $vMenu[$vController[$value['controller']]][$value['codigo_controller']][$value['action']] = $value['id_action'];
 }
 ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
@@ -39,7 +39,7 @@ foreach ($this->itensMenu as $value) {
                             <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                             <?php foreach ($controllers as $action => $itensActions) : ?>
                                 <?php foreach ($itensActions as $item => $link ) : ?>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php print $this->url(array('controller' => $action, 'action' => $link))?>"><?php print $item;?></a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php print $this->url(array('controller' => strtolower($action), 'action' => strtolower($link)))?>"><?php print $item;?></a></li>
                                 <?php endforeach;?>
                             <?php endforeach;?>
                         </ul>

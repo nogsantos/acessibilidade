@@ -6,7 +6,9 @@ class ErrorController extends Zend_Controller_Action {
     private $logger;
 
     public function init() {
-        $this->writer = new Zend_Log_Writer_Stream('../data/logs/application.log');
+        $this->writer = new Zend_Log_Writer_Stream(
+            Custom_Path::LOG_PATH.'/erros-'.date('w').'.log'
+        );
         $this->logger = new Zend_Log($this->writer);
     }
 
