@@ -241,4 +241,11 @@ class AdministrativoController extends MainController {
     public function usuarioAction(){
         
     }
+    /**
+     * Pdf
+     */
+    public function pdfAction(){
+        
+    }
+    
 }

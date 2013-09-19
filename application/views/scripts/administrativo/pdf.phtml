@@ -1,0 +1,37 @@
+<?php
+
+/**
+ *
+ * Descrição:pdf
+ *
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 19-Sep-2013
+ *
+ * @version 1.0.0
+ *
+ */
+ini_set("memory_limit","128M");
+$mpdf = new mPDF(); 
+ob_start();
+?>
+<h1 style="color: red;">Exemplo de utiliza&ccedil;&atilde;o do mPdf</h1>
+<img src="/img/error.png" alt="" />
+<div id="wrap">
+    <div class="container">
+        <div class="page-header">
+            <h1>Sticky footer</h1>
+        </div>
+        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+    </div>
+</div>
+<?php
+$html = ob_get_contents();
+ob_end_clean();
+$mpdf->useDefaultCSS2 = true;
+$mpdf->SetDisplayMode('fullpage');
+$mpdf->WriteHTML($html);
+$nome ='teste.pdf';
+$mpdf->Output($nome,'D');
+exit;
