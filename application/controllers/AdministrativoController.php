@@ -201,7 +201,7 @@ class AdministrativoController extends MainController {
      * Cadasro de Actions
      */
     public function actionAction(){
-        /*
+      /*
        * Monta o menu principal
        */
        $this->_helper->actionStack('navigation', 'Menu');
@@ -234,6 +234,11 @@ class AdministrativoController extends MainController {
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/js/administrativo/action/action.js'
         );
+       /*
+        * Listagem de actions cadastradas.
+        */
+        $oAction = new Application_Model_Action();
+        $this->view->oAction = $oAction->listarActions();
     }
     /**
      * 

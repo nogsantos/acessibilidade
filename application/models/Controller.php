@@ -118,7 +118,7 @@ class Application_Model_Controller extends Zend_Db_Table_Abstract {
         }
     }
     /**
-     * Retorna listagem de modulos
+     * Retorna listagem dos controllers
      */
     public function listarControllers(){
         try {
