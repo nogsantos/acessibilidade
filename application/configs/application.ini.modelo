@@ -7,6 +7,7 @@ includePaths.plugins = APPLICATION_PATH "/plugins"
 bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
 bootstrap.class = "Bootstrap"
 appnamespace = "Application_"
+autoloadernamespaces[] = "Custom_"
 resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
 resources.frontController.params.displayExceptions = 0
 phpSettings.date.timezone = "America/Sao_Paulo"
