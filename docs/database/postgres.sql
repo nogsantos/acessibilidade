@@ -1,4 +1,4 @@
-create schema pessoa;
+﻿create schema pessoa;
 
 CREATE TABLE pessoa.pessoa (
     id_pessoa bigint PRIMARY KEY,
@@ -127,7 +127,7 @@ CREATE TABLE administrativo.perfil (
 
 CREATE TABLE administrativo.perfil_action (
     fk_perfil bigint,
-    fk_action bigint,
+    fk_action varchar(50),
     FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil),
     FOREIGN KEY(fk_action) REFERENCES administrativo.action (id_action),
     PRIMARY KEY(fk_perfil, fk_action)
@@ -213,9 +213,6 @@ ALTER TABLE administrativo.organizacao_telefone ADD FOREIGN KEY(fk_organizacao) 
 ALTER TABLE administrativo.organizacao_endereco ADD FOREIGN KEY(fk_organizacao) REFERENCES administrativo.organizacao (cnpj_organizacao);
 ALTER TABLE administrativo.organizacao ADD FOREIGN KEY(fk_matriz) REFERENCES administrativo.organizacao (cnpj_organizacao);
 ALTER TABLE administrativo.perfil_organizacao ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
-ALTER TABLE administrativo.organizacao_modulo ADD FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo);
-ALTER TABLE administrativo.perfil_modulo ADD FOREIGN KEY(fk_modulo) REFERENCES administrativo.modulo (id_modulo);
-ALTER TABLE administrativo.perfil_modulo ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
 ALTER TABLE administrativo.perfil_controller ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
 ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_telefone) REFERENCES public.telefone (id_telefone);
 ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_pessoa) REFERENCES public.telefone (id_telefone);
@@ -224,10 +221,6 @@ comment on table pessoa.pessoa is 'Tabela Pessoa é a especialização de pessoa
 comment on column pessoa.pessoa.id_pessoa is 'Chave principal de identificação da pessoa no sistema, pode ser um cpf(fisica) cnpj(juridica)';
 comment on table pessoa.fisica is 'Generalização de pessoa identificada pelo cpf.';
 comment on table pessoa.juridica is 'Generalização de pessoa identificada pelo cnpj.';
-comment ON TABLE administrativo.modulo IS 'Módulos disponíveis no sistema.';
-COMMENT ON COLUMN administrativo.modulo.codigo_modulo IS 'String identificadora do módulo.';
-COMMENT ON COLUMN administrativo.modulo.descricao_modulo IS 'Texto descritivo do módulo.';
-COMMENT ON COLUMN administrativo.modulo.numero_ordem IS 'Ordenação para exibição do módulo.';
 comment ON TABLE administrativo.controller IS 'Controladores do sistema.';
 COMMENT ON COLUMN administrativo.controller.codigo_controller IS 'String identificadora do controller';
 COMMENT ON COLUMN administrativo.controller.descricao_controller IS 'Texto descritivo para o controller';
