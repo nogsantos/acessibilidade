@@ -1,3 +1,0 @@
-2013-09-17T17:07:25-03:00 CRIT (2): SQLSTATE[42703]: Undefined column: 7 ERROR:  column controller.id_controllers does not exist
-LINE 1: SELECT "controller"."id_controllers", "controller"."codigo_c...
-               ^
