@@ -104,12 +104,14 @@ CREATE TABLE administrativo.action (
     class_icone varchar(100),
     nome_action varchar(300) not null,
     tipo_action char(1) not null,
+    tipo_menu char(1),
     descricao_action varchar(500),
     numero_ordem integer,
     data_cadastro timestamp with time zone not null DEFAULT current_timestamp,
     data_bloqueio timestamp with time zone,
     FOREIGN KEY(fk_controller) REFERENCES administrativo.controller (id_controller),
-    CONSTRAINT check_sexo CHECK (tipo_action = 'B' OR tipo_action = 'F' OR tipo_action = 'U')
+    CONSTRAINT const_action_tipo_action CHECK (tipo_action = 'B' OR tipo_action = 'F' OR tipo_action = 'U'),
+    CONSTRAINT const_action_tipo_menu CHECK (tipo_menu = 'F' OR tipo_menu = 'L')
 )WITHOUT OIDS;
 
 CREATE TABLE administrativo.perfil_controller (
@@ -232,6 +234,7 @@ comment ON COLUMN administrativo.action.rel_action IS 'Nome da action no control
 comment ON COLUMN administrativo.action.class_icone IS 'Classe que será utilizada para adicionar um icone caso a action seja um botão.';
 comment ON COLUMN administrativo.action.nome_action IS 'Nome visual da action.';
 comment ON COLUMN administrativo.action.tipo_action IS 'Define se a action será um botão, formulário ou função. B=Botão, F=Formulário, U=Função.';
+comment ON COLUMN administrativo.action.tipo_menu IS 'Caso a action seja do tipo botão, define se será para a listagem ou formulário.';
 comment on table administrativo.usuario is 'Generalização de pessoa, contém informações de acesso ao sistema.';
 comment on table administrativo.perfil is 'Definição do perfil dos usuários no sistema.';
 comment on table administrativo.perfil_usuario is 'Tabela intermediária entre perfil e usuário, permitindo ao usuário exercer mais de um papel no sistema.';

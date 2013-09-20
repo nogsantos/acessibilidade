@@ -27,6 +27,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     protected $classIcone;
     protected $nomeAction;
     protected $tipoAction;
+    protected $tipoMenu;
     protected $descricaoAction;
     protected $numeroOrdem;
     protected $dataCadastro;
@@ -95,6 +96,14 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
         $this->tipoAction = $tipoAction;
     }
 
+    public function getTipoMenu() {
+        return $this->tipoMenu;
+    }
+
+    public function setTipoMenu($tipoMenu) {
+        $this->tipoMenu = $tipoMenu;
+    }
+        
     public function getDescricaoAction() {
         return $this->descricaoAction;
     }
@@ -172,6 +181,47 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
             return Custom_Mensagem::ERRO_DADOS;
         }
     }
-    
-
+    /**
+     * Retorna menu dinâmico listagem
+     * 
+     * @param Integer $idController Controlador
+     * @param String $tipoMenu Tipo do botão retornado, listagem ou formulário.
+     */
+    public function retornarMenuDinamico(){
+        try{
+            $this->sSql = $this->select()
+                    ->setIntegrityCheck(false)
+                    ->from(array('a' => $this->_name),
+                           array(
+                               'id_action',
+                               'rel_controller',
+                               'rel_action',
+                               'class_icone',
+                               'nome_action',
+                               'descricao_action',
+                           ), $this->_schema)
+                    ->join(array('c'=>'controller'), 
+                            'c.id_controller = a.fk_controller',
+                            array(
+                                'codigo_controller',
+                            ), $this->_schema)
+                    ->where('a.data_bloqueio is null')
+                    ->where('a.tipo_action = ?','B')
+                    ->where('a.fk_controller = ?', (int) $this->fkController)
+                    ->where('a.tipo_menu = ?', $this->tipoMenu)
+                    ->order(array('a.numero_ordem'))
+            ;
+            return $this->fetchAll($this->sSql);
+        } catch (Zend_Db_Exception $e) {
+            /*
+             * Grava no log os erros, caso hajam.
+             */
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH.'/action-'.date('w').'.log'
+            );
+            $logger = new Zend_Log($writer);            
+            $logger->crit($e->getMessage());
+            return Custom_Mensagem::ERRO_DADOS;
+        }
+    }
 }

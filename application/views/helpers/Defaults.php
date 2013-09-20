@@ -21,11 +21,7 @@ class My_View_Helper_Defaults extends Zend_View_Helper_Abstract{
             'keywords', 
             'The lunatics is os the grass'
         );
-        $request = Zend_Controller_Front::getInstance()->getRequest();
-        $this->view->headTitle('Grass bem β')
-                   ->headTitle($request->getControllerName())
-                   ->headTitle($request->getActionName())
-        ;
+        $this->view->headTitle('Grass 1.0.0');
         $this->view->headTitle()->setSeparator(' » ');
     }
 }

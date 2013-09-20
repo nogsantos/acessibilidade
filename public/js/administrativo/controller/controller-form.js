@@ -25,6 +25,7 @@ jQuery(function(){
         numero_ordem = jQuery("#numero_ordem"),
         div_data_bloqueio = jQuery("#div_data_bloqueio"),
         data_bloqueio = jQuery("#data_bloqueio"),
+        btImprimir = jQuery("#imprimir"),
         btSalvar = jQuery("#salvar")
     ;
     /*
@@ -57,4 +58,10 @@ jQuery(function(){
             return true;
         }
     }
+    /**
+     * Botão Imprimir
+     */
+    btImprimir.click(function(){
+        window.open(baseUrl + '/administrativo/pdf','Impressão','height=600,width=1024',false);
+    });
 });

@@ -17,7 +17,7 @@ $mpdf = new mPDF();
 ob_start();
 ?>
 <h1 style="color: red;">Exemplo de utiliza&ccedil;&atilde;o do mPdf</h1>
-<img src="/img/error.png" alt="" />
+<img src="<?php print $this->baseUrl ?>/img/error.png" alt="" />
 <div id="wrap">
     <div class="container">
         <div class="page-header">
@@ -30,8 +30,8 @@ ob_start();
 $html = ob_get_contents();
 ob_end_clean();
 $mpdf->useDefaultCSS2 = true;
-$mpdf->SetDisplayMode('fullpage');
+$mpdf->SetDisplayMode('real');
 $mpdf->WriteHTML($html);
 $nome ='teste.pdf';
-$mpdf->Output($nome,'D');
+$mpdf->Output($nome,'I');
 exit;

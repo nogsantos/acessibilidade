@@ -101,6 +101,8 @@ class Application_Model_Controller extends Zend_Db_Table_Abstract {
                                 'action'=> 'nome_action',
                                 'id_action',
                             ), $this->_schema)
+                    ->where('c.data_bloqueio is null')
+                    ->where('a.data_bloqueio is null')
                     ->where('a.tipo_action = ? ','F')
                     ->order(array('c.numero_ordem'))
             ;
@@ -254,4 +256,7 @@ class Application_Model_Controller extends Zend_Db_Table_Abstract {
             return Custom_Mensagem::ERRO_DADOS;
         }
     }
+    /*
+     * 
+     */
 }
