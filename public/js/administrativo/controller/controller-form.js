@@ -26,7 +26,7 @@ jQuery(function(){
         div_data_bloqueio = jQuery("#div_data_bloqueio"),
         data_bloqueio = jQuery("#data_bloqueio"),
         btImprimir = jQuery("#imprimir"),
-        btSalvar = jQuery("#salvar")
+        btSalvar = jQuery("#salvarController")
     ;
     /*
      * 

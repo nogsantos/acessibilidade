@@ -69,6 +69,10 @@ class AdministrativoController extends MainController {
          */
         $oController = new Application_Model_Controller();
         $this->view->oController = $oController->listarControllers();
+        /*
+         * Menu da listagem
+         */
+        $this->view->menu = Custom_Menu_Listagem::menu();
     }
     /**
      * Cadastro de módulo
@@ -105,6 +109,10 @@ class AdministrativoController extends MainController {
             * Monta o menu do usuário
             */
             $this->_helper->actionStack('navigation-formulario', 'Menu');
+            /*
+             * Importante! Para chamada dos formulários modais, é necessário
+             * desativar o layout.
+             */
             $this->_helper->layout()->disableLayout();
             /*
              * Preenchendo os dados no formulário.

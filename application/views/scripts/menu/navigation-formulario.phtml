@@ -22,8 +22,8 @@
         </button>
     </div>
     <div class="collapse navbar-collapse navbar-ex2-collapse">
-        <button type="button" class="btn btn-default navbar-btn" id="salvar"><i class="icon-save"></i> Salvar</button>
-        <button type="button" class="btn btn-default navbar-btn" id="excluir"><i class="icon-remove"></i> Excluir</button>
-        <button type="button" class="btn btn-default navbar-btn" id="imprimir"><i class="icon-print"></i> Imprimir</button>
+        <?php foreach ($this->itensMenu as $vMenuItem) : ?>
+        <button type="button" class="btn <?php print $vMenuItem['class_botao'] ?> navbar-btn" id="<?php print $vMenuItem['id_action'] ?>" rel="<?php print $this->url(array('controller' =>$vMenuItem['rel_controller'],'action'=>$vMenuItem['rel_action']))?>" title="<?php print $vMenuItem['descricao_action'] ?>"><i class="<?php print $vMenuItem['class_icone'] ?>"></i> <?php print $vMenuItem['nome_action'] ?></button>
+        <?php endforeach;?>
     </div>
 </nav>

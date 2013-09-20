@@ -102,6 +102,7 @@ CREATE TABLE administrativo.action (
     rel_controller varchar(100),
     rel_action varchar(100),
     class_icone varchar(100),
+    class_botao varchar(100) not null default 'btn-default',
     nome_action varchar(300) not null,
     tipo_action char(1) not null,
     tipo_menu char(1),
@@ -235,6 +236,7 @@ comment ON COLUMN administrativo.action.class_icone IS 'Classe que será utiliza
 comment ON COLUMN administrativo.action.nome_action IS 'Nome visual da action.';
 comment ON COLUMN administrativo.action.tipo_action IS 'Define se a action será um botão, formulário ou função. B=Botão, F=Formulário, U=Função.';
 comment ON COLUMN administrativo.action.tipo_menu IS 'Caso a action seja do tipo botão, define se será para a listagem ou formulário.';
+comment ON COLUMN administrativo.action.class_botao IS 'Define a classe visual do botão no formulário.';
 comment on table administrativo.usuario is 'Generalização de pessoa, contém informações de acesso ao sistema.';
 comment on table administrativo.perfil is 'Definição do perfil dos usuários no sistema.';
 comment on table administrativo.perfil_usuario is 'Tabela intermediária entre perfil e usuário, permitindo ao usuário exercer mais de um papel no sistema.';

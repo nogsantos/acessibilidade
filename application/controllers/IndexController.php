@@ -1,8 +1,21 @@
 <?php
-
-class IndexController extends Zend_Controller_Action {
+/**
+ *
+ * Descrição:Classe MenuController
+ *
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 22-Aug-2013
+ *
+ * @version 1.0.0
+ *
+ */
+require_once 'MainController.php';
+class IndexController extends MainController {
     
     public function init(){
+        parent::init();
         /*
          * Monta o menu principal
          */

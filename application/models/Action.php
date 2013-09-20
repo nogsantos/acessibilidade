@@ -197,6 +197,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                                'rel_controller',
                                'rel_action',
                                'class_icone',
+                               'class_botao',
                                'nome_action',
                                'descricao_action',
                            ), $this->_schema)

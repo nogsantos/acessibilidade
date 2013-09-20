@@ -14,20 +14,7 @@
 <div class="page-header">
     <h1>Controladores <small>Listagem de controladores</small></h1>
 </div>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
-            <span class="sr-only">Alterar Navega&ccedil;&atilde;o</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex2-collapse">
-        <button type="button" class="btn btn-default navbar-btn" id="bt_novo_controller" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'controller.form'))?>"><i class="icon-file-alt"></i> Novo Controlador</button>
-        <button type="button" class="btn btn-default navbar-btn disabled" id="bt_excluir_controller" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'excluir.controller'))?>"><i class="icon-remove"></i> Excluir Selecionado</button>
-    </div>
-</nav>
+<?php print $this->menu?>
 <?php if (count($this->menssagens)) : ?>
     <?php foreach ($this->menssagens as $menssagens) : ?>
         <?php print $menssagens; ?>

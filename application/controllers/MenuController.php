@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * Descrição:Classe MenuController
@@ -12,18 +11,19 @@
  * @version 1.0.0
  *
  */
-class MenuController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class MenuController extends MainController {
     
     public function init(){
-        
+        parent::init();
     }
     /*
      * Menu Principal
      */
     public function navigationAction(){
         $this->_helper->viewRenderer->setResponseSegment('navigation');
-        $oMenu      = new Application_Model_Controller();
-        $vItensMenu = $oMenu->retornarMenuDinamico();
+        $oMenu                 = new Application_Model_Controller();
+        $vItensMenu            = $oMenu->retornarMenuDinamico();
         $this->view->itensMenu = $vItensMenu;
     }
     /**
@@ -31,11 +31,21 @@ class MenuController extends Zend_Controller_Action {
      */
     public function navigationFormularioAction(){
         $this->_helper->viewRenderer->setResponseSegment('navigation-formulario');
+        $oMenuForm             = new Application_Model_Action();
+        $oMenuForm->setFkController(1);
+        $oMenuForm->setTipoMenu('F');
+        $vItensMenuForm        = $oMenuForm->retornarMenuDinamico();
+        $this->view->itensMenu = $vItensMenuForm;
     }
     /**
      * Retorna o menu para a listagem.
      */
     public function navigationListagemAction(){
         $this->_helper->viewRenderer->setResponseSegment('navigation-listagem');
+        $oMenuForm             = new Application_Model_Action();
+        $oMenuForm->setFkController(1);
+        $oMenuForm->setTipoMenu('L');
+        $vItensMenuForm        = $oMenuForm->retornarMenuDinamico();
+        $this->view->itensMenu = $vItensMenuForm;
     }
 }
