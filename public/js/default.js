@@ -64,3 +64,23 @@ jQuery(function() {
 function goBack(){
     window.history.back();
 }
+/*
+ * Carrega o qTip após a janela totalmente carregada.
+ */
+jQuery(window).load(function(){
+    /*
+     * qTip
+     */
+    jQuery('[title]').each(function(){
+        jQuery(this).qtip({
+            style: {
+                classes : 'qtip-plain qtip-shadow'
+            },
+            position: {
+                my    : 'center left',
+                at    : 'right center',
+                target: jQuery(this)
+            }
+        });
+    }); 
+});

@@ -1,17 +1,39 @@
 <?php
-
+/**
+ *
+ * Descrição:Crontrolador de erros no sistema.
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 22-Aug-2013
+ *
+ * @version 1.0.0
+ *
+ */
 class ErrorController extends Zend_Controller_Action {
-
+    /*
+     * Atributos
+     */
     private $writer;
     private $logger;
-
+    protected $_logName;
+    /**
+     * Init
+     */
     public function init() {
+        /*
+         * Definição do nome do arquivo de log.
+         */
+        $this->_logName = '/'.__CLASS__.'_'.date('d-m-Y').'.log';
+        
         $this->writer = new Zend_Log_Writer_Stream(
-            Custom_Path::LOG_PATH.'/erros-'.date('w').'.log'
+            Custom_Path::LOG_PATH . $this->_logName
         );
         $this->logger = new Zend_Log($this->writer);
     }
-
+    /**
+     * Ações definidas para os erros.
+     */
     public function errorAction() {
         /*
          * Monta o menu principal
@@ -47,21 +69,29 @@ class ErrorController extends Zend_Controller_Action {
                 $this->view->message = 'Erro da aplicação';
                 break;
         }
-
-        // Log exception, if logger available
+        /*
+         *  Log exception, if logger available
+         */
         if ($log == $this->getLog()) {
             $log->log($this->view->message, $priority, $errors->exception);
-            $log->log('Requisição de parametros', $priority, $errors->request->getParams());
+            $log->log(
+                'Requisição de parametros', 
+                $priority, 
+                $errors->request->getParams()
+            );
         }
-
-        // conditionally display exceptions
+        /*
+         *  conditionally display exceptions
+         */
         if ($this->getInvokeArg('displayExceptions') == true) {
             $this->view->exception = $errors->exception;
         }
 
         $this->view->request = $errors->request;
     }
-
+    /**
+     * 
+     */
     public function getLog() {
         $bootstrap = $this->getInvokeArg('bootstrap');
         if (!$bootstrap->hasResource('Log')) {

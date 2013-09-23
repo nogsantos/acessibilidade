@@ -19,24 +19,25 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
     <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <?php echo $this->defaults() ?>
-        <?php echo $this->headTitle(); ?>
-        <?php echo $this->headMeta(); ?>
+        <?php print $this->defaults() ?>
+        <?php print $this->headTitle(); ?>
+        <?php print $this->headMeta(); ?>
         <meta name="viewport" content="width=device-width">
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css')); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/main.css')); ?>
-        <?php echo $this->headLink()->prependStylesheet($this->baseUrl('/css/default.css')); ?>
-        <?php echo $this->headLink() ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/jquery.qtip/jquery.qtip.min.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/main.css')); ?>
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/default.css')); ?>
+        <?php print $this->headLink() ?>
         <script type="text/javascript">
-            var baseUrl = '<?php echo $this->baseUrl(); ?>';
+            var baseUrl = '<?php print $this->baseUrl(); ?>';
         </script>
     </head>
     <body>
         <?php if (!empty($this->usuario())) : ?>
-            <?php echo $this->layout()->navigation; ?>
+            <?php print $this->layout()->navigation; ?>
          <?php else : ?>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
@@ -57,7 +58,7 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
             <div id="content">
                 <div class="row">
                     <div class="col-md-pull-12">
-                        <?php echo $this->layout()->content; ?>
+                        <?php print $this->layout()->content; ?>
                     </div>
                 </div>
             </div>        
@@ -66,7 +67,7 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <footer>
             <div class="container">
                 <div id="content">
-                    <div class="col-md-2 pull-left">&copy; Grass <?php echo date('Y')?></div>
+                    <div class="col-md-2 pull-left">&copy; Grass <?php print date('Y')?></div>
                     <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vOrganizacao['nome_organizacao'] ;?></div>
                     <div class="col-md-4 pull-right text-right"><?php print $this->usuario();?></div>
                 </div>
@@ -86,6 +87,8 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <!--customs-->
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/layout.js')?>"></script>
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/default.js')?>"></script>
-        <?php echo $this->headScript() ?>
+        <!--qtip-->
+        <script type="text/javascript" src="<?php print $this->baseUrl('/jquery.qtip/jquery.qtip.min.js')?>"></script>
+        <?php print $this->headScript() ?>
     </body>
 </html>

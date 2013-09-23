@@ -82,7 +82,7 @@ jQuery(function() {
      * Botão novo modulo
      */
     bt_novo_controller.click(function() {
-        var action = jQuery(this).attr("rel");
+        var action = baseUrl + jQuery(this).attr("rel");
         jQuery.ajax({
             type : "POST",
             cache: false,

@@ -1,15 +1,32 @@
 <?php
 /**
- * Description of AuthController
  *
- * @author fabricionogueira
+ * Descrição: Controlador de autenticação no sistema.
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 22-Aug-2013
+ *
+ * @version 1.0.0
+ *
  */
 class AuthController extends Zend_Controller_Action {
-    
+    /*
+     * Atributos
+     */
+    protected $_logName;
+    /**
+     * Init
+     */
     public function init(){
-
+        /*
+         * Definição do nome do arquivo de log.
+         */
+        $this->_logName = '/'.__CLASS__.'_'.date('d-m-Y').'.log';
     }
-
+    /**
+     * View Index
+     */
     public function indexAction() {
         return $this->_helper->redirector('login');
     }
@@ -41,6 +58,9 @@ class AuthController extends Zend_Controller_Action {
                             , 'nome_senha'
                             , 'cnpj_organizacao'
                     );
+                    /*
+                     * A consulta é realizada pela View vw_login_usuario.
+                     */
                     $authAdapter->setTableName('vw_login_usuario')
                                 ->setIdentityColumn('nome_login')
                                 ->setCredentialColumn('nome_senha')
@@ -81,7 +101,7 @@ class AuthController extends Zend_Controller_Action {
                          */
                         $this->_helper->FlashMessenger('
                             <div class="alert alert-danger">
-                                Usu&aacute;rio ou senha inv&aacute;lidos!
+                                Usu&aacute;rio e/ou senha inv&aacute;lidos!
                             </div>
                         ');
                         $this->_redirect('/auth/login');
@@ -98,7 +118,7 @@ class AuthController extends Zend_Controller_Action {
              * Grava no log os erros, caso hajam.
              */
             $writer = new Zend_Log_Writer_Stream(
-                Custom_Path::LOG_PATH.'/login-'.date('w').'.log'
+                Custom_Path::LOG_PATH . $this->_logName
             );
             $logger = new Zend_Log($writer);
             $logger->crit($exc->getMessage());

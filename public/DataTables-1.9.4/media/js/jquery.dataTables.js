@@ -2741,7 +2741,7 @@
 			
 			/* This can be overruled by not using the _MENU_ var/macro in the language variable */
 			var sName = 'name="'+oSettings.sTableId+'_length"';
-			var sStdMenu = '<select size="1" '+sName+'>';
+			var sStdMenu = '<select size="1" '+sName+' title="Quantidade de registros por p&aacute;gina">';
 			var i, iLen;
 			var aLengthMenu = oSettings.aLengthMenu;
 			

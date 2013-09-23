@@ -18,6 +18,7 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
     protected $_name    = 'organizacao';
     protected $_schema  = 'administrativo';
     protected $_primary = 'cnpj_organizacao';
+    protected $_logName;
     protected $idOrganizacao;
     protected $nmOrganizacao;
     protected $razaoSocial;
@@ -27,6 +28,14 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
     protected $prioridadeExibicao;
     protected $dataCadastro;
     protected $dataBloqueio;
+    
+    function __construct() {
+        parent::__construct();
+        /*
+         * Definição do nome do arquivo de log.
+         */
+        $this->_logName = '/'.__CLASS__.'_'.date('d-m-Y').'.log';
+    }
     
     public function getIdOrganizacao() {
         return $this->idOrganizacao;
@@ -116,7 +125,15 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
             ;
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Table_Exception $exc) {
-            return $exc->getMessage();
+           /*
+            * Grava no log os erros, caso hajam.
+            */
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH . $this->_logName
+            );
+            $logger = new Zend_Log($writer);
+            $logger->crit($exc->getMessage());
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
     /**
@@ -135,7 +152,7 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
                            ), $this->_schema)
                     ->joinLeft(array('m'=>'organizacao'), 'm.cnpj_organizacao = o.fk_matriz', 
                             array(
-                                'id_matriz' => 'cnpj_organizacao',
+                                'id_matriz'   => 'cnpj_organizacao',
                                 'nome_matriz' => 'nome_organizacao',
                             ) ,$this->_schema)
                     ->where('o.data_bloqueio is null')
@@ -146,7 +163,15 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
             }
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Table_Exception $exc) {
-            return $exc->getMessage();
+           /*
+            * Grava no log os erros, caso hajam.
+            */
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH . $this->_logName
+            );
+            $logger = new Zend_Log($writer);
+            $logger->crit($exc->getMessage());
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
 }

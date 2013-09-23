@@ -13,7 +13,7 @@
  */
 class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
     
-    protected $id_organizacao;
+    protected $cnpj_organizacao;
     protected $id_organizacaoIterator;
     
     public function organizacaoDefault(){
@@ -21,12 +21,16 @@ class My_View_Helper_OrganizacaoDefault extends Zend_View_Helper_Abstract  {
             $auth           = Zend_Auth::getInstance();
             $oOrganizacao   = new Application_Model_Organizacao();
             if ($auth->hasIdentity()) {
-                $oOrganizacao->setIdOrganizacao($auth->getIdentity()->id_organizacao);
+                $oOrganizacao->setIdOrganizacao(
+                    $auth->getIdentity()->cnpj_organizacao
+                );
             }else{
                 $oOrganizacao->setOrganizacaoMatriz(true);
             }
             $id_organizacao = $oOrganizacao->consultarDados();
-            $this->id_organizacaoIterator = new ArrayIterator($id_organizacao->toArray());
+            $this->id_organizacaoIterator = new ArrayIterator(
+                $id_organizacao->toArray()
+            );
             return $this;
         } catch (Zend_Exception $exc) {
             /*

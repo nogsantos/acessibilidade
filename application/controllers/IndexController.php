@@ -13,7 +13,9 @@
  */
 require_once 'MainController.php';
 class IndexController extends MainController {
-    
+    /**
+     * Init
+     */
     public function init(){
         parent::init();
         /*
@@ -21,7 +23,9 @@ class IndexController extends MainController {
          */
         $this->_helper->actionStack('navigation', 'Menu');
     }
-    
+    /**
+     * View Index
+     */
     public function indexAction() {
     }
     /**
@@ -31,7 +35,7 @@ class IndexController extends MainController {
         $this->_helper->redirector('index');
     }
     /**
-     * 
+     * View Login
      */
     public function loginAction() {
         $this->_helper->redirector('login');

@@ -18,8 +18,9 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     protected $_name    = 'action';
     protected $_schema  = 'administrativo';
     protected $_primary = 'id_action';
-    protected $sSql;
+    protected $_logName;
     protected $fkController;
+    protected $codigoController;
     protected $nomeController;
     protected $idAction;
     protected $relController;
@@ -32,12 +33,29 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     protected $numeroOrdem;
     protected $dataCadastro;
     protected $dataBloqueio;
+    
+    function __construct() {
+        parent::__construct();
+        /*
+         * Definição do nome do arquivo de log.
+         */
+        $this->_logName = '/'.__CLASS__.'_'.date('d-m-Y').'.log';
+    }
+    
     public function getFkController() {
         return $this->fkController;
     }
 
     public function setFkController($fkController) {
         $this->fkController = $fkController;
+    }
+
+    public function getCodigoController() {
+        return $this->codigoController;
+    }
+
+    public function setCodigoController($codigoController) {
+        $this->codigoController = $codigoController;
     }
 
     public function getNomeController() {
@@ -142,12 +160,12 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
         try {
             $tipoAction = "
                 case a.tipo_action 
-                    when 'B' then 'Botao' 
+                    when 'B' then 'Botão' 
                     when 'F' then 'Formulário'
                     when 'U' then 'Função' 
                 end tipo_action
             ";
-            $this->sSql = $this->select()
+            $sSql = $this->select()
                 ->setIntegrityCheck(false)
                 ->from(array('a' => $this->_name), array(
                         'fk_controller',
@@ -168,16 +186,16 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                        array('controller' => 'nome_controller'),
                        $this->_schema
                 );
-            return $this->fetchAll($this->sSql);
-        } catch (Zend_Db_Exception $e) {
+            return $this->fetchAll($sSql);
+        } catch (Zend_Db_Exception $exc) {
             /*
              * Grava no log os erros, caso hajam.
              */
             $writer = new Zend_Log_Writer_Stream(
-                Custom_Path::LOG_PATH . '/action-' . date('w') . '.log'
+                Custom_Path::LOG_PATH . $this->_logName
             );
             $logger = new Zend_Log($writer);
-            $logger->crit($e->getMessage());
+            $logger->crit($exc->getMessage());
             return Custom_Mensagem::ERRO_DADOS;
         }
     }
@@ -189,7 +207,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
      */
     public function retornarMenuDinamico(){
         try{
-            $this->sSql = $this->select()
+            $sSql = $this->select()
                     ->setIntegrityCheck(false)
                     ->from(array('a' => $this->_name),
                            array(
@@ -208,20 +226,22 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                             ), $this->_schema)
                     ->where('a.data_bloqueio is null')
                     ->where('a.tipo_action = ?','B')
-                    ->where('a.fk_controller = ?', (int) $this->fkController)
+                    ->where('lower(c.codigo_controller) = ?', 
+                        strtolower($this->codigoController)
+                    )
                     ->where('a.tipo_menu = ?', $this->tipoMenu)
                     ->order(array('a.numero_ordem'))
             ;
-            return $this->fetchAll($this->sSql);
-        } catch (Zend_Db_Exception $e) {
+            return $this->fetchAll($sSql);
+        } catch (Zend_Db_Exception $exc) {
             /*
              * Grava no log os erros, caso hajam.
              */
             $writer = new Zend_Log_Writer_Stream(
-                Custom_Path::LOG_PATH.'/action-'.date('w').'.log'
+                Custom_Path::LOG_PATH . $this->_logName
             );
             $logger = new Zend_Log($writer);            
-            $logger->crit($e->getMessage());
+            $logger->crit($exc->getMessage());
             return Custom_Mensagem::ERRO_DADOS;
         }
     }

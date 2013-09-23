@@ -26,26 +26,4 @@ class MenuController extends MainController {
         $vItensMenu            = $oMenu->retornarMenuDinamico();
         $this->view->itensMenu = $vItensMenu;
     }
-    /**
-     * Retorna menu para formulário.
-     */
-    public function navigationFormularioAction(){
-        $this->_helper->viewRenderer->setResponseSegment('navigation-formulario');
-        $oMenuForm             = new Application_Model_Action();
-        $oMenuForm->setFkController(1);
-        $oMenuForm->setTipoMenu('F');
-        $vItensMenuForm        = $oMenuForm->retornarMenuDinamico();
-        $this->view->itensMenu = $vItensMenuForm;
-    }
-    /**
-     * Retorna o menu para a listagem.
-     */
-    public function navigationListagemAction(){
-        $this->_helper->viewRenderer->setResponseSegment('navigation-listagem');
-        $oMenuForm             = new Application_Model_Action();
-        $oMenuForm->setFkController(1);
-        $oMenuForm->setTipoMenu('L');
-        $vItensMenuForm        = $oMenuForm->retornarMenuDinamico();
-        $this->view->itensMenu = $vItensMenuForm;
-    }
 }

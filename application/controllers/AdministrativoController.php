@@ -13,7 +13,13 @@
  */
 require_once 'MainController.php';
 class AdministrativoController extends MainController {
-    
+    /**
+     * Atributos
+     */
+    private $_controller = 'administrativo';
+    /**
+     * Init
+     */
     public function init(){
         parent::init();
     }
@@ -46,21 +52,21 @@ class AdministrativoController extends MainController {
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css'
         );
-         $this->view->headScript()->appendFile(
+        $this->view->headScript()->appendFile(
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/DataTables-1.9.4/media/js/jquery.dataTables.js'
         );
-         /*
-          * Paginador do grid
-          */
-         $this->view->headScript()->appendFile(
+        /*
+         * Paginador do grid
+         */
+        $this->view->headScript()->appendFile(
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/DataTables-1.9.4/media/js/paginador.js'
         );
-         /*
-          * Script da página
-          */
-         $this->view->headScript()->appendFile(
+        /*
+         * Script da página
+         */
+        $this->view->headScript()->appendFile(
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/js/administrativo/controller/controller.js'
         );
@@ -70,9 +76,12 @@ class AdministrativoController extends MainController {
         $oController = new Application_Model_Controller();
         $this->view->oController = $oController->listarControllers();
         /*
-         * Menu da listagem
+         * Chamada para Menu da listagem.
          */
-        $this->view->menu = Custom_Menu_Listagem::menu();
+        $oMenuListagem = new Custom_Menu();
+        $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setTipoMenu('L');
+        $this->view->menu = $oMenuListagem->menu();
     }
     /**
      * Cadastro de módulo
@@ -98,6 +107,13 @@ class AdministrativoController extends MainController {
                 Zend_Controller_Front::getInstance()->getBaseUrl().
                 '/js/numeros.js'
             );
+           /*
+            * Script para formulários default.
+            */
+            $this->view->headScript()->appendFile(
+                Zend_Controller_Front::getInstance()->getBaseUrl().
+                '/js/default-forms.js'
+            );
             /*
              * Estilo para formulários.
              */
@@ -106,9 +122,12 @@ class AdministrativoController extends MainController {
                 '/css/forms.css'
             );
            /*
-            * Monta o menu do usuário
+            * Chamada para o menu do usuário.
             */
-            $this->_helper->actionStack('navigation-formulario', 'Menu');
+            $oMenuListagem = new Custom_Menu();
+            $oMenuListagem->setController($this->_controller);
+            $oMenuListagem->setTipoMenu('F');
+            $this->view->menu = $oMenuListagem->menu();
             /*
              * Importante! Para chamada dos formulários modais, é necessário
              * desativar o layout.
@@ -138,12 +157,24 @@ class AdministrativoController extends MainController {
                 $vDados = $this->getRequest()->getPost();
                 if ($oControllerForm->isValid($vDados)) {
                     $oController = new Application_Model_Controller();
-                    $oController->setIdController($oControllerForm->getValue('id_controller'));
-                    $oController->setCodigoController($oControllerForm->getValue('codigo_controller'));
-                    $oController->setNomeController($oControllerForm->getValue('nome_controller'));
-                    $oController->setDescricaoController($oControllerForm->getValue('descricao_controller'));
-                    $oController->setNumeroOrdem($oControllerForm->getValue('numero_ordem'));
-                    $oController->setDataBloqueio($oControllerForm->getValue('data_bloqueio'));
+                    $oController->setIdController(
+                        $oControllerForm->getValue('id_controller')
+                    );
+                    $oController->setCodigoController(
+                        $oControllerForm->getValue('codigo_controller')
+                    );
+                    $oController->setNomeController(
+                        $oControllerForm->getValue('nome_controller')
+                    );
+                    $oController->setDescricaoController(
+                        $oControllerForm->getValue('descricao_controller')
+                    );
+                    $oController->setNumeroOrdem(
+                        $oControllerForm->getValue('numero_ordem')
+                    );
+                    $oController->setDataBloqueio(
+                        $oControllerForm->getValue('data_bloqueio')
+                    );
                     if(empty($oControllerForm->getValue('id_controller'))){
                         /*
                          * Cadastro
@@ -245,7 +276,7 @@ class AdministrativoController extends MainController {
        /*
         * Listagem de actions cadastradas.
         */
-        $oAction = new Application_Model_Action();
+        $oAction             = new Application_Model_Action();
         $this->view->oAction = $oAction->listarActions();
     }
     /**

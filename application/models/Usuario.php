@@ -18,12 +18,21 @@ class Application_Model_Usuario extends Zend_Db_Table_Abstract {
     protected $_name    = 'usuario';
     protected $_schema  = 'administrativo';
     protected $_primary = 'fk_pessoa';
+    protected $_logName;
     protected $fkPessoa;
     protected $login;
     protected $senha;
     protected $dataCadastro;
     protected $nome;
     protected $perfil;
+    
+    function __construct() {
+        parent::__construct();
+        /*
+         * Definição do nome do arquivo de log.
+         */
+        $this->_logName = '/'.__CLASS__.'_'.date('d-m-Y').'.log';
+    }
     
     public function getFkPessoa() {
         return $this->fkPessoa;
@@ -112,7 +121,15 @@ class Application_Model_Usuario extends Zend_Db_Table_Abstract {
                 return false;
             }
         } catch (Zend_Db_Table_Exception $exc) {
-            return $exc->getMessage();
+            /*
+            * Grava no log os erros, caso hajam.
+            */
+            $writer = new Zend_Log_Writer_Stream(
+                Custom_Path::LOG_PATH . $this->_logName
+            );
+            $logger = new Zend_Log($writer);
+            $logger->crit($exc->getMessage());
+            return Custom_Mensagem::ERRO_DADOS;
         }
     }
 }

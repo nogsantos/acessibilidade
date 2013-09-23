@@ -11,15 +11,36 @@
  * @version 1.0.0
  *
  */
-class Custom_Menu_Listagem {
+class Custom_Menu {
     /**
-     * 
+     * Atributos
      */
-    static public function menu($controller){
-        if(isset($controller)){
+    private $controller;
+    private $tipoMenu;
+    
+    public function getController() {
+        return $this->controller;
+    }
+
+    public function setController($controller) {
+        $this->controller = $controller;
+    }
+    
+    public function getTipoMenu() {
+        return $this->tipoMenu;
+    }
+
+    public function setTipoMenu($tipoMenu) {
+        $this->tipoMenu = $tipoMenu;
+    }
+    /**
+     * Retorna menu
+     */
+    public function menu(){
+        if(isset($this->controller)){
             $oMenuForm      = new Application_Model_Action();
-            $oMenuForm->setCodigoController($controller);
-            $oMenuForm->setTipoMenu('L');
+            $oMenuForm->setCodigoController($this->controller);
+            $oMenuForm->setTipoMenu($this->tipoMenu);
             $vItensMenuForm = $oMenuForm->retornarMenuDinamico();
             $itensMenu      = $vItensMenuForm;
             $htmlMenu       = '

@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * Descrição:Classe GrassController controller geral para o sistema.
@@ -13,9 +12,13 @@
  *
  */
 abstract class MainController extends Zend_Controller_Action {
-
+    /*
+     * Atributos
+     */
     protected $frontController;
-
+    /**
+     * Construtor
+     */
     public function init() {
         parent::init();
         /**
@@ -50,8 +53,8 @@ abstract class MainController extends Zend_Controller_Action {
         $this->moduleDir        = $this->frontController->getModuleDirectory();
         $this->view->moduleDir  = $this->moduleDir;
         $this->frontController->setParams($this->_request->getParams());
-        $this->viewBasePath = $this->view->getScriptPaths();
-        $this->viewBasePath = $this->viewBasePath[0];
+        $this->viewBasePath     = $this->view->getScriptPaths();
+        $this->viewBasePath     = $this->viewBasePath[0];
         if (isset($this->cParams)) {
             if (is_array($this->cParams)) {
                 foreach ($this->cParams as $k => $v) {
@@ -86,7 +89,7 @@ abstract class MainController extends Zend_Controller_Action {
         }
     }
     /**
-     * 
+     * Tradução de mensagens
      */
     public function getTranslateMessages() {
         $localeType = new Zend_Session_Namespace('locale');

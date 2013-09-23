@@ -22,7 +22,7 @@ footer {
     position: fixed;
     z-index: 999 !important;
 }
-.table-tr-selected{background-color: #FCF8E3 !important;}
+.table-tr-selected{background-color: #FCEC9C !important;}
 .table-line{cursor: pointer !important}
 .dialogP{width: 40% !important;}
 .dialogM{width: 60% !important;}
