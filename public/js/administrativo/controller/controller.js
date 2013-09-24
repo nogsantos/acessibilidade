@@ -20,21 +20,9 @@ jQuery(function() {
         id_controller = ""
     ;
     /*
-     * Configurações do Grid.
+     * Carregamento padrão do grid.
      */
-    oTable.dataTable({
-        "bJQueryUI"      : true,
-        "sPaginationType": "bootstrap",
-        "sDom"           : '<"top"fl>rt<"bottom"pi><"clear">',
-        "oLanguage"     : {
-            "sLengthMenu"  : "_MENU_",
-            "sZeroRecords" : "Nenhum registro localizado",
-            "sInfo"        : "Visualizando _END_ de _TOTAL_ registros",
-            "sInfoEmpty"   : "Visualizando 0 de 0 registros",
-            "sInfoFiltered": "(filtro de _MAX_ registros totais)",
-            "sSearch"      : ""
-        }
-    });
+    jQuery(document).loadGrid(oTable);
     /*
      * Evento click único na linha do grid.
      */
@@ -51,11 +39,6 @@ jQuery(function() {
             id_controller = jQuery(this).attr("id");
         }
     });
-    /*
-     * Estilo aos campos do grid
-     */
-    jQuery(".dataTables_filter input").addClass('form-control').attr('placeholder', 'Filtrar registros');
-    jQuery(".dataTables_length select").addClass('form-control');
     /*
      * Evento clique duplo na linha do grid.
      */

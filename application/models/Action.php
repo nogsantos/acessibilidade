@@ -232,6 +232,12 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                     ->where('a.tipo_menu = ?', $this->tipoMenu)
                     ->order(array('a.numero_ordem'))
             ;
+            if(isset($this->idAction)){
+                $sSql->where('lower(a.id_action) = ?', 
+                    strtolower($this->idAction)
+                );
+            }
+            Custom_Grass_Debug::debugSql($sSql, TRUE);
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Exception $exc) {
             /*

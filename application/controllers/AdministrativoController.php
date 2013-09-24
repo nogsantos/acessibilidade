@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * Descrição:Classe AdministrativoController
- *
+ * Descrição: Classe AdministrativoController
  *
  * @author Fabricio Nogueira
  *
@@ -64,6 +63,13 @@ class AdministrativoController extends MainController {
             '/DataTables-1.9.4/media/js/paginador.js'
         );
         /*
+         * Carrega o grid no formulário.
+         */
+        $this->view->headScript()->appendFile(
+           Zend_Controller_Front::getInstance()->getBaseUrl().
+           '/js/loadGrid.js'
+        );
+        /*
          * Script da página
          */
         $this->view->headScript()->appendFile(
@@ -80,6 +86,7 @@ class AdministrativoController extends MainController {
          */
         $oMenuListagem = new Custom_Menu();
         $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setIdAction("controller");
         $oMenuListagem->setTipoMenu('L');
         $this->view->menu = $oMenuListagem->menu();
     }
@@ -237,7 +244,7 @@ class AdministrativoController extends MainController {
         }
     }
     /**
-     * Cadasro de Actions
+     * Listagem de Actions
      */
     public function actionAction(){
       /*
@@ -259,25 +266,46 @@ class AdministrativoController extends MainController {
             Zend_Controller_Front::getInstance()->getBaseUrl().
             '/DataTables-1.9.4/media/js/jquery.dataTables.js'
         );
-         /*
-          * Paginador do grid
-          */
-         $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/js/paginador.js'
+        /*
+         * Paginador do grid
+         */
+        $this->view->headScript()->appendFile(
+           Zend_Controller_Front::getInstance()->getBaseUrl().
+           '/DataTables-1.9.4/media/js/paginador.js'
         );
-         /*
-          * Script da página
-          */
-         $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/administrativo/action/action.js'
+        /*
+         * Carrega o grid no formulário.
+         */
+        $this->view->headScript()->appendFile(
+           Zend_Controller_Front::getInstance()->getBaseUrl().
+           '/js/loadGrid.js'
+        );
+        /*
+         * Script da página
+         */
+        $this->view->headScript()->appendFile(
+           Zend_Controller_Front::getInstance()->getBaseUrl().
+           '/js/administrativo/action/action.js'
         );
        /*
         * Listagem de actions cadastradas.
         */
         $oAction             = new Application_Model_Action();
         $this->view->oAction = $oAction->listarActions();
+        /*
+         * Chamada para Menu da listagem.
+         */
+        $oMenuListagem = new Custom_Menu();
+        $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setIdAction("action");
+        $oMenuListagem->setTipoMenu('L');
+        $this->view->menu = $oMenuListagem->menu();
+    }
+    /**
+     * Formulário Actions
+     */
+    public function actionFormAction(){
+        
     }
     /**
      * 

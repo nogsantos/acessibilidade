@@ -62,6 +62,5 @@ phpSettings.display_errors = 1
 resources.frontController.params.displayExceptions = 1
 
 ;Firebug
-;resources.db.params.profiler.enabled = "true"
-;resources.db.params.profiler.class = "Zend_Db_Profiler_Firebug"
-;resources.db.defaultMetadataCache = "database"
+resources.db.params.profiler.enabled = "true"
+resources.db.params.profiler.class = "Zend_Db_Profiler_Firebug"

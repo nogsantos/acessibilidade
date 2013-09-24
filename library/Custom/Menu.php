@@ -16,6 +16,7 @@ class Custom_Menu {
      * Atributos
      */
     private $controller;
+    private $idAction;
     private $tipoMenu;
     
     public function getController() {
@@ -33,6 +34,14 @@ class Custom_Menu {
     public function setTipoMenu($tipoMenu) {
         $this->tipoMenu = $tipoMenu;
     }
+    
+    public function getIdAction() {
+        return $this->idAction;
+    }
+
+    public function setIdAction($idAction) {
+        $this->idAction = $idAction;
+    }
     /**
      * Retorna menu
      */
@@ -41,6 +50,7 @@ class Custom_Menu {
             $oMenuForm      = new Application_Model_Action();
             $oMenuForm->setCodigoController($this->controller);
             $oMenuForm->setTipoMenu($this->tipoMenu);
+            $oMenuForm->setIdAction($this->idAction);
             $vItensMenuForm = $oMenuForm->retornarMenuDinamico();
             $itensMenu      = $vItensMenuForm;
             $htmlMenu       = '

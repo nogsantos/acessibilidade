@@ -34,7 +34,7 @@
         </thead>
         <tbody>
             <?php foreach ($this->oController as $controller ) : ?>
-            <tr class="table-line" id="<?php print $controller['id_controller']?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'controller.form','id_controller'=>$controller['id_controller']))?>">
+            <tr class="table-line no-select" id="<?php print $controller['id_controller']?>" rel="<?php echo $this->url(array('controller' =>'administrativo','action'=>'controller.form','id_controller'=>$controller['id_controller']))?>">
                 <td><?php print $controller['codigo_controller'] ?></td>
                 <td><?php print $controller['nome_controller'] ?></td>
                 <td><?php print $controller['descricao_controller'] ?></td>

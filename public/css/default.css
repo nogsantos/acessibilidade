@@ -27,3 +27,10 @@ footer {
 .dialogP{width: 40% !important;}
 .dialogM{width: 60% !important;}
 .dialogG{width: 80% !important;}
+.no-select{
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -o-user-select: none !important;
+    user-select: none !important;
+}

@@ -23,11 +23,16 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <?php print $this->headTitle(); ?>
         <?php print $this->headMeta(); ?>
         <meta name="viewport" content="width=device-width">
+        <!--bootstrap-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
+        <!--fontAwesome-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
+        <!--jQuery UI-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css')); ?>
+        <!--jQuery Tip-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/jquery.qtip/jquery.qtip.min.css')); ?>
+        <!--Sis-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/main.css')); ?>
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/default.css')); ?>
         <?php print $this->headLink() ?>
@@ -73,6 +78,7 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
                 </div>
             </div>
         </footer>
+        <!--jQuery-->
         <script type="text/javascript" src="<?php print $this->baseUrl('/js/jquery-1.10.2.min.js')?>"></script>
         <script src="<?php print $this->baseUrl('/js/jquery-countdown/jquery.countdown.min.js'); ?>"></script>
         <script src="<?php print $this->baseUrl('/js/jquery-countdown/jquery.countdown-pt-BR.js'); ?>"></script>
