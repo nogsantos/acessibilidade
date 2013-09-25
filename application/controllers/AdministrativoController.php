@@ -86,7 +86,7 @@ class AdministrativoController extends MainController {
          */
         $oMenuListagem = new Custom_Menu();
         $oMenuListagem->setController($this->_controller);
-        $oMenuListagem->setIdAction("controller");
+        $oMenuListagem->setCodigoAction('controller');
         $oMenuListagem->setTipoMenu('L');
         $this->view->menu = $oMenuListagem->menu();
     }
@@ -133,6 +133,7 @@ class AdministrativoController extends MainController {
             */
             $oMenuListagem = new Custom_Menu();
             $oMenuListagem->setController($this->_controller);
+            $oMenuListagem->setCodigoAction('controller');
             $oMenuListagem->setTipoMenu('F');
             $this->view->menu = $oMenuListagem->menu();
             /*
@@ -297,7 +298,7 @@ class AdministrativoController extends MainController {
          */
         $oMenuListagem = new Custom_Menu();
         $oMenuListagem->setController($this->_controller);
-        $oMenuListagem->setIdAction("action");
+        $oMenuListagem->setCodigoAction('action');
         $oMenuListagem->setTipoMenu('L');
         $this->view->menu = $oMenuListagem->menu();
     }

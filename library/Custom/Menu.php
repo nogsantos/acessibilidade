@@ -18,6 +18,7 @@ class Custom_Menu {
     private $controller;
     private $idAction;
     private $tipoMenu;
+    private $codigoAction;
     
     public function getController() {
         return $this->controller;
@@ -42,6 +43,13 @@ class Custom_Menu {
     public function setIdAction($idAction) {
         $this->idAction = $idAction;
     }
+    public function getCodigoAction() {
+        return $this->codigoAction;
+    }
+
+    public function setCodigoAction($codigoAction) {
+        $this->codigoAction = $codigoAction;
+    }
     /**
      * Retorna menu
      */
@@ -50,7 +58,7 @@ class Custom_Menu {
             $oMenuForm      = new Application_Model_Action();
             $oMenuForm->setCodigoController($this->controller);
             $oMenuForm->setTipoMenu($this->tipoMenu);
-            $oMenuForm->setIdAction($this->idAction);
+            $oMenuForm->setCodigoAction($this->codigoAction);
             $vItensMenuForm = $oMenuForm->retornarMenuDinamico();
             $itensMenu      = $vItensMenuForm;
             $htmlMenu       = '

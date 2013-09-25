@@ -22,10 +22,12 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <?php print $this->defaults() ?>
         <?php print $this->headTitle(); ?>
         <?php print $this->headMeta(); ?>
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--bootstrap-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap.min.css')); ?>
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/bootstrap-theme.min.css')); ?>
+        <!--normalize for cross-browser rendering-->
+        <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/normalize.css')); ?>
         <!--fontAwesome-->
         <?php print $this->headLink()->prependStylesheet($this->baseUrl('/css/font-awesome.min.css')); ?>
         <!--jQuery UI-->
@@ -47,14 +49,7 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="#">Grass</a>
-                </div>
-                <div class="collapse navbar-collapse">
                 </div>
             </div>
         </div>

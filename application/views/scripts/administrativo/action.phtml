@@ -26,18 +26,18 @@
             <tr>
                 <th>Controlador</th>
                 <th>C&oacute;digo</th>
-                <th>rel Controller</th>
-                <th>rel Action</th>
+                <th>Controle</th>
+                <th>A&ccedil;&atilde;o</th>
                 <th>Nome</th>
                 <th>Tipo</th>
                 <th>Descri&ccedil;&atilde;o</th>
-                <th>Data Cadastro</th>
-                <th>Data Bloqueio</th>
+                <th>Cadastro</th>
+                <th>Bloqueio</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($this->oAction as $action ) : ?>
-            <tr class="table-line no-select" id="<?php print $action['id_action']?>" rel="<?php print $this->url(array('controller' =>'administrativo','action'=>'action.form','id_action'=>$action['id_action']))?>">
+            <tr class="table table-line table-hover no-select" id="<?php print $action['id_action']?>" rel="<?php print $this->url(array('controller' =>'administrativo','action'=>'action.form','id_action'=>$action['id_action']))?>">
                 <td><?php print $action['controller'] ?></td>
                 <td><?php print $action['id_action'] ?></td>
                 <td><?php print $action['rel_controller'] ?></td>

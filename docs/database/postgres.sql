@@ -99,6 +99,7 @@ CREATE TABLE administrativo.controller (
 CREATE TABLE administrativo.action (
     fk_controller bigint,
     id_action varchar(50) PRIMARY KEY,
+    codigo_action character varying(250) not null,
     rel_controller varchar(100),
     rel_action varchar(100),
     class_icone varchar(100),
@@ -230,6 +231,7 @@ COMMENT ON COLUMN administrativo.controller.descricao_controller IS 'Texto descr
 COMMENT ON COLUMN administrativo.controller.numero_ordem IS 'Ordenação para exibição do controller.';
 comment ON TABLE administrativo.action IS 'Ações do sistema, cadastrar, editar, excluir etc.';
 comment ON COLUMN administrativo.action.id_action IS 'Identificador da action, será utilizado para manipulações via javascript';
+comment ON COLUMN administrativo.action.codigo_action IS 'Identifica para qual listagem essa action pertece.';
 comment ON COLUMN administrativo.action.rel_controller IS 'Usado para definir o controller da action.';
 comment ON COLUMN administrativo.action.rel_action IS 'Nome da action no controller.';
 comment ON COLUMN administrativo.action.class_icone IS 'Classe que será utilizada para adicionar um icone caso a action seja um botão.';
