@@ -14,7 +14,9 @@ jQuery(function(){
     /*
      * Objetos e variáveis
      */
-    var oTable = jQuery("#table-action");
+    var oTable = jQuery("#table-action"),
+        bt_novo_action = jQuery("#bt_novo_action")
+    ;
     /*
      * Carregamento do grid
      */
@@ -47,6 +49,28 @@ jQuery(function(){
                bootbox.dialog({
                     message  : html,
                     title    : 'Editar Action',
+                    backdrop : false,
+                    size     : "m"
+                });
+            }
+        });
+    });
+    /*
+     * Botão novo controller
+     */
+    bt_novo_action.click(function() {
+        var action = baseUrl + jQuery(this).attr("rel");
+        jQuery.ajax({
+            type : "POST",
+            cache: false,
+            url  :  action,
+            success: function(html, textStatus) {
+                if (textStatus === "error") {
+                    return;
+                }
+               bootbox.dialog({
+                    message  : html,
+                    title    : 'Cadastrar Ações',
                     backdrop : false,
                     size     : "m"
                 });

@@ -306,13 +306,68 @@ class AdministrativoController extends MainController {
      * Formulário Actions
      */
     public function actionFormAction(){
-        
+        /*
+         * MagicSugest
+         */
+        $this->view->headLink()->setStylesheet(
+            Zend_Controller_Front::getInstance()->getBaseUrl() .
+            '/magicsuggest/magicsuggest-1.3.1.css'
+        );
+        $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/magicsuggest/magicsuggest-1.3.1.js'
+        );
+        /*
+         * Script da página
+         */
+        $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/js/administrativo/action/action-form.js'
+        );
+        /*
+         * Script para formulários
+         */
+        $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/js/numeros.js'
+        );
+        /*
+         * Script para formulários default.
+         */
+        $this->view->headScript()->appendFile(
+            Zend_Controller_Front::getInstance()->getBaseUrl().
+            '/js/default-forms.js'
+        );
+       /*
+        * Estilo para formulários.
+        */
+//        $this->view->headLink()->setStylesheet(
+//            Zend_Controller_Front::getInstance()->getBaseUrl() .
+//            '/css/forms.css'
+//        );
+       /*
+        * Chamada para o menu do usuário.
+        */
+        $oMenuListagem = new Custom_Menu();
+        $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setCodigoAction('action');
+        $oMenuListagem->setTipoMenu('F');
+        $this->view->menu = $oMenuListagem->menu();
+        /*
+         * Importante! Para chamada dos formulários modais, é necessário
+         * desativar o layout.
+         */
+         $this->_helper->layout()->disableLayout();
     }
     /**
+     * Consulta ajax listando os controllers cadastrados no sistema.
      * 
+     * @return json
      */
-    public function usuarioAction(){
-        
+    public function listagemControllerAction(){
+        $this->disableViewAndLayout();
+        $oController = new Application_Model_Controller();
+        echo Zend_Json::encode($oController->listarControllers()->toArray());
     }
     /**
      * Pdf

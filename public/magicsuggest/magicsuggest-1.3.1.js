@@ -99,7 +99,7 @@
              * Defaults to <code>'Type or click here'</code> or just <code>'Click here'</code> if not editable.
              */
             emptyText: function() {
-                return cfg.editable ? 'Type or click here' : 'Click here';
+                return cfg.editable ? 'Digite ou clique aqui' : 'Clique aqui';
             },
 
             /**
@@ -204,7 +204,7 @@
              * Defaults to <code>function(v){return 'Please reduce your entry by ' + v + ' character' + (v > 1 ? 's':'');}</code>
              */
             maxEntryRenderer: function(v) {
-                return 'Please reduce your entry by ' + v + ' character' + (v > 1 ? 's':'');
+                return 'Permitido somente ' + v + ' caracteres' + (v > 1 ? 's':'');
             },
 
             /**
@@ -229,7 +229,7 @@
              * Defaults to <code>function(v){return 'You cannot choose more than ' + v + ' item' + (v > 1 ? 's':'');}</code>
              */
             maxSelectionRenderer: function(v) {
-                return 'You cannot choose more than ' + v + ' item' + (v > 1 ? 's':'');
+                return 'Você não pode escolher mais de ' + v + ' item' + (v > 1 ? 's':'');
             },
 
             /**
@@ -253,7 +253,7 @@
              * Defaults to <code>function(v){return 'Please type ' + v + ' more character' + (v > 1 ? 's':'');}</code>
              */
             minCharsRenderer: function(v) {
-                return 'Please type ' + v + ' more character' + (v > 1 ? 's':'');
+                return 'Digite ' + v + ' mais caracteres' + (v > 1 ? 's':'');
             },
 
             /**
@@ -268,7 +268,7 @@
              * <p>The text displayed when there are no suggestions.</p>
              * Defaults to 'No suggestions"
              */
-            noSuggestionText: 'No suggestions',
+            noSuggestionText: 'Nenhum registro',
 
             /**
              * @cfg {Boolean} preselectSingleSuggestion

@@ -1,0 +1,33 @@
+<?php
+/**
+ *
+ * Descrição:Formulário Action
+ *
+ * @author Fabricio Nogueira
+ *
+ * @since 26-Aug-2013
+ *
+ * @version 1.0.0
+ *
+ */
+?>
+<?php print $this->menu?>
+<div class="panel panel-default">
+    <div class="panel-heading">Formul&aacute;rio A&ccedil;&otilde;es</div>
+    <div class="panel-body">        
+        <div class="row-fluid">
+            <div class="alert alert-danger" style="display: none;"></div>
+            <form id="formAction" role="form" action="<?php echo $this->url(array('controller' =>'administrativo','action'=>'salvar.action'))?>" method="POST">
+                <input type="hidden" name="id_controller" value="<?php print @$this->oAction->id_action ?>" />
+                <div class="form-group" id="div_fk_controller">
+                    <label class="control-label" for="fk_controller">Controlador *</label>
+                    <div class="row">
+                        <div id="fk_controller" name="fk_controller"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<?php print $this->headLink() ?>
+<?php print $this->headScript() ?>
