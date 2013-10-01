@@ -19,10 +19,111 @@
             <div class="alert alert-danger" style="display: none;"></div>
             <form id="formAction" role="form" action="<?php echo $this->url(array('controller' =>'administrativo','action'=>'salvar.action'))?>" method="POST">
                 <input type="hidden" name="id_controller" value="<?php print @$this->oAction->id_action ?>" />
-                <div class="form-group" id="div_fk_controller">
-                    <label class="control-label" for="fk_controller">Controlador *</label>
-                    <div class="row">
-                        <div id="fk_controller" name="fk_controller"></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_fk_controller">
+                            <label class="control-label" for="fk_controller">Controlador *</label>
+                            <div class="row" style="margin-left:0;">
+                                <div class="form-control" id="fk_controller" name="fk_controller"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="codigo_action">
+                            <label class="control-label" for="codigo_action">C&oacute;digo action</label>
+                            <input type="text" class="form-control" maxlength="250" name="codigo_action" id="codigo_action" value="<?php print @$this->oAction->codigo_action ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_tipo_action">
+                            <label class="control-label" for="tipo_action">Tipo</label>
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label id="tipo_action_botao" class="btn btn-primary bt-tipo-action active">
+                                        <input type="radio" name="tipo_action_botao" value="B" />Bot&atilde;o
+                                    </label>
+                                    <label id="tipo_action_formulario" class="btn btn-primary bt-tipo-action">
+                                        <input type="radio" name="tipo_action_formulario" value="F" />Formul&aacute;rio
+                                    </label>
+                                    <label id="tipo_action_funcao" class="btn btn-primary bt-tipo-action">
+                                        <input type="radio" name="tipo_action_funcaoi" value="U" />Fun&ccedil;&atilde;o
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_tipo_menu">
+                            <label class="control-label" for="tipo_menu">Tipo Menu</label>
+                            <div class="row" style="margin-left: 0px;">
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary">
+                                        <input type="radio" id="tipo_menu_listagem" class="tipo-menu" name="tipo_menu_listagem" value="L" />Listagem
+                                    </label>
+                                    <label class="btn btn-primary">
+                                        <input type="radio" id="tipo_menu_formulario" class="tipo-menu" name="tipo_menu_formulario" value="F" />Formul&aacute;rio
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_nome_action">
+                            <label class="control-label" for="nome_action">Nome *</label>
+                            <input type="text" class="form-control" maxlength="100" name="nome_action" id="nome_action" value="<?php print @$this->oAction->nome_action ?>" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_id_action">
+                            <label class="control-label" for="id_action">C&oacute;digo identificador *</label>
+                            <input type="text" class="form-control" maxlength="50" name="id_action" id="id_action" value="<?php print @$this->oAction->id_action ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_rel_controller">
+                            <label class="control-label" for="rel_controller">Nome Controlador</label>
+                            <input type="text" class="form-control" maxlength="100" name="rel_controller" id="rel_controller" value="<?php print @$this->oAction->rel_controller ?>" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_rel_action">
+                            <label class="control-label" for="rel_action">Nome A&ccedil;&atilde;o</label>
+                            <input type="text" class="form-control" maxlength="100" name="rel_action" id="rel_action" value="<?php print @$this->oAction->rel_action ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_class_botao">
+                            <label class="control-label" for="class_botao">Classe bot&atilde;o</label>
+                            <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="div_class_icone">
+                            <label class="control-label" for="class_icone">Classe icone</label>
+                            <input type="text" class="form-control" maxlength="100" name="class_icone" id="class_icone" value="<?php print @$this->oAction->class_icone ?>" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" id="descricao_action">
+                            <label class="control-label" for="descricao_action">Descri&ccedil;&atilde;o</label>
+                            <input type="text" class="form-control" maxlength="500" name="descricao_action" id="descricao_action" value="<?php print @$this->oAction->descricao_action ?>" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="numero_ordem">
+                            <label class="control-label" for="numero_ordem">Ordem</label>
+                            <input type="text" class="form-control" maxlength="10" name="numero_ordem" id="numero_ordem" value="<?php print @$this->oAction->numero_ordem ?>" />
+                        </div>
                     </div>
                 </div>
             </form>
