@@ -31,7 +31,8 @@ jQuery(function(){
         div_rel_controller = jQuery("#div_rel_controller"),
         rel_controller = jQuery("#rel_controller"),
         div_rel_action = jQuery("#rel_action"),
-        codigo_action = jQuery("#codigo_action")
+        codigo_action = jQuery("#codigo_action"),
+        formAction = jQuery("#formAction")
     ;
     /*
      * Select controller.
@@ -66,6 +67,7 @@ jQuery(function(){
         return myjson; 
     };
     /*
+     * Manipulação de tipo e tipo menu. O tipo menu só está disponível se o tipo for botão.
      * 
      */
     class_bt_tipo_action.click(function(event){
@@ -77,4 +79,20 @@ jQuery(function(){
             class_tipo_menu.attr("checked" , false );
         }
     });
+    /**
+     * Salvar
+     */
+    jQuery("#salvarAction").on("click",function(){
+        alert('nada');
+//       if(validaCampos()){
+            formAction.submit();
+//       }
+    });
+    /*
+     * Validação de campos frontside
+     * 
+     */
+    function validaCampos(){
+       return true; 
+    }
 });

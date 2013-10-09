@@ -211,6 +211,26 @@ class AdministrativoController extends MainController {
                      * Redirecionamento para a listagem
                      */
                     $this->_helper->redirector('controller');
+                }else{
+                    /*
+                     * Retorna para a listagem os erros não validados por js que
+                     * foram encontrados pelo zend form.
+                     */
+                    foreach ($oControllerForm->getMessages() as $campo => $valor) {
+                        $nomeCampo = strstr($campo,'_',true) ;
+                        foreach ($valor as $mensagem) {
+                            $erros .='<i class="icon-caret-right"></i> Campo: <b>'.strtoupper($nomeCampo).'</b> Mensagem: '.$mensagem.'. <br />';
+                        }
+                    }
+                    $this->_helper->flashMessenger->addMessage('
+                        <div class="alert alert-danger">
+                            <i class="icon-exclamation-sign"></i> Erros<br />'.$erros.'
+                        </div>
+                    ');
+                    /*
+                     * Redirecionamento para a listagem
+                     */
+                    $this->_helper->redirector('controller');
                 }
             }
         }
@@ -306,6 +326,14 @@ class AdministrativoController extends MainController {
      * Formulário Actions
      */
     public function actionFormAction(){
+       /*
+        * Chamada para o menu do usuário.
+        */
+        $oMenuListagem = new Custom_Menu();
+        $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setCodigoAction('action');
+        $oMenuListagem->setTipoMenu('F');
+        $this->view->menu = $oMenuListagem->menu();
         /*
          * MagicSugest
          */
@@ -344,15 +372,7 @@ class AdministrativoController extends MainController {
 //        $this->view->headLink()->setStylesheet(
 //            Zend_Controller_Front::getInstance()->getBaseUrl() .
 //            '/css/forms.css'
-//        );
-       /*
-        * Chamada para o menu do usuário.
-        */
-        $oMenuListagem = new Custom_Menu();
-        $oMenuListagem->setController($this->_controller);
-        $oMenuListagem->setCodigoAction('action');
-        $oMenuListagem->setTipoMenu('F');
-        $this->view->menu = $oMenuListagem->menu();
+//        );       
         /*
          * Importante! Para chamada dos formulários modais, é necessário
          * desativar o layout.

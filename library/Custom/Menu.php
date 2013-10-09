@@ -75,8 +75,8 @@ class Custom_Menu {
             ';
             foreach ($itensMenu as $vMenuItem) {
                 $htmlMenu .= '
-                    <button type="button" class="btn '.$vMenuItem['class_botao'].' navbar-btn" id="'.$vMenuItem['id_action'].'" rel="/'.$vMenuItem['rel_controller'].'/'.$vMenuItem['rel_action'].'/" title=" '.$vMenuItem['descricao_action'].'">
-                        <i class="'.$vMenuItem['class_icone'].'"></i> '.$vMenuItem['nome_action'].' 
+                    <button type="button" class="btn '.trim($vMenuItem['class_botao']).' navbar-btn" id="'.trim($vMenuItem['id_action']).'" rel="/'.trim($vMenuItem['rel_controller']).'/'.trim($vMenuItem['rel_action']).'/" title=" '.trim($vMenuItem['descricao_action']).'">
+                        <i class="'.trim($vMenuItem['class_icone']).'"></i> '.trim($vMenuItem['nome_action']).' 
                     </button>
                 ';
             }

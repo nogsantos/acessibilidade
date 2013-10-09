@@ -14,27 +14,28 @@ class Form_Controller extends Zend_Form {
         ;
         $codigo_controller = new Zend_Form_Element_Text('codigo_controller');
         $codigo_controller->setRequired(true)
-              ->addFilter('StripTags')
-              ->addFilter('StringTrim')
-              ->addValidator('NotEmpty')
+                          ->addFilter('StripTags')
+                          ->addFilter('StringTrim')
+                          ->addValidator('NotEmpty')
         ;
         $nome_controller = new Zend_Form_Element_Text('nome_controller');
         $nome_controller->setRequired(true)
-              ->addFilter('StripTags')
-              ->addFilter('StringTrim')
-              ->addValidator('NotEmpty')
+                        ->addFilter('StripTags')
+                        ->addFilter('StringTrim')
+                        ->addValidator('NotEmpty')
         ;
-        $descricao_controller = new Zend_Form_Element_Password('descricao_controller');
+        $descricao_controller = new Zend_Form_Element_Text('descricao_controller');
         $descricao_controller->addFilter('StripTags')
-              ->addFilter('StringTrim')
+                             ->addFilter('StringTrim')
         ;
-        $numero_ordem = new Zend_Form_Element_Password('numero_ordem');
+        $numero_ordem = new Zend_Form_Element_Text('numero_ordem');
         $numero_ordem->addFilter('StripTags')
-              ->addFilter('StringTrim')
+                     ->addFilter('StringTrim')
+                     ->addValidator('Digits')
         ;
-        $data_bloqueio = new Zend_Form_Element_Password('data_bloqueio');
+        $data_bloqueio = new Zend_Form_Element_Text('data_bloqueio');
         $data_bloqueio->addFilter('StripTags')
-              ->addFilter('StringTrim')
+                      ->addFilter('StringTrim')
         ;
         $this->addElements(
             array(

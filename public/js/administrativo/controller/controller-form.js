@@ -29,7 +29,7 @@ jQuery(function(){
         btSalvar = jQuery("#salvarController")
     ;
     /*
-     * 
+     * Salvar formulários
      */
     btSalvar.click(function(){
         if(validaCampos()){
@@ -37,17 +37,17 @@ jQuery(function(){
         }
     });
     /*
-     * Valida campos obrigatórios
+     * Valida campos obrigatórios front side.
      */
     function validaCampos(){
         var erros = "";
         jQuery(".form-group").removeClass("has-error");
         if(jQuery.trim(codigo_controller.val())===""){
-            erros += '<i class="icon-asterisk"></i> Código<br />';
+            erros += '<i class="icon-caret-right"></i> Código<br />';
             div_codigo_controller.addClass("has-error");
         }
         if(jQuery.trim(nome_controller.val())===""){
-            erros += '<i class="icon-asterisk"></i> Nome<br />';
+            erros += '<i class="icon-caret-right"></i> Nome<br />';
             div_nome_controller.addClass("has-error");
         }
         if(erros!==""){

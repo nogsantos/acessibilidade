@@ -11,13 +11,13 @@
  *
  */
 ?>
-<?php print $this->menu?>
+<?php print $this->menu ?>
 <div class="panel panel-default">
     <div class="panel-heading">Formul&aacute;rio A&ccedil;&otilde;es</div>
     <div class="panel-body">        
         <div class="row-fluid">
             <div class="alert alert-danger" style="display: none;"></div>
-            <form id="formAction" role="form" action="<?php echo $this->url(array('controller' =>'administrativo','action'=>'salvar.action'))?>" method="POST">
+            <form id="formAction" role="form" action="<?php echo $this->url(array('controller' =>'action','action'=>'salvar.action'))?>" method="POST">
                 <input type="hidden" name="id_controller" value="<?php print @$this->oAction->id_action ?>" />
                 <div class="row">
                     <div class="col-md-6">
