@@ -11,7 +11,10 @@
  * @version 1.0.0
  *
  */
-class PerfilActionController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class PerfilActionController extends MainController {
     
-    public function init(){}   
+    public function init(){
+        parent::init();
+    }   
 }

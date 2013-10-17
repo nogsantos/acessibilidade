@@ -10,7 +10,8 @@
  * @version 1.0.0
  *
  */
-class ErrorController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class ErrorController extends MainController {
     /*
      * Atributos
      */
@@ -21,6 +22,7 @@ class ErrorController extends Zend_Controller_Action {
      * Init
      */
     public function init() {
+        parent::init();
         /*
          * Definição do nome do arquivo de log.
          */

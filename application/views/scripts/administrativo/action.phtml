@@ -37,7 +37,7 @@
         </thead>
         <tbody>
             <?php foreach ($this->oAction as $action ) : ?>
-            <tr class="table no-select" id="<?php print $action['id_action']?>" rel="<?php print $this->url(array('controller' =>'administrativo','action'=>'action.form','id_action'=>$action['id_action']))?>">
+            <tr class="table no-select" identificador="<?php print $action['id_action']?>" id="listagem_<?php print $action['id_action']?>" rel="<?php print $this->url(array('controller' =>'administrativo','action'=>'action.form','id_action'=>$action['id_action']))?>">
                 <td><?php print $action['controller'] ?></td>
                 <td><?php print $action['id_action'] ?></td>
                 <td><?php print $action['rel_controller'] ?></td>

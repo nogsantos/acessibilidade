@@ -12,9 +12,11 @@
  * @version 1.0.0
  *
  */
-class ModuloController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class ModuloController extends MainController {
     
     public function init(){
+        parent::init();
         /*
          * Monta o menu principal
          */

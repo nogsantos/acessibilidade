@@ -1,5 +1,4 @@
 <?php
-
 /**
  *
  * Descrição: Controller Organização
@@ -12,9 +11,11 @@
  * @version 1.0.0
  *
  */
-class OrganizacaoController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class OrganizacaoController extends MainController {
     
     public function init() {
+        parent::init();
     }
     
     

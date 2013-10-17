@@ -25,7 +25,7 @@ jQuery(function(){
      * Evento click único na linha do grid.
      */
     jQuery(document).on("click", "#table-action tbody tr", function() {
-        var anSelected ='#' + jQuery(this).attr("id");
+        var anSelected ='#listagem_' + jQuery(this).attr("identificador");
         if (jQuery(anSelected).hasClass('table-tr-selected')) {
             jQuery(anSelected).removeClass('table-tr-selected');
         }else {

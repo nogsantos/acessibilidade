@@ -11,6 +11,7 @@
  * @version 1.0.0
  *
  */
+require_once 'MainController.php';
 class ActionController extends MainController {
     /**
      * Init

@@ -43,43 +43,45 @@ class AdministrativoController extends MainController {
        /*
         * Grid
         */
-        $this->view->headLink()->setStylesheet(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/css/jquery.dataTables.css'
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables')
         );
-        $this->view->headLink()->setStylesheet(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css'
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables_themeroller')
         );
         $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/js/jquery.dataTables.js'
+            $this->url.'/DataTables-1.9.4/media/js/jquery.dataTables.js'
         );
         /*
          * Paginador do grid
          */
         $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/js/paginador.js'
+            $this->url.'/DataTables-1.9.4/media/js/paginador.js'
         );
         /*
          * Carrega o grid no formulário.
          */
         $this->view->headScript()->appendFile(
-           Zend_Controller_Front::getInstance()->getBaseUrl().
-           '/js/loadGrid.js'
+           $this->url.'/js/loadGrid.js'
         );
         /*
          * Script da página
          */
         $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/administrativo/controller/controller.js'
+            $this->url.'/js/administrativo/controller/controller.js'
         );
         /*
          * Listagem dos módulos cadastrados.
          */
-        $oController = new Application_Model_Controller();
+        $oController             = new Application_Model_Controller();
         $this->view->oController = $oController->listarControllers();
         /*
          * Chamada para Menu da listagem.
@@ -97,37 +99,9 @@ class AdministrativoController extends MainController {
         /*
          * O formulário deve ser acessado apenas via modal.
          */
-        if ($this->getRequest()->getMethod() === "GET"){
+        if ($this->getRequest()->getMethod() === 'GET'){
             throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
-           /*
-            * Script da página
-            */
-            $this->view->headScript()->appendFile(
-                Zend_Controller_Front::getInstance()->getBaseUrl().
-                '/js/administrativo/controller/controller-form.js'
-            );
-           /*
-            * Script para formulários
-            */
-            $this->view->headScript()->appendFile(
-                Zend_Controller_Front::getInstance()->getBaseUrl().
-                '/js/numeros.js'
-            );
-           /*
-            * Script para formulários default.
-            */
-            $this->view->headScript()->appendFile(
-                Zend_Controller_Front::getInstance()->getBaseUrl().
-                '/js/default-forms.js'
-            );
-            /*
-             * Estilo para formulários.
-             */
-            $this->view->headLink()->setStylesheet(
-                Zend_Controller_Front::getInstance()->getBaseUrl() .
-                '/css/forms.css'
-            );
            /*
             * Chamada para o menu do usuário.
             */
@@ -183,7 +157,8 @@ class AdministrativoController extends MainController {
                     $oController->setDataBloqueio(
                         $oControllerForm->getValue('data_bloqueio')
                     );
-                    if(empty($oControllerForm->getValue('id_controller'))){
+                    $idController = $oControllerForm->getValue('id_controller');
+                    if(empty($idController)){
                         /*
                          * Cadastro
                          */
@@ -242,7 +217,7 @@ class AdministrativoController extends MainController {
         /*
          * O formulário deve ser acessado apenas via modal.
          */
-        if ($this->getRequest()->getMethod() === "GET"){
+        if ($this->getRequest()->getMethod() === 'GET'){
             throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
             $this->disableViewAndLayout();
@@ -275,38 +250,40 @@ class AdministrativoController extends MainController {
        /*
         * Grid
         */
-        $this->view->headLink()->setStylesheet(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/css/jquery.dataTables.css'
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables')
         );
-        $this->view->headLink()->setStylesheet(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css'
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables_themeroller')
         );
          $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/DataTables-1.9.4/media/js/jquery.dataTables.js'
+            $this->url.'/DataTables-1.9.4/media/js/jquery.dataTables.js'
         );
         /*
          * Paginador do grid
          */
         $this->view->headScript()->appendFile(
-           Zend_Controller_Front::getInstance()->getBaseUrl().
-           '/DataTables-1.9.4/media/js/paginador.js'
+           $this->url.'/DataTables-1.9.4/media/js/paginador.js'
         );
         /*
          * Carrega o grid no formulário.
          */
         $this->view->headScript()->appendFile(
-           Zend_Controller_Front::getInstance()->getBaseUrl().
-           '/js/loadGrid.js'
+           $this->url.'/js/loadGrid.js'
         );
         /*
          * Script da página
          */
         $this->view->headScript()->appendFile(
-           Zend_Controller_Front::getInstance()->getBaseUrl().
-           '/js/administrativo/action/action.js'
+           $this->url.'/js/administrativo/action/action.js'
         );
        /*
         * Listagem de actions cadastradas.
@@ -334,45 +311,6 @@ class AdministrativoController extends MainController {
         $oMenuListagem->setCodigoAction('action');
         $oMenuListagem->setTipoMenu('F');
         $this->view->menu = $oMenuListagem->menu();
-        /*
-         * MagicSugest
-         */
-        $this->view->headLink()->setStylesheet(
-            Zend_Controller_Front::getInstance()->getBaseUrl() .
-            '/magicsuggest/magicsuggest-1.3.1.css'
-        );
-        $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/magicsuggest/magicsuggest-1.3.1.js'
-        );
-        /*
-         * Script da página
-         */
-        $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/administrativo/action/action-form.js'
-        );
-        /*
-         * Script para formulários
-         */
-        $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/numeros.js'
-        );
-        /*
-         * Script para formulários default.
-         */
-        $this->view->headScript()->appendFile(
-            Zend_Controller_Front::getInstance()->getBaseUrl().
-            '/js/default-forms.js'
-        );
-       /*
-        * Estilo para formulários.
-        */
-//        $this->view->headLink()->setStylesheet(
-//            Zend_Controller_Front::getInstance()->getBaseUrl() .
-//            '/css/forms.css'
-//        );       
         /*
          * Importante! Para chamada dos formulários modais, é necessário
          * desativar o layout.

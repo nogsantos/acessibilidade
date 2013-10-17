@@ -158,7 +158,8 @@ class Application_Model_Organizacao extends Zend_Db_Table_Abstract {
                     ->where('o.data_bloqueio is null')
                     ->order('o.prioridade_exibicao')
             ;
-            if(!empty($this->getIdOrganizacao())){
+            $organizacao = $this->getIdOrganizacao();
+            if(!empty($organizacao)){
                 $sSql->where('o.cnpj_organizacao = ?', $this->getIdOrganizacao());
             }
             return $this->fetchAll($sSql);

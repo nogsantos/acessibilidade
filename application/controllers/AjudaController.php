@@ -11,7 +11,8 @@
  * @version 1.0.0
  *
  */
-class AjudaController extends Zend_Controller_Action {
+require_once 'MainController.php';
+class AjudaController extends MainController {
     
     public function init() {
         parent::init();

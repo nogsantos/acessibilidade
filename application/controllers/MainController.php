@@ -16,12 +16,112 @@ abstract class MainController extends Zend_Controller_Action {
      * Atributos
      */
     protected $frontController;
+    protected $url;
     /**
      * Construtor
      */
     public function init() {
         parent::init();
-        /**
+        $this->url = Zend_Controller_Front::getInstance()->getBaseUrl();
+        /*
+         * Default styles.
+         */
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/bootstrap.min.css',
+            'screen',
+            true,
+            array('id' => 'bootstrap.min')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/bootstrap-theme.min.css',
+            'screen',
+            true,
+            array('id' => 'bootstrap-theme.min')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/normalize.css',
+            'screen',
+            true,
+            array('id' => 'normalize')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/font-awesome.min.css',
+            'screen',
+            true,
+            array('id' => 'font-awesome.min')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/jquery-ui-1.10.3.custom/css/smoothness/jquery-ui-1.10.3.custom.min.css',
+            'screen',
+            true,
+            array('id' => 'jquery-ui-1.10.3.custom.min')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/jquery.qtip/jquery.qtip.min.css',
+            'screen',
+            true,
+            array('id' => 'jquery.qtip.min')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/main.css',
+            'screen',
+            true,
+            array('id' => 'main')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/default.css',
+            'screen',
+            true,
+            array('id' => 'default')
+        );
+        /*
+         * Default Scripts
+         */
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/jquery-1.10.2.min.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/jquery-countdown/jquery.countdown.min.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/jquery-countdown/jquery.countdown-pt-BR.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/bootstrap.min.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/bootbox.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/jquery.maskedinput.min.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/layout.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/default.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/jquery.qtip/jquery.qtip.min.js'
+        );
+        /*
          * Mensagens para views.
          */
         $this->view->menssagens = $this->_helper->flashMessenger->getMessages();
