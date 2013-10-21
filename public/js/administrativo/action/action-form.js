@@ -60,15 +60,18 @@ jQuery(function(){
             async    : false,
             success: function(dados) {
                 jQuery.each(dados,function(i, item){
-                    myjson.push({name: item.nome_controller , id: item.id_controller});
+                    myjson.push({
+                        name: item.nome_controller,
+                        id  : item.id_controller
+                    });
                 });
             }
         });
         return myjson; 
     };
     /*
-     * Manipulação de tipo e tipo menu. O tipo menu só está disponível se o tipo for botão.
-     * 
+     * Manipulação de tipo e tipo menu. O tipo menu só está disponível 
+     * se o tipo for botão.
      */
     class_bt_tipo_action.click(function(event){
         event.preventDefault();
@@ -79,20 +82,105 @@ jQuery(function(){
             class_tipo_menu.attr("checked" , false );
         }
     });
-    /**
+    /*
      * Salvar
      */
     jQuery("#salvarAction").on("click",function(){
-        alert('nada');
-//       if(validaCampos()){
-//            formAction.submit();
-//       }
+        if(validaCampos()){
+            formAction.submit();
+        }
     });
     /*
-     * Validação de campos frontside
-     * 
+     * Validação de campos front-side
      */
     function validaCampos(){
        return true; 
     }
+    /*
+     * Ajuda 
+     */
+    jQuery("#helpControladorField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Identifica a qual controlador pertece a a&ccedil;&atilde;o.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpCodigoActionField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Identifica para qual listagem essa action pertece.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpTipoField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Define se a action ser&aacute; um bot&atilde;o, formul&aacute;rio ou fun&ccedil;&atilde;o.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpTipoMenuField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Caso a action seja do tipo bot&atilde;o, define se ser&aacute; para a listagem ou formul&aacute;rio.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpNomeField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Nome da a&ccedil;&atilde;o</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpCodigoIdentificadorField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Identifica para qual listagem essa action pertece.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpNomeControladorField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Usado para definir o controller da action.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpNomeAcaoField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Nome da action no controller.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpClasseBotaoField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Define a classe visual do botão no formulário.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpClasseIconeField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Classe que será utilizada para adicionar um icone caso a action seja um botão.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpDescricaoField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Descri&ccedil;&atilde;o da a&ccedil;&atilde;o.</i>',
+        title     : 'Ajuda'
+    });
+    jQuery("#helpOrdemField").popover({
+        animation : true,
+        html      : true,
+        trigger   : 'hover',
+        content   : '<i>Define a ordem de visualiza&ccedil;&atilde;o no formul&aacute;rio.</i>',
+        title     : 'Ajuda'
+    });
 });

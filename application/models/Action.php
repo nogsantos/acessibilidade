@@ -26,6 +26,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     protected $relController;
     protected $relAction;
     protected $classIcone;
+    protected $classBotao;
     protected $nomeAction;
     protected $tipoAction;
     protected $tipoMenu;
@@ -48,7 +49,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     }
 
     public function setFkController($fkController) {
-        $this->fkController = $fkController;
+        $this->fkController = (int) str_replace('[', '', str_replace(']', '', $fkController));
     }
 
     public function getCodigoController() {
@@ -99,6 +100,14 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
         $this->classIcone = $classIcone;
     }
 
+    public function getClassBotao() {
+        return $this->classBotao;
+    }
+
+    public function setClassBotao($classBotao) {
+        $this->classBotao = $classBotao;
+    }
+    
     public function getNomeAction() {
         return $this->nomeAction;
     }
@@ -112,7 +121,11 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     }
 
     public function setTipoAction($tipoAction) {
-        $this->tipoAction = $tipoAction;
+        if(empty($tipoAction)){
+            $this->tipoAction = 'B';
+        }else{
+            $this->tipoAction = $tipoAction;
+        }
     }
 
     public function getTipoMenu() {
@@ -120,7 +133,11 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     }
 
     public function setTipoMenu($tipoMenu) {
-        $this->tipoMenu = $tipoMenu;
+        if(empty($tipoMenu)){
+            $this->tipoMenu = 'L';
+        }else{
+            $this->tipoMenu = $tipoMenu;
+        }
     }
         
     public function getDescricaoAction() {
@@ -246,7 +263,6 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                     strtolower($this->codigoAction)
                 );
             }
-//            Custom_Grass_Debug::debugSql($sSql, TRUE);
             return $this->fetchAll($sSql);
         } catch (Zend_Db_Exception $exc) {
             /*
@@ -256,6 +272,40 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                 Custom_Path::LOG_PATH . $this->_logName
             );
             $logger = new Zend_Log($writer);            
+            $logger->crit($exc->getMessage());
+            return Custom_Mensagem::ERRO_DADOS;
+        }
+    }
+    /**
+     * Cadastrar
+     */
+    public function cadastrar(){
+        try {
+            $vDados = array(
+                'fk_controller'    => $this->fkController, 
+                'id_action'        => $this->idAction, 
+                'codigo_action'    => $this->codigoAction, 
+                'rel_controller'   => $this->relController, 
+                'rel_action'       => $this->relAction, 
+                'class_icone'      => $this->classIcone, 
+                'class_botao'      => $this->classBotao, 
+                'nome_action'      => $this->nomeAction, 
+                'tipo_action'      => $this->tipoAction, 
+                'tipo_menu'        => $this->tipoMenu, 
+                'descricao_action' => $this->descricaoAction, 
+                'numero_ordem'     => $this->numeroOrdem, 
+                'data_bloqueio'    => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
+            );
+            $this->insert($vDados);
+            return true;
+        } catch (Zend_Db_Exception $exc) {
+            /*
+             * Grava no log os erros, caso hajam.
+             */
+            $writer = new Zend_Log_Writer_Stream(
+                    Custom_Path::LOG_PATH . $this->_logName
+            );
+            $logger = new Zend_Log($writer);
             $logger->crit($exc->getMessage());
             return Custom_Mensagem::ERRO_DADOS;
         }

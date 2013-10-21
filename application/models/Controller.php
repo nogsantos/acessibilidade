@@ -72,7 +72,11 @@ class Application_Model_Controller extends Zend_Db_Table_Abstract {
     }
 
     public function setNumeroOrdem($numeroOrdem) {
-        $this->numeroOrdem = $numeroOrdem;
+        if(!empty($numeroOrdem)){
+            $this->numeroOrdem = $numeroOrdem;
+        }else{
+            $this->numeroOrdem = 0;
+        }
     }
 
     public function getDataCadastro() {

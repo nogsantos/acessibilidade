@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_fk_controller">
-                            <label class="control-label" for="fk_controller">Controlador *</label>
+                            <label class="control-label" for="fk_controller">Controlador * <i class="icon-question-sign" id="helpControladorField"></i></label>
                             <div class="row" style="margin-left:0;">
                                 <div class="form-control" id="fk_controller" name="fk_controller"></div>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="codigo_action">
-                            <label class="control-label" for="codigo_action">C&oacute;digo action</label>
+                            <label class="control-label" for="codigo_action">C&oacute;digo action <i class="icon-question-sign" id="helpCodigoActionField"></i></label>
                             <input type="text" class="form-control" maxlength="250" name="codigo_action" id="codigo_action" value="<?php print @$this->oAction->codigo_action ?>" />
                         </div>
                     </div>
@@ -38,17 +38,17 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_tipo_action">
-                            <label class="control-label" for="tipo_action">Tipo</label>
+                            <label class="control-label" for=".tipo-action">Tipo <i class="icon-question-sign" id="helpTipoField"></i></label>
                             <div class="row" style="margin-left: 0px;">
                                 <div class="btn-group" data-toggle="buttons">
                                     <label id="tipo_action_botao" class="btn btn-primary bt-tipo-action active">
-                                        <input type="radio" name="tipo_action_botao" value="B" />Bot&atilde;o
+                                        <input type="radio" class="tipo-action" name="tipo_action" value="B" checked="checked" />Bot&atilde;o
                                     </label>
                                     <label id="tipo_action_formulario" class="btn btn-primary bt-tipo-action">
-                                        <input type="radio" name="tipo_action_formulario" value="F" />Formul&aacute;rio
+                                        <input type="radio" class="tipo-action" name="tipo_action" value="F" />Formul&aacute;rio
                                     </label>
                                     <label id="tipo_action_funcao" class="btn btn-primary bt-tipo-action">
-                                        <input type="radio" name="tipo_action_funcaoi" value="U" />Fun&ccedil;&atilde;o
+                                        <input type="radio" class="tipo-action" name="tipo_action" value="U" />Fun&ccedil;&atilde;o
                                     </label>
                                 </div>
                             </div>
@@ -56,14 +56,14 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_tipo_menu">
-                            <label class="control-label" for="tipo_menu">Tipo Menu</label>
+                            <label class="control-label" for=".tipo-menu">Tipo Menu <i class="icon-question-sign" id="helpTipoMenuField"></i></label>
                             <div class="row" style="margin-left: 0px;">
                                 <div class="btn-group" data-toggle="buttons">
-                                    <label class="btn btn-primary">
-                                        <input type="radio" id="tipo_menu_listagem" class="tipo-menu" name="tipo_menu_listagem" value="L" />Listagem
+                                    <label class="btn btn-primary active">
+                                        <input type="radio" id="tipo_menu_listagem" class="tipo-menu" name="tipo_menu" checked="checked" value="L" />Listagem
                                     </label>
                                     <label class="btn btn-primary">
-                                        <input type="radio" id="tipo_menu_formulario" class="tipo-menu" name="tipo_menu_formulario" value="F" />Formul&aacute;rio
+                                        <input type="radio" id="tipo_menu_formulario" class="tipo-menu" name="tipo_menu" value="F" />Formul&aacute;rio
                                     </label>
                                 </div>
                             </div>
@@ -73,13 +73,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_nome_action">
-                            <label class="control-label" for="nome_action">Nome *</label>
+                            <label class="control-label" for="nome_action">Nome * <i class="icon-question-sign" id="helpNomeField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="nome_action" id="nome_action" value="<?php print @$this->oAction->nome_action ?>" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_id_action">
-                            <label class="control-label" for="id_action">C&oacute;digo identificador *</label>
+                            <label class="control-label" for="id_action">C&oacute;digo identificador * <i class="icon-question-sign" id="helpCodigoIdentificadorField"></i></label>
                             <input type="text" class="form-control" maxlength="50" name="id_action" id="id_action" value="<?php print @$this->oAction->id_action ?>" />
                         </div>
                     </div>
@@ -87,13 +87,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_rel_controller">
-                            <label class="control-label" for="rel_controller">Nome Controlador</label>
+                            <label class="control-label" for="rel_controller">Nome Controlador <i class="icon-question-sign" id="helpNomeControladorField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="rel_controller" id="rel_controller" value="<?php print @$this->oAction->rel_controller ?>" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_rel_action">
-                            <label class="control-label" for="rel_action">Nome A&ccedil;&atilde;o</label>
+                            <label class="control-label" for="rel_action">Nome A&ccedil;&atilde;o <i class="icon-question-sign" id="helpNomeAcaoField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="rel_action" id="rel_action" value="<?php print @$this->oAction->rel_action ?>" />
                         </div>
                     </div>
@@ -101,13 +101,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_class_botao">
-                            <label class="control-label" for="class_botao">Classe bot&atilde;o</label>
+                            <label class="control-label" for="class_botao">Classe bot&atilde;o <i class="icon-question-sign" id="helpClasseBotaoField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_class_icone">
-                            <label class="control-label" for="class_icone">Classe icone</label>
+                            <label class="control-label" for="class_icone">Classe icone <i class="icon-question-sign" id="helpClasseIconeField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="class_icone" id="class_icone" value="<?php print @$this->oAction->class_icone ?>" />
                         </div>
                     </div>
@@ -115,13 +115,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="descricao_action">
-                            <label class="control-label" for="descricao_action">Descri&ccedil;&atilde;o</label>
+                            <label class="control-label" for="descricao_action">Descri&ccedil;&atilde;o <i class="icon-question-sign" id="helpDescricaoField"></i></label>
                             <input type="text" class="form-control" maxlength="500" name="descricao_action" id="descricao_action" value="<?php print @$this->oAction->descricao_action ?>" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="numero_ordem">
-                            <label class="control-label" for="numero_ordem">Ordem</label>
+                            <label class="control-label" for="numero_ordem">Ordem <i class="icon-question-sign" id="helpOrdemField"></i></label>
                             <input type="text" class="form-control" maxlength="10" name="numero_ordem" id="numero_ordem" value="<?php print @$this->oAction->numero_ordem ?>" />
                         </div>
                     </div>

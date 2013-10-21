@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Descrição:Classe ActionController
+ * Descrição:Classe ActionController. Crud e regras de negocio.
  *
  *
  * @author Fabricio Nogueira
@@ -23,7 +23,6 @@ class ActionController extends MainController {
      * Salvar modulo
      */
     public function salvarActionAction(){
-        Custom_Grass_Debug::debugValue('controller', true);
         /*
          * O formulário deve ser acessado apenas via modal.
          */
@@ -31,40 +30,65 @@ class ActionController extends MainController {
             throw new Exception(Custom_Mensagem::ERRO_ACESSO_INDEVIDO);
         }else{
             $this->disableViewAndLayout();
-            $oAction = new Form_Controller();
+            $oActionForm = new Form_Action();
             if ($this->getRequest()->isPost()) {
                 $vDados = $this->getRequest()->getPost();
-                if ($oAction->isValid($vDados)) {
-                    $oController = new Application_Model_Controller();
-                    $oController->setIdController(
-                        $oAction->getValue('id_controller')
+                if ($oActionForm->isValid($vDados)) {
+                    $oAction = new Application_Model_Action();
+                    /*
+                     * Objects sets
+                     */
+                    $oAction->setFkController(
+                        $oActionForm->getValue('fk_controller')
                     );
-                    $oController->setCodigoController(
-                        $oAction->getValue('codigo_controller')
+                    $oAction->setCodigoAction(
+                        $oActionForm->getValue('codigo_action')
                     );
-                    $oController->setNomeController(
-                        $oAction->getValue('nome_controller')
+                    $oAction->setTipoAction(
+                        $oActionForm->getValue('tipo_action')
                     );
-                    $oController->setDescricaoController(
-                        $oAction->getValue('descricao_controller')
+                    $oAction->setTipoMenu(
+                        $oActionForm->getValue('tipo_menu')
                     );
-                    $oController->setNumeroOrdem(
-                        $oAction->getValue('numero_ordem')
+                    $oAction->setNomeAction(
+                        $oActionForm->getValue('nome_action')
                     );
-                    $oController->setDataBloqueio(
-                        $oAction->getValue('data_bloqueio')
+                    $oAction->setIdAction(
+                        $oActionForm->getValue('id_action')
                     );
-                    if(empty($oAction->getValue('id_controller'))){
+                    $oAction->setRelController(
+                        $oActionForm->getValue('rel_controller')
+                    );
+                    $oAction->setRelController(
+                        $oActionForm->getValue('rel_controller')
+                    );
+                    $oAction->setRelAction(
+                        $oActionForm->getValue('rel_action')
+                    );
+                    $oAction->setClassBotao(
+                        $oActionForm->getValue('class_botao')
+                    );
+                    $oAction->setClassIcone(
+                        $oActionForm->getValue('class_icone')
+                    );
+                    $oAction->setDescricaoAction(
+                        $oActionForm->getValue('descricao_action')
+                    );
+                    $oAction->setNumeroOrdem(
+                        $oActionForm->getValue('numero_ordem')
+                    );
+//                    $codigoAction = $oActionForm->getValue('id_controller');
+//                    if(empty($codigoAction)){
                         /*
                          * Cadastro
                          */
-                        $retorno = $oController->cadastrar();
-                    }else{
+                        $retorno = $oAction->cadastrar();
+//                    }else{
                         /*
                          * Edição
                          */
-                        $retorno = $oController->editar();
-                    }
+//                        $retorno = $oAction->editar();
+//                    }
                     if(!$retorno){
                         $this->_helper->flashMessenger->addMessage('
                             <div class="alert alert-danger">
@@ -81,13 +105,13 @@ class ActionController extends MainController {
                     /*
                      * Redirecionamento para a listagem
                      */
-                    $this->_helper->redirector('controller');
+                    $this->_redirect('/administrativo/action');
                 }else{
                     /*
                      * Retorna para a listagem os erros não validados por js que
                      * foram encontrados pelo zend form.
                      */
-                    foreach ($oAction->getMessages() as $campo => $valor) {
+                    foreach ($oActionForm->getMessages() as $campo => $valor) {
                         $nomeCampo = strstr($campo,'_',true) ;
                         foreach ($valor as $mensagem) {
                             $erros .='<i class="icon-caret-right"></i> Campo: <b>'.strtoupper($nomeCampo).'</b> Mensagem: '.$mensagem.'. <br />';
@@ -101,7 +125,7 @@ class ActionController extends MainController {
                     /*
                      * Redirecionamento para a listagem
                      */
-                    $this->_helper->redirector('controller');
+                    $this->_redirect('/administrativo/action');
                 }
             }
         }

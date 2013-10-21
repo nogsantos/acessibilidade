@@ -17,7 +17,7 @@
     <div class="panel-body">        
         <div class="row-fluid">
             <div class="alert alert-danger" style="display: none;"></div>
-            <form id="formController" role="form" action="<?php echo $this->url(array('controller' =>'administrativo','action'=>'salvar.controller'))?>" method="POST">
+            <form id="formController" role="form" action="<?php echo $this->url(array('controller' =>'controlador','action'=>'salvar'))?>" method="POST">
                 <input type="hidden" name="id_controller" value="<?php print @$this->oController->id_controller ?>" />
                 <div class="form-group" id="div_codigo_controller">
                     <label class="control-label" for="codigo_controller">C&oacute;digo *</label>
