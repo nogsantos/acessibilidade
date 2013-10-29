@@ -23,9 +23,9 @@ class Form_Action extends Zend_Form {
         $id_action = new Zend_Form_Element_Text('id_action');
         $id_action->addFilter('StripTags')
                   ->addFilter('StringTrim')
-                  ->addValidator('StringLength', true, array(0,50))
-                  ->addValidator('NotEmpty')
-                    
+                  ->addValidator('StringLength', true, array(1,50))
+                  ->addValidator('NotEmpty', false,array('messages'=>array('isEmpty'=>'Campo Obrigat&oacute;rio')))
+                  ->setRequired(true)
         ;
         /*
          * codigo_action
@@ -33,8 +33,9 @@ class Form_Action extends Zend_Form {
         $codigo_action = new Zend_Form_Element_Text('codigo_action');
         $codigo_action->addFilter('StripTags')
                       ->addFilter('StringTrim')
-                      ->addValidator('StringLength', true, array(0,250))
-                      ->addValidator('NotEmpty')
+                      ->addValidator('StringLength', true, array(1,250))
+                      ->addValidator('NotEmpty', false,array('messages'=>array('isEmpty'=>'Campo Obrigat&oacute;rio')))
+                      ->setRequired(true)
         ;
         /*
          * rel_controller
@@ -74,7 +75,9 @@ class Form_Action extends Zend_Form {
         $nome_action = new Zend_Form_Element_Text('nome_action');
         $nome_action->addFilter('StripTags')
                     ->addFilter('StringTrim')
-                    ->addValidator('StringLength', true, array(0,300))
+                    ->addValidator('StringLength', true, array(1,300))
+                    ->addValidator('NotEmpty', false,array('messages'=>array('isEmpty'=>'Campo Obrigat&oacute;rio')))
+                    ->setRequired(true)
         ;
         /*
          * tipo_action
@@ -107,6 +110,7 @@ class Form_Action extends Zend_Form {
         $numero_ordem->addFilter('StripTags')
                      ->addFilter('StringTrim')
                      ->addValidator('Digits')
+                     ->addErrorMessage('Somente n&uacute;meros')
         ;
         /*
          * data_bloqueio

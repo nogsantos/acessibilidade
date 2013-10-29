@@ -20,7 +20,7 @@ class ActionController extends MainController {
         parent::init();
     }
     /**
-     * Salvar modulo
+     * Salvar Action
      */
     public function salvarActionAction(){
         /*

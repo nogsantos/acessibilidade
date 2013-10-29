@@ -20,6 +20,7 @@ class Form_Controller extends Zend_Form {
         $id_controller->addFilter('StripTags')
                       ->addFilter('StringTrim')
                       ->addValidator('Digits')
+                      ->addErrorMessage('Somente n&uacute;meros')
         ;
         /*
          * codigo_controller
@@ -29,7 +30,7 @@ class Form_Controller extends Zend_Form {
                           ->addFilter('StripTags')
                           ->addFilter('StringTrim')
                           ->addValidator('StringLength', true, array(1,250))
-                          ->addValidator('NotEmpty')
+                          ->addValidator('NotEmpty', false,array('messages'=>array('isEmpty'=>'Campo Obrigat&oacute;rio')))
         ;
         /*
          * nome_controller
@@ -39,7 +40,7 @@ class Form_Controller extends Zend_Form {
                         ->addFilter('StripTags')
                         ->addFilter('StringTrim')
                         ->addValidator('StringLength', true, array(1,250))
-                        ->addValidator('NotEmpty')
+                        ->addValidator('NotEmpty', false,array('messages'=>array('isEmpty'=>'Campo Obrigat&oacute;rio')))
         ;
         /*
          * descricao_controller
@@ -56,6 +57,7 @@ class Form_Controller extends Zend_Form {
         $numero_ordem->addFilter('StripTags')
                      ->addFilter('StringTrim')
                      ->addValidator('Digits')
+                     ->addErrorMessage('Somente n&uacute;meros')
         ;
         /*
          * data_bloqueio
