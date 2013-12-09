@@ -3,38 +3,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" xml:lang="pt-br">    
     <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>e-Comerce</title>
+        <title>e-Comerce - P&aacute;gina principal</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/carousel.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="css/default.css" />    
+        <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-theme.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/default.css" />
     </head>
     <body>
-        <div class="row" id="barra_acessibilidade">
+        <div class="row" id="barra_acessibilidade"><!--inicio barra acessibilidade-->
             <div class="container" id="funcionalidades" title="Barra de acessibilidade">
-                <div class="col-md-1 menu-acessibilidade" id="diminuir_fonte" title="Bot&atilde;o Diminuir fonte">
-                    <a id="bt_diminuir_fonte" href="#diminuir_fonte">Diminuir fonte</a>
-                </div>
-                <div class="col-md-1 menu-acessibilidade" id="normal_fonte" title="Bot&atilde;o Fonte Original">
-                    <a id="bt_diminuir_fonte" href="#normal_fonte">Normal fonte</a>
-                </div>
-                <div class="col-md-1 menu-acessibilidade" id="aumentar_fonte" title="Bot&atilde;o Aumentar fonte">
-                    <a id="bt_diminuir_fonte" href="#aumentar_fonte">Aumentar fonte</a>
+                <div class="col-md-4">
+                    <ul class="in-line">
+                        <li title="Bot&atilde;o Diminuir fonte"><a id="bt_diminuir_fonte" href="#diminuir_fonte"><i class="fa fa-font"></i><i class="fa fa-minus-circle"></i></a></li>
+                        <li title="Bot&atilde;o Fonte Original"><a id="bt_diminuir_fonte" href="#normal_fonte"><i class="fa fa-font"></i></a></li>
+                        <li title="Bot&atilde;o Aumentar fonte"><a id="bt_diminuir_fonte" href="#aumentar_fonte"><i class="fa fa-font"></i><i class="fa fa-plus-circle"></i></a></li>
+                    </ul>
                 </div>
                 <div class="col-md-8">
-                    <div class="row">&nbsp;</div>
                     <div class="row pull-right" id="menu_accessibility" title="&Acirc;ncora de acessibilidade">
-                        <ul>
+                        <ul class="in-line">
                             <li title="Ir para listagem de produtos em destaque"><a href="#produtos_destaque" accesskey="1">Produtos em destaque [1]</a></li>
                             <li title="Ir para listagem de produtos"><a href="#produtos_ref" accesskey="2">Produtos [2]</a></li>
-                            <li title="Ir para menu principal"><a href="#menu_ref" accesskey="3">Menu [3]</a></li>
+                            <li title="Ir para menu principal"><a href="#menu" accesskey="3">Menu [3]</a></li>
                             <li title="Ir para campo de busca"><a href="#txt_busca" accesskey="4">Pesquisa [4]</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
+        </div><!--fim barra acessibilidade-->
+        <div class="row" id="barra_do_usuario">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="mailto:televendas@ecomerce.com" title="Envie-nos um email">Tele vendas 4005-5000</a>
+                    </div>
+                    <div class="col-md-8">
+                        <form id="form_login" method="post" action="" class="form-inline">
+                            <div class="form-group">
+                                <h6>Login do usu&aacute;rio</h6>
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="usuario">Usu&aacute;rio</label>
+                                <input class="form-control" type="text" id="usuario" name="usuario" placeholder="Usu&aacute;rio" />
+                            </div>
+                            <div class="form-group">
+                                <label class="sr-only" for="senha">Senha</label>
+                                <input class="form-control" type="password" id="senha" name="senha" placeholder="Senha" />
+                            </div>
+                            <button type="submit" class="btn btn-default">Log-in</button>
+                        </form>
+                    </div>
+                    <div class="col-md-2 pull-right">
+                        <div class="btn-group">
+                            <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> Bem vindo</a>
+                            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="fa fa-caret-down"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Atualizar Dados</a></li>
+                                <li><a href="#"><i class="fa fa-archive fa-fw"></i> Meus pedidos</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#"><i class="i"></i> Lista de desejos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row" id="topo">
+        <div class="row" id="topo"><!--inicio topo-->
             <div class="container">
                 <div class="masthead">
                     <div class="row">
@@ -43,11 +80,16 @@
                                 <a href="index.xhtml">Meu e-Comerce acess&iacute;vel</a>
                             </h1>
                         </div>
+                        <div class="col-md-8 pull-right">
+                            <div class="row pull-right" id="carrinho_de_compras" title="Carrinho de compras">
+                                <i class="fa fa-shopping-cart fa-5x fa-fw"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" id="carousel">
+        </div><!--fim topo-->
+        <div class="row" id="carousel"><!--incio carousel-->
             <div id="myCarousel" class="carousel slide" data-ride="carousel" title="Produtos em destaque">
                 <ol class="carousel-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -89,8 +131,8 @@
                 <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
                 <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
-        </div>
-        <div class="row" id="menu">
+        </div><!--fim carousel-->
+        <div class="row" id="menu"><!--incio menu-->
             <div class="navbar navbar-default" role="navigation">
                 <div class="container">
                     <div class="navbar-header">
@@ -103,27 +145,24 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li class="active"><a href="#"><i class="fa fa-home"></i> P&aacute;gina principal</a></li>
+                            <li><a href="informatica"><i class="fa fa-laptop"></i> Inform&aacute;tica</a></li>
+                            <li><a href="telefonia"><i class="fa fa-mobile"></i> Telefonia</a></li>
+                            <li><a href="passagens"><i class="fa fa-plane"></i> Passagens Aereas</a></li>
+                            <li><a href="trofeus"><i class="fa fa-trophy"></i> Trofeus</a></li>
+                            <li><a href="fotografia"><i class="fa fa-camera-retro"></i> Fotografia</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-music"></i>Musica <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header">Nav header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                    <li><a href="#"><i class="fa fa-microphone"></i> Microfones</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" id="busca_central" title="Buscar produtos">
+        </div><!--fim menu-->
+        <div class="row" id="busca_central" title="Buscar produtos"><!--inicio barra de busca-->
             <div class="container">
                 <form id="form_busca_principal" action="#" method="POST" title="Digite sua busca" role="form">
                     <div class="input-group form-group">
@@ -134,8 +173,8 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="row" id="produtos">
+        </div><!--fim barra de busca-->
+        <div class="row" id="produtos"><!--inicio conteudo-->
             <div class="container" id="conteudo">
                 <div class="container marketing">
                     <h2>Produtos em destaque</h2>
@@ -162,8 +201,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row" id="rodape">
+        </div><!--fim conteudo-->
+        <div class="row" id="rodape"><!--inicio rodape-->
             <div class="container">
                 <div class="row">
                     <h6>Atendimento</h6>
@@ -183,8 +222,8 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="row" id="fechamento_rodape">
+        </div><!--fim rodape-->
+        <div class="row" id="fechamento_rodape"><!--inicio fechamento da pagina-->
             <div class="container">
                 <div class="col-lg-6 pull-left">
                     <h6>Formas de pagamento</h6>
@@ -193,16 +232,16 @@
                 <div class="col-lg-6 pull-right" id="certificados">
                     <h6>Certificados</h6>
                     <div class="row">
-                        <ul>
-                            <li title="Ir para galeria de pr&ecirc;mios"><a href="#galeria_premios" id="galeria_premios" class="certificados_marcas">Galeria de pr&ecirc;mios</a></li>
-                            <li title="Certificado digital"><a href="#certificado_digital" id="certificado_digital" class="certificados_marcas">Certificado Digital</a></li>
-                            <li title="Internet Segura"><a href="#internet_segura" id="internet_segura" class="certificados_marcas">Internet Segura</a></li>
-                            <li title="Site blindado"><a href="#site_blindado" id="site_blindado" class="certificados_marcas">Site Blindado</a></li>
+                        <ul class="in-line certificados_marcas">
+                            <li title="Ir para galeria de pr&ecirc;mios"><a href="#galeria_premios" id="galeria_premios" >Galeria de pr&ecirc;mios</a></li>
+                            <li title="Certificado digital"><a href="#certificado_digital" id="certificado_digital">Certificado Digital</a></li>
+                            <li title="Internet Segura"><a href="#internet_segura" id="internet_segura">Internet Segura</a></li>
+                            <li title="Site blindado"><a href="#site_blindado" id="site_blindado">Site Blindado</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><!--fim fechamento da pagina-->
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
     </body>
