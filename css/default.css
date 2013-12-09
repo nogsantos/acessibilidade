@@ -1,6 +1,4 @@
 *{
-    margin: 0;
-    padding: 0;
     font-family: Arial;
     font-size: 14px;
     color: #333333;
@@ -69,7 +67,7 @@ body{
 #menu_accessibility ul li a {
     text-decoration: none;
     padding: .2em 1em;
-    color: #fff;
+    color: #666;
 }
 
 #menu_accessibility ul li a:hover {
@@ -77,21 +75,21 @@ body{
     background-color: #369;
 }
 
-#footer {
+#rodape {
     background: url("../img/stressed_linen.png") repeat scroll left top rgba(0, 0, 0, 0);    
     color: White;
     position: relative;
     height: 20em;
 }
 
-#footer_close .container{
+#fechamento_rodape .container{
     background-color: #FFF;
     height: 100px;
     min-height: 100px;
     margin-bottom: 0px;
 }
 
-#footer_close h1 a{
+#fechamento_rodape h1 a{
     background: url("../img/logo.jpg") no-repeat scroll center center rgba(0, 0, 0, 0);
     display: block;
     font-size: 0;
@@ -100,17 +98,17 @@ body{
     width: 340px;
 }
 
-#footer_close ul{
+#fechamento_rodape ul{
     margin: 0;
     padding: 0;
     list-style-type: none;
     text-align: center;
 }
-#footer_close ul li { 
+#fechamento_rodape ul li { 
     display: inline;
 }
 
-#footer_close ul li a {
+#fechamento_rodape ul li a {
     text-decoration: none;
     padding: 1.0em 5em;
     color: #fff;
