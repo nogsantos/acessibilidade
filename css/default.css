@@ -44,8 +44,12 @@ body{
     text-align: center;
 }
 #topo{
-    /*background: url("../img/micro_carbon_@2X.png") repeat scroll left top rgba(0, 0, 0, 0);*/    
-    background-color: #3276B1;
+    background-color: #E91100;
+}
+#topo .container{
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 #barra_do_usuario{
     margin: 1px 0 0 5px;
@@ -53,26 +57,39 @@ body{
 #barra_do_usuario .container{
     padding: 10px;
     background-color: #FFF;
-    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 .topo_info{
     color: #FFF !important; 
 }
 #topo h1 a{
-    background: url("../img/logo.jpg") no-repeat scroll center center rgba(0, 0, 0, 0);
+    background: url("../img/logoHeader.png") no-repeat scroll center center rgba(0, 0, 0, 0);
     display: block;
     font-size: 0;
     height: 137px;
     text-indent: -20000px;
     width: 340px;
 }
+#produto-destaque{
+    background-color: #FFF;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    margin: 5px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+}
+#santa-hat{
+    background: url("../img/santacornerhat.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    width: 128px;
+    height: 128px;
+    position: relative;
+    float: left;
+}
 .in-line{
     margin: 0;
     padding: 0;
     list-style-type: none;
-    /*text-align: center;*/
 }
 .in-line li{
     display: inline; 
@@ -100,33 +117,53 @@ body{
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
 }
-#fechamento_rodape h1 a{
-    background: url("../img/logo.jpg") no-repeat scroll center center rgba(0, 0, 0, 0);
-    display: block;
-    font-size: 0;
-    height: 137px;
-    text-indent: -20000px;
-    width: 340px;
+.img-certificado{
+    background-position: center !important;
 }
-.certificados_marcas li{
-    height: 37px;
-    width: 70px;
-    text-indent: -20000px;
-    text-align: center;
+.text-galeria-premios{
+    color: transparent;
 }
 #galeria_premios{
     background: url("../img/icon-premio.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-    background-position: center;
 }
 #certificado_digital{
     background: url("../img/icon-certisign.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-    background-position: center;
 }
 #internet_segura{
     background: url("../img/icon-internet-segura.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-    background-position: center;
 }
 #site_blindado{
     background: url("../img/icon-site-blindado.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-    background-position: center;
+}
+
+.bt-user-submit{
+    margin-top: 25px;
+}
+.rotated {
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+#carrinho_de_compras{
+    position: relative;
+    float: left;
+    margin-top: 60px;
+    right: 10px;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#carrinho_de_compras .carrinho-quantidade{
+    color: #FFF !important;
+    font-size: 4.3em;
+    font-weight: bold;
+}
+#carrinho_de_compras .carrinho-descricao{
+    color: #FFF !important;
 }
