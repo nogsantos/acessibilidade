@@ -1,5 +1,5 @@
 *{
-    font-family: Arial;
+    font-family: Arial, Verdana, Times;
     font-size: 1em;
     color: #333333;
 }
@@ -8,7 +8,7 @@ body{
     padding-bottom: 10px;
     overflow-x: hidden;
 }
-#conteudo{
+#conteudo .container{
     background-color: #FFF;
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
@@ -20,13 +20,6 @@ body{
     -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     padding: 10px;
-}
-.menu-acessibilidade{
-    width: 51px;
-    height: 50px;
-    display: block;
-    height: 48px;
-    text-indent: -20000px;
 }
 #diminuir_fonte{
     background: url("../img/decreaseFont.jpg") no-repeat scroll left top rgba(0, 0, 0, 0);
@@ -71,13 +64,14 @@ body{
 }
 #produto-destaque{
     background-color: #FFF;
-    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
-    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 1), 0 0 60px rgba(0, 0, 0, 0.1) inset;
-    margin: 5px;
+    -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 5px 20px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 1), 0 0 5px rgba(0, 0, 0, 0.1) inset;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
+    margin: 5px;
+    padding: 5px;
 }
 #santa-hat{
     background: url("../img/santacornerhat.png") no-repeat scroll center center rgba(0, 0, 0, 0);
@@ -106,12 +100,9 @@ body{
     background: url("../img/stressed_linen.png") repeat scroll left top rgba(0, 0, 0, 0);    
     color: #FFF;
     position: relative;
-    height: 20em;
 }
-#fechamento_rodape .container{
+#fechamento-rodape .container{
     background-color: #FFF;
-    height: 100px;
-    min-height: 100px;
     margin-bottom: 0px;
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.07) inset;
@@ -123,19 +114,6 @@ body{
 .text-galeria-premios{
     color: transparent;
 }
-#galeria_premios{
-    background: url("../img/icon-premio.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-}
-#certificado_digital{
-    background: url("../img/icon-certisign.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-}
-#internet_segura{
-    background: url("../img/icon-internet-segura.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-}
-#site_blindado{
-    background: url("../img/icon-site-blindado.gif") no-repeat scroll left top rgba(0, 0, 0, 0);
-}
-
 .bt-user-submit{
     margin-top: 25px;
 }
@@ -146,11 +124,10 @@ body{
     -o-transform: rotate(5deg);
     transform: rotate(5deg);
 }
-#carrinho_de_compras{
+#carrinho-de-compras{
     position: relative;
     float: left;
-    margin-top: 60px;
-    right: 10px;
+    margin-top: 40px;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -159,11 +136,49 @@ body{
     border-radius: 10px;
 }
 
-#carrinho_de_compras .carrinho-quantidade{
+#carrinho-de-compras .carrinho-quantidade{
     color: #FFF !important;
     font-size: 4.3em;
     font-weight: bold;
 }
-#carrinho_de_compras .carrinho-descricao{
+#carrinho-de-compras .carrinho-descricao{
     color: #FFF !important;
+    font-size: 1.5em;
+}
+#rodape{
+    padding: 5px;
+}
+
+#rodape h3, 
+#rodape p,
+#rodape strong, 
+#rodape dd{
+    color: #FFF !important;
+}
+
+#rodape a{
+    color: #E91100 !important;
+}
+#rodape a:visited{
+    color: #DC2D3C !important;
+}
+
+#barra-do-usuario .container .col-lg-2 .col-xs-9 a{
+    float: left;
+    left: 25px;
+    margin-top: 10px;
+    position: relative;
+}
+#barra-do-usuario .container .col-lg-2 .btn{
+    float: left;
+    margin: 25px 0 0 25px;
+    position: relative;
+}
+.apresentacao-produto{
+    padding: 10px;
+    margin: 5px;
+}
+
+.border-1{
+    border: 1px solid #F0F0F0;
 }
