@@ -140,206 +140,201 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Meu carrinho</li>
+                    <li><a href="carrinho.html">Meu carrinho</a></li>
+                    <li class="active">Cadastro</li>
                 </ol>
             </div>
         </div>
         <div class="row" id="conteudo"><!--inicio conteudo-->
             <div class="container">
-                <h2>Meu carrinho</h2>
+                <h2>Quero ser cliente</h2>
                 <hr class="featurette-divider" />
-                <form id="form-carrinho" class="form-inline" action="#" method="post">
-                    <table class="table table-bordered">
-                        <caption>Itens do carrinho de compras</caption>
-                        <thead>
-                            <tr class="active">
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor Unit&aacute;rio</th>
-                                <th>Valor Total</th>
-                                <th>Excluir</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr class="warning">
-                                <td colspan="3" class="text-right">
-                                    Subtotal de produtos
-                                </td>
-                                <td class="text-left">
-                                    <strong>R$ 1.750,00</strong>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr class="warning">
-                                <td colspan="5" class="text-left">
-                                    <div class="col-md-1">
-                                        <i class="fa fa-gift fa-4x"></i>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                        <label class="control-label" for="cupom-desconto">Cupom de desconto</label>
-                                            <input type="text" class="form-control input-lg" id="cupom-desconto" maxlength="10" value="" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input type="button" class="btn btn-info btn-lg" value="Calcular" />
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="warning">
-                                <td colspan="3" class="text-right">
-                                    Total de produtos
-                                </td>
-                                <td class="text-left">
-                                    <strong>R$ 1.750,00</strong>
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                           <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
-                                    </div>
-                                    <div class="col-xs-10">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
-                                    </div>
-                                    <div class="col-xs-10">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
-                                    </div>
-                                    <div class="col-xs-10">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
-                                    </div>
-                                    <div class="col-xs-10">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
-                                    </div>
-                                    <div class="col-xs-10">
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="col-xs-5">
-                                        <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    R$ 350,00
-                                </td>
-                                <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="row" id="div-fechamento-carrinho">
-                        <div class="col-lg-6">
-                            <a href="#comprar_mais" class="btn btn-warning btn-lg pull-left" title="Comprar mais produtos">Comprar mais produtos</a>
+                <form id="form-cadastro" class="form-horizontal" action="#" method="post">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="tipo-pessoa" id="tipo-pessoa-fisica" alt="Tipo de pessoa f&iacute;sica" value="pessoa-fisica" checked="checked" />
+                            Pessoa f&iacute;sica
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="tipo-pessoa" id="tipo-pessoa-juridica" alt="Tipo de pessoa jur&iacute;dica" value="pessoa-juridica" />
+                            Pessoa jur&iacute;dica
+                        </label>
+                    </div>
+                    <fieldset>
+                        <legend>Dados pessoais</legend>
+                        <div class="form-group">
+                            <label for="txt-nome" class="col-sm-2 control-label"><strong>Nome *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-nome" alt="Nome - Campo obrigat&oacute;rio" maxlength="250" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label for="txt-sobrenome" class="col-sm-2 control-label"><strong>Sobre-nome *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-sobrenome" alt="Sobrenome - Campo obrigat&oacute;rio" maxlength="250" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-forma-tratamento" class="col-sm-2 control-label">Forma de tratamento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-forma-tratamento" alt="Forma de tratamento - Campo opcional" maxlength="50" value="" />
+                                <span class="help-block">Campo opcional</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-cpf" class="col-sm-2 control-label"><strong>Cpf *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-cpf" align="CPF - formato xxx.xxx.xxx-xx - Campo obrigat&oacute;rio" maxlength="14" value="" />
+                                <span class="help-block">Formato xxx.xxx.xxx-xx - Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-dt-nascimento" class="col-sm-2 control-label"><strong>Data de nascimento *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-dt-nascimento" alt="Data de nascimento - formato dd/mm/aaaa - Campo obrigat&oacute;rio" maxlength="10" value="" />
+                                <span class="help-block">Formato dd/mm/aaaa - Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="col-sm-2 control-label"><strong>Sexo *</strong></label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="sexo" id="sexo-masculino" alt="Sexo masculino - Campo para sele&ccedil;&atilde;o obrigat&oacute;rio" value="masculino" /> Masculino
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="sexo" id="sexo-feminino" alt="Sexo feminino - Campo para sele&ccedil;&atilde;o obrigat&oacute;rio" value="feminino" /> Feminino
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Endere&ccedil;o</legend>
+                        <div class="form-group">
+                            <label for="txt-cep" class="col-sm-2 control-label"><strong>Cep *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-cep" alt="Cep - formato xxxxx-xxx - Campo obrigat&oacute;rio" maxlength="9" value="" />
+                                <span class="help-block">Formato xxxxx-xxx - Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-endereco" class="col-sm-2 control-label"><strong>Endere&ccedil;o *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-endereco" alt="Endere&ccedil;o - Campo obrigat&oacute;rio" maxlength="250" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-numero" class="col-sm-2 control-label"><strong>N&uacute;mero *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-numero" alt="N&uacute;mero - Campo obrigat&oacute;rio" maxlength="10" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-complemento" class="col-sm-2 control-label">Complemento</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-complemento" alt="Complemento" maxlength="500" value="" />
+                                <span class="help-block">Campo opcional</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-bairro" class="col-sm-2 control-label"><strong>Bairro *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-bairro" alt="Bairro - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-cidade" class="col-sm-2 control-label"><strong>Cidade *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-cidade" alt="Cidade - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-estado" class="col-sm-2 control-label"><strong>Estado *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-estado" alt="Estado - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-pais" class="col-sm-2 control-label"><strong>Pa&iacute;s *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-pais" alt="Pa&iacute;s - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-referencia" class="col-sm-2 control-label">Informa&ccedil;&otilde;es de refer&ecirc;ncia</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="txt-referencia" name="txt-referencia" title="Informa&ccedil;&otilde;es de refer&ecirc;ncia" rows="3"></textarea>
+                                <span class="help-block">Campo opcional</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Dados de acesso</legend>
+                        <div class="form-group">
+                            <label for="txt-email" class="col-sm-2 control-label"><strong>Email *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-email" alt="Email - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-confirmar-email" class="col-sm-2 control-label"><strong>Confirme o Email *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txt-confirmar-email" alt="Confirmar o Email - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-senha" class="col-sm-2 control-label"><strong>Senha *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="txt-senha" alt="Senha - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txt-confirmar-senha" class="col-sm-2 control-label"><strong>Confirme a senha *</strong></label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="txt-confirmar-senha" alt="Confirmar a senha - Campo obrigat&oacute;rio" maxlength="100" value="" />
+                                <span class="help-block">Campo obrigat&oacute;rio</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="select-conheceu" class="col-sm-2 control-label">Como nos conheceu</label>
+                            <div class="col-sm-10">
+                                <select id="select-conheceu" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Internet">Internet</option>
+                                    <option value="Jornal">Jornal</option>
+                                    <option value="Folheto">Folheto</option>
+                                    <option value="indicacao">Indica&ccedil;&atilde;o de amigos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-10 pull-right">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="receber-avisos" value="aviso" />Desejo receber avisos de ofertas de produtos e servi&ccedil;os
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="receber-ofertas" value="ofertas" />Desejo receber avisos de ofertas por SMS gr&aacute;tis no celular
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row" id="div-fechamento-cadastro">
                         <div class="col-lg-6">
-                            <a href="#concluir_compra" class="btn btn-success btn-lg pull-right" title="Concluir compra">Concluir compra</a>
+                            <a href="#salvar-cadastro" class="btn btn-success btn-lg" title="Salvar cadastro">Salvar cadastro</a>
                         </div>
                     </div>
                 </form>
