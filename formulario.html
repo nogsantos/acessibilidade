@@ -5,6 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>e-Comerce Compra Certa - Meu carrinho</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/rvfs.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-theme.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />
@@ -21,13 +22,7 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <ul class="in-line">
-                        <li title="Aumentar letra"><a id="bt_aumentar_fonte" href="#aumentar_fonte"><i class="fa fa-font"></i><i class="fa fa-plus"></i> aumentar letra</a></li>
-                        <li title="Diminuir letra"><a id="bt_diminuir_fonte" href="#diminuir_fonte"><i class="fa fa-font"></i><i class="fa fa-minus"></i> diminuir letra</a></li>
-                        <li title="Tamanho normal"><a id="bt_fonte_padrao" href="#fonte_padrao"><i class="fa fa-font"></i> tamanho normal</a></li>
-                        <li title="Alto contraste"><a id="bt_auto_contraste" href="#alto_contraste"><i class="fa fa-adjust"></i> alto contraste</a></li>
-                        <li title="P&aacute;gina de acessibilidade"><a id="bt_pg_acessibilidade" href="#alto_contraste"><i class="fa fa-wheelchair"></i> p&aacute;gina de acessibilidade</a></li>
-                    </ul>
+                    <div id="rvfs-controllers" class="fontsize-controllers group"></div>
                 </div>
             </div>
         </div><!--fim barra acessibilidade-->
@@ -39,27 +34,27 @@
                             <img src="img/receptionist.png" alt="Para tele atendimento ligue para o telefone 4005-5000" title="Para tele atendimento ligue para o telefone 4005-5000" />
                         </div>
                         <div class="col-xs-9">
-                            <a href="#formulario-contato" title="Envie-nos uma mensagem">Tele vendas 4005-5000</a>
+                            <a href="#formulario-contato" class="texto" title="Envie-nos uma mensagem">Tele vendas 4005-5000</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <form id="form_login" method="post" action="#autenticacao" class="form-inline" title="Formul&aacute;rio para autentica&ccedil;&atilde;o no site.">
                         <div class="form-group">
-                            <label for="usuario">Usu&aacute;rio</label>
+                            <label class="texto" for="usuario">Usu&aacute;rio</label>
                             <input class="form-control" type="text" id="usuario" name="usuario" />
                         </div>
                         <div class="form-group">
-                            <label for="senha">Senha</label>
+                            <label class="texto" for="senha">Senha</label>
                             <input class="form-control" type="password" id="senha" name="senha"  />
                         </div>
                         <div class="form-group bt-user-submit">
-                            <input type="submit" class="btn btn-success" value="Acessar sua conta" />
+                            <input type="submit" class="btn btn-success texto" title="Acessar sua conta" value="Acessar sua conta" />
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-2">
-                    <a href="formulario.html" class="btn btn-info" title="Novo usu&aacute;rio? Cadastre-se">Cadastre-se</a>
+                    <a href="formulario.html" class="btn btn-info texto" title="Novo usu&aacute;rio? Cadastre-se">Cadastre-se</a>
                 </div>
             </div>
         </div>
@@ -68,21 +63,21 @@
                 <div class="col-lg-4" id="logo">
                     <div id="santa-hat">&nbsp;</div>
                     <h1>
-                        <a href="index.html" title="e-Comerce Compra Certa">e-Comerce Compra Certa</a>
+                        <a href="index.html" class="texto" title="e-Comerce Compra Certa">e-Comerce Compra Certa</a>
                     </h1>
                 </div>
                 <div class="col-lg-6">
                     <div class="col-sm-10" id="produto-destaque">
-                        <div class="col-md-12 text-center"><h5>Oferta destaque</h5></div>
+                        <div class="col-md-12 text-center"><h5 class="texto">Oferta destaque</h5></div>
                         <div class="col-md-6 text-center">
-                            <img src="img/climatizador.gif" alt="Climatizador de Ar Consul Bem Estar Frio" />
+                            <img src="img/climatizador.gif" title="Climatizador de Ar Consul Bem Estar Frio" alt="Climatizador de Ar Consul Bem Estar Frio" />
                         </div>
                         <div class="col-md-6">
-                            <div class="col-sm-12 destaque-titulo">Climatizador de Ar Consul Bem Estar Frio</div>
-                            <div class="col-sm-12 destaque-de"><i>de: R$ 479,00</i></div>
-                            <div class="col-sm-12 destaque-por">por: <strong>R$ 337,00</strong></div>
-                            <div class="col-sm-12 destaque-economia">Economize R$ 142,00</div>
-                            <div class="col-sm-12 destaque-comprar"><a href="#" class="btn btn-success" title="Produto destaque Climatizador de Ar Consul Bem Estar Frio de: R$ 479,00 por R$ 337,00">Comprar</a></div>
+                            <div class="col-sm-12 destaque-titulo texto">Climatizador de Ar Consul Bem Estar Frio</div>
+                            <div class="col-sm-12 destaque-de texto"><i>de: R$ 479,00</i></div>
+                            <div class="col-sm-12 destaque-por texto">por: <strong>R$ 337,00</strong></div>
+                            <div class="col-sm-12 destaque-economia texto">Economize R$ 142,00</div>
+                            <div class="col-sm-12 destaque-comprar texto"><a href="#" class="btn btn-success texto" title="Produto destaque Climatizador de Ar Consul Bem Estar Frio de: R$ 479,00 por R$ 337,00">Comprar</a></div>
                         </div>
                     </div>
                 </div>
@@ -96,7 +91,7 @@
                     </div>
                     <div class="row carrinho-descricao text-center"> Itens no carrinho </div>
                     <div class="row visualizar-carrinho text-center">
-                        <a href="carrinho.html" class="btn btn-default  btn-block" title="Acessar itens do carrinho de compras">Conferir <i class="fa fa-check-square-o"></i></a>
+                        <a href="carrinho.html" class="btn btn-default btn-block texto" title="Acessar itens do carrinho de compras">Conferir <i class="fa fa-check-square-o"></i></a>
                     </div>
                 </div>
             </div>
@@ -106,7 +101,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Alternar Navega&ccedil;&atilde;o</span>
+                            <span class="sr-only texto">Menu para dispositivos m&oacute;veis</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -114,21 +109,21 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav text-center">
-                            <li class="active text-center"><a href="#para_casa"><i class="fa fa-home fa-3x"></i><br />Para sua casa</a></li>
-                            <li class="text-center"><a href="#informatica"><i class="fa fa-laptop fa-3x"></i><br />Inform&aacute;tica</a></li>
-                            <li class="text-center"><a href="#telefonia"><i class="fa fa-mobile fa-3x"></i><br />Telefonia</a></li>
-                            <li class="text-center"><a href="#passagens_aereas"><i class="fa fa-plane fa-3x"></i><br />Passagens A&eacute;reas</a></li>
-                            <li class="text-center"><a href="#utilidades"><i class="fa fa-gift fa-3x"></i><br />Utilidades</a></li>
-                            <li class="text-center"><a href="#jogos"><i class="fa fa-gamepad fa-3x"></i><br />Jogos</a></li>
-                            <li class="text-center"><a href="#alimentacao"><i class="fa fa-cutlery fa-3x"></i><br />Alimenta&ccedil;&atilde;o</a></li>
-                            <li class="text-center"><a href="#fotografia"><i class="fa fa-camera-retro fa-3x"></i><br />Fotografia</a></li>
-                            <li class="text-center"><a href="#cinema"><i class="fa fa-video-camera fa-3x"></i><br />Cinema</a></li>
-                            <li class="text-center"><a href="#ingressos"><i class="fa fa-ticket fa-3x"></i><br />Ingressos</a></li>
+                            <li class="active text-center"><a href="#para_casa" title="Para sua casa"><i class="fa fa-home fa-3x"></i><br />Para sua casa</a></li>
+                            <li class="text-center"><a href="#informatica" title="Inform&aacute;tica"><i class="fa fa-laptop fa-3x"></i><br />Inform&aacute;tica</a></li>
+                            <li class="text-center"><a href="#telefonia" title="Telefonia"><i class="fa fa-mobile fa-3x"></i><br />Telefonia</a></li>
+                            <li class="text-center"><a href="#passagens_aereas" title="Passagens A&eacute;reas"><i class="fa fa-plane fa-3x"></i><br />Passagens A&eacute;reas</a></li>
+                            <li class="text-center"><a href="#utilidades" title="Utilidades"><i class="fa fa-gift fa-3x"></i><br />Utilidades</a></li>
+                            <li class="text-center"><a href="#jogos" title="Jogos"><i class="fa fa-gamepad fa-3x"></i><br />Jogos</a></li>
+                            <li class="text-center"><a href="#alimentacao" title="Alimenta&ccedil;&atilde;o"><i class="fa fa-cutlery fa-3x"></i><br />Alimenta&ccedil;&atilde;o</a></li>
+                            <li class="text-center"><a href="#fotografia" title="Fotografia"><i class="fa fa-camera-retro fa-3x"></i><br />Fotografia</a></li>
+                            <li class="text-center"><a href="#cinema" title="Cinema"><i class="fa fa-video-camera fa-3x"></i><br />Cinema</a></li>
+                            <li class="text-center"><a href="#ingressos" title="Ingressos"><i class="fa fa-ticket fa-3x"></i><br />Ingressos</a></li>
                             <li class="text-center dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-music fa-3x"></i><br />M&uacute;sica <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" title="M&uacute;sica" data-toggle="dropdown"><i class="fa fa-music fa-3x"></i><br />M&uacute;sica <b class="caret"></b></a>
                                 <ul class="dropdown-menu text-left">
-                                    <li><a href="#cantores"><i class="fa fa-microphone"></i> Cantores</a></li>
-                                    <li><a href="#downloads"><i class="fa fa-download"></i> Downloads</a></li>
+                                    <li><a href="#cantores" title="Cantores"><i class="fa fa-microphone"></i> Cantores</a></li>
+                                    <li><a href="#downloads" title="Downloads"><i class="fa fa-download"></i> Downloads</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -146,7 +141,7 @@
             </div>
         </div>
         <div class="row" id="conteudo"><!--inicio conteudo-->
-            <div class="container">
+            <div class="container  texto">
                 <h2>Quero ser cliente</h2>
                 <hr class="featurette-divider" />
                 <form id="form-cadastro" class="form-horizontal" action="#" method="post">
@@ -334,7 +329,7 @@
                     </fieldset>
                     <div class="row" id="div-fechamento-cadastro">
                         <div class="col-lg-6">
-                            <a href="#salvar-cadastro" class="btn btn-success btn-lg" title="Salvar cadastro">Salvar cadastro</a>
+                            <a href="#salvar-cadastro" class="btn btn-success btn-lg texto" title="Salvar cadastro">Salvar cadastro</a>
                         </div>
                     </div>
                 </form>
@@ -384,13 +379,13 @@
                         </ul>
                     </div>
                     <div class="col-lg-3">
-                        <div class="col-md-12">
+                        <div class="col-md-12 texto">
                             <h3>Central de atendimento</h3>
                             <a href="#central_atendimento" title="Central de atendimento">
                                 D&uacute;vidas sobre Cadastro, Pedidos, Formas de pagamento e Prazo de entrega? Clique aqui e tire suas d&aacute;vidas.
                             </a>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 texto">
                             <h3>Televendas</h3>
                             <dl style="padding-top:0">
                                 <dt><strong>4005-5000</strong></dt>
@@ -439,5 +434,8 @@
         </div><!--fim fechamento da pagina-->
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/store.min.js"></script>
+        <script type="text/javascript" src="js/rv-jquery-fontsize-2.0.3.js"></script>
+        <script type="text/javascript" src="js/acessibilidade.js"></script>
     </body>
 </html>

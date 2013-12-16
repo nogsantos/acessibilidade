@@ -1,0 +1,16 @@
+/*
+ * Font size style declarations for each variation.
+ *
+ * Observation: Note that the amount of classes here
+ * rely on how many variations you set on $.rvFontsize() call.
+ * 
+ * This classes are required to make rv font size jquery plugin works.
+ */
+
+.rvfs-1 p, .rvfs-1 li, .rvfs-1 .texto{ font-size: 0.7em !important}
+.rvfs-2 p, .rvfs-2 li, .rvfs-2 .texto{ font-size: 0.8em !important}
+.rvfs-3 p, .rvfs-3 li, .rvfs-3 .texto{ font-size: 0.9em !important}
+.rvfs-4 p, .rvfs-4 li, .rvfs-4 .texto{ font-size: 1em !important}
+.rvfs-5 p, .rvfs-5 li, .rvfs-5 .texto{ font-size: 1.2em !important}
+.rvfs-6 p, .rvfs-6 li, .rvfs-6 .texto{ font-size: 1.3em !important}
+.rvfs-7 p, .rvfs-7 li, .rvfs-7 .texto{ font-size: 1.4em !important}

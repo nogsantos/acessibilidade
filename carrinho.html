@@ -5,13 +5,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <title>e-Comerce Compra Certa - Meu carrinho</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="css/rvfs.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-theme.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="css/default.css" />
     </head>
     <body>
-        <div class="row" id="barra_acessibilidade"><!--inicio barra acessibilidade-->
+       <div class="row" id="barra_acessibilidade"><!--inicio barra acessibilidade-->
             <div class="container" id="funcionalidades" title="Barra de acessibilidade">
                 <div class="row">
                     <ul class="in-line pull-right">
@@ -21,13 +22,7 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <ul class="in-line">
-                        <li title="Aumentar letra"><a id="bt_aumentar_fonte" href="#aumentar_fonte"><i class="fa fa-font"></i><i class="fa fa-plus"></i> aumentar letra</a></li>
-                        <li title="Diminuir letra"><a id="bt_diminuir_fonte" href="#diminuir_fonte"><i class="fa fa-font"></i><i class="fa fa-minus"></i> diminuir letra</a></li>
-                        <li title="Tamanho normal"><a id="bt_fonte_padrao" href="#fonte_padrao"><i class="fa fa-font"></i> tamanho normal</a></li>
-                        <li title="Alto contraste"><a id="bt_auto_contraste" href="#alto_contraste"><i class="fa fa-adjust"></i> alto contraste</a></li>
-                        <li title="P&aacute;gina de acessibilidade"><a id="bt_pg_acessibilidade" href="#alto_contraste"><i class="fa fa-wheelchair"></i> p&aacute;gina de acessibilidade</a></li>
-                    </ul>
+                    <div id="rvfs-controllers" class="fontsize-controllers group"></div>
                 </div>
             </div>
         </div><!--fim barra acessibilidade-->
@@ -39,27 +34,27 @@
                             <img src="img/receptionist.png" alt="Para tele atendimento ligue para o telefone 4005-5000" title="Para tele atendimento ligue para o telefone 4005-5000" />
                         </div>
                         <div class="col-xs-9">
-                            <a href="#formulario-contato" title="Envie-nos uma mensagem">Tele vendas 4005-5000</a>
+                            <a href="#formulario-contato" class="texto" title="Envie-nos uma mensagem">Tele vendas 4005-5000</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <form id="form_login" method="post" action="#autenticacao" class="form-inline" title="Formul&aacute;rio para autentica&ccedil;&atilde;o no site.">
                         <div class="form-group">
-                            <label for="usuario">Usu&aacute;rio</label>
+                            <label class="texto" for="usuario">Usu&aacute;rio</label>
                             <input class="form-control" type="text" id="usuario" name="usuario" />
                         </div>
                         <div class="form-group">
-                            <label for="senha">Senha</label>
+                            <label class="texto" for="senha">Senha</label>
                             <input class="form-control" type="password" id="senha" name="senha"  />
                         </div>
                         <div class="form-group bt-user-submit">
-                            <input type="submit" class="btn btn-success" value="Acessar sua conta" />
+                            <input type="submit" class="btn btn-success texto" title="Acessar sua conta" value="Acessar sua conta" />
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-2">
-                    <a href="formulario.html" class="btn btn-info" title="Novo usu&aacute;rio? Cadastre-se">Cadastre-se</a>
+                    <a href="formulario.html" class="btn btn-info texto" title="Novo usu&aacute;rio? Cadastre-se">Cadastre-se</a>
                 </div>
             </div>
         </div>
@@ -68,21 +63,21 @@
                 <div class="col-lg-4" id="logo">
                     <div id="santa-hat">&nbsp;</div>
                     <h1>
-                        <a href="index.html" title="e-Comerce Compra Certa">e-Comerce Compra Certa</a>
+                        <a href="index.html" class="texto" title="e-Comerce Compra Certa">e-Comerce Compra Certa</a>
                     </h1>
                 </div>
                 <div class="col-lg-6">
                     <div class="col-sm-10" id="produto-destaque">
-                        <div class="col-md-12 text-center"><h5>Oferta destaque</h5></div>
+                        <div class="col-md-12 text-center"><h5 class="texto">Oferta destaque</h5></div>
                         <div class="col-md-6 text-center">
-                            <img src="img/climatizador.gif" alt="Climatizador de Ar Consul Bem Estar Frio" />
+                            <img src="img/climatizador.gif" title="Climatizador de Ar Consul Bem Estar Frio" alt="Climatizador de Ar Consul Bem Estar Frio" />
                         </div>
                         <div class="col-md-6">
-                            <div class="col-sm-12 destaque-titulo">Climatizador de Ar Consul Bem Estar Frio</div>
-                            <div class="col-sm-12 destaque-de"><i>de: R$ 479,00</i></div>
-                            <div class="col-sm-12 destaque-por">por: <strong>R$ 337,00</strong></div>
-                            <div class="col-sm-12 destaque-economia">Economize R$ 142,00</div>
-                            <div class="col-sm-12 destaque-comprar"><a href="#" class="btn btn-success" title="Produto destaque Climatizador de Ar Consul Bem Estar Frio de: R$ 479,00 por R$ 337,00">Comprar</a></div>
+                            <div class="col-sm-12 destaque-titulo texto">Climatizador de Ar Consul Bem Estar Frio</div>
+                            <div class="col-sm-12 destaque-de texto"><i>de: R$ 479,00</i></div>
+                            <div class="col-sm-12 destaque-por texto">por: <strong>R$ 337,00</strong></div>
+                            <div class="col-sm-12 destaque-economia texto">Economize R$ 142,00</div>
+                            <div class="col-sm-12 destaque-comprar texto"><a href="#" class="btn btn-success texto" title="Produto destaque Climatizador de Ar Consul Bem Estar Frio de: R$ 479,00 por R$ 337,00">Comprar</a></div>
                         </div>
                     </div>
                 </div>
@@ -96,7 +91,7 @@
                     </div>
                     <div class="row carrinho-descricao text-center"> Itens no carrinho </div>
                     <div class="row visualizar-carrinho text-center">
-                        <a href="carrinho.html" class="btn btn-default  btn-block" title="Acessar itens do carrinho de compras">Conferir <i class="fa fa-check-square-o"></i></a>
+                        <a href="carrinho.html" class="btn btn-default btn-block texto" title="Acessar itens do carrinho de compras">Conferir <i class="fa fa-check-square-o"></i></a>
                     </div>
                 </div>
             </div>
@@ -106,7 +101,7 @@
                 <div class="container">
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Alternar Navega&ccedil;&atilde;o</span>
+                            <span class="sr-only texto">Menu para dispositivos m&oacute;veis</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -114,21 +109,21 @@
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav text-center">
-                            <li class="active text-center"><a href="#para_casa"><i class="fa fa-home fa-3x"></i><br />Para sua casa</a></li>
-                            <li class="text-center"><a href="#informatica"><i class="fa fa-laptop fa-3x"></i><br />Inform&aacute;tica</a></li>
-                            <li class="text-center"><a href="#telefonia"><i class="fa fa-mobile fa-3x"></i><br />Telefonia</a></li>
-                            <li class="text-center"><a href="#passagens_aereas"><i class="fa fa-plane fa-3x"></i><br />Passagens A&eacute;reas</a></li>
-                            <li class="text-center"><a href="#utilidades"><i class="fa fa-gift fa-3x"></i><br />Utilidades</a></li>
-                            <li class="text-center"><a href="#jogos"><i class="fa fa-gamepad fa-3x"></i><br />Jogos</a></li>
-                            <li class="text-center"><a href="#alimentacao"><i class="fa fa-cutlery fa-3x"></i><br />Alimenta&ccedil;&atilde;o</a></li>
-                            <li class="text-center"><a href="#fotografia"><i class="fa fa-camera-retro fa-3x"></i><br />Fotografia</a></li>
-                            <li class="text-center"><a href="#cinema"><i class="fa fa-video-camera fa-3x"></i><br />Cinema</a></li>
-                            <li class="text-center"><a href="#ingressos"><i class="fa fa-ticket fa-3x"></i><br />Ingressos</a></li>
+                            <li class="active text-center"><a href="#para_casa" title="Para sua casa"><i class="fa fa-home fa-3x"></i><br />Para sua casa</a></li>
+                            <li class="text-center"><a href="#informatica" title="Inform&aacute;tica"><i class="fa fa-laptop fa-3x"></i><br />Inform&aacute;tica</a></li>
+                            <li class="text-center"><a href="#telefonia" title="Telefonia"><i class="fa fa-mobile fa-3x"></i><br />Telefonia</a></li>
+                            <li class="text-center"><a href="#passagens_aereas" title="Passagens A&eacute;reas"><i class="fa fa-plane fa-3x"></i><br />Passagens A&eacute;reas</a></li>
+                            <li class="text-center"><a href="#utilidades" title="Utilidades"><i class="fa fa-gift fa-3x"></i><br />Utilidades</a></li>
+                            <li class="text-center"><a href="#jogos" title="Jogos"><i class="fa fa-gamepad fa-3x"></i><br />Jogos</a></li>
+                            <li class="text-center"><a href="#alimentacao" title="Alimenta&ccedil;&atilde;o"><i class="fa fa-cutlery fa-3x"></i><br />Alimenta&ccedil;&atilde;o</a></li>
+                            <li class="text-center"><a href="#fotografia" title="Fotografia"><i class="fa fa-camera-retro fa-3x"></i><br />Fotografia</a></li>
+                            <li class="text-center"><a href="#cinema" title="Cinema"><i class="fa fa-video-camera fa-3x"></i><br />Cinema</a></li>
+                            <li class="text-center"><a href="#ingressos" title="Ingressos"><i class="fa fa-ticket fa-3x"></i><br />Ingressos</a></li>
                             <li class="text-center dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-music fa-3x"></i><br />M&uacute;sica <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" title="M&uacute;sica" data-toggle="dropdown"><i class="fa fa-music fa-3x"></i><br />M&uacute;sica <b class="caret"></b></a>
                                 <ul class="dropdown-menu text-left">
-                                    <li><a href="#cantores"><i class="fa fa-microphone"></i> Cantores</a></li>
-                                    <li><a href="#downloads"><i class="fa fa-download"></i> Downloads</a></li>
+                                    <li><a href="#cantores" title="Cantores"><i class="fa fa-microphone"></i> Cantores</a></li>
+                                    <li><a href="#downloads" title="Downloads"><i class="fa fa-download"></i> Downloads</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -136,39 +131,38 @@
                 </div>
             </div>
         </div><!--fim menu-->
-        <div class="row">
+        <div class="row"><!--breadcrumb-->
             <div class="container">
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a></li>
                     <li class="active">Meu carrinho</li>
                 </ol>
             </div>
-        </div>
+        </div><!--fim breadcrumb-->
         <div class="row" id="conteudo"><!--inicio conteudo-->
             <div class="container">
                 <h2>Meu carrinho</h2>
                 <hr class="featurette-divider" />
                 <form id="form-carrinho" class="form-inline" action="#" method="post">
-                    <table class="table table-bordered">
-                        <caption>Itens do carrinho de compras</caption>
+                    <table class="table table-bordered texto" summary="A listagem &eacute; composta pelos produtos selecionados, quantidade e valor de compra gerando assim um valor total. O valor total &eacute; atualizado quando alterada a quantidade do produtos, e para isso, ao realizar a mudan&ccedil;a o usu&aacute;io deve acessar o bot&atilde;o Atualizar valor caso o navegador n&atilde;o possua suporte a javascript. Para remover o item, o usu&aacute;rio deve acessar o bot&atilde;o remover item, o sistema ir&aacute; recalcular o valor total do pedido automaticamente. Caso possua um cupom de desconto, informe-o no campo Cumpo de desconto e acesse o bot&atilde;o Calcular para que o sistema retorne o pedido com o valor atualizado.">
+                        <caption class="texto">Itens do carrinho de compras</caption>
                         <thead>
                             <tr class="active">
-                                <th>Produto</th>
-                                <th>Quantidade</th>
-                                <th>Valor Unit&aacute;rio</th>
-                                <th>Valor Total</th>
-                                <th>Excluir</th>
+                                <th width="50%">Produto</th>
+                                <th width="25%">Quantidade</th>
+                                <th width="10%">Valor Unit&aacute;rio</th>
+                                <th width="10%">Valor Total</th>
+                                <th width="10%">Excluir</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr class="warning">
                                 <td colspan="3" class="text-right">
-                                    Subtotal de produtos
+                                    <i>Subtotal de produtos</i>
                                 </td>
-                                <td class="text-left">
+                                <td colspan="2" class="text-left">
                                     <strong>R$ 1.750,00</strong>
                                 </td>
-                                <td></td>
                             </tr>
                             <tr class="warning">
                                 <td colspan="5" class="text-left">
@@ -182,36 +176,35 @@
                                         </div>
                                     </div>
                                     <div class="col-md-1">
-                                        <input type="button" class="btn btn-info btn-lg" value="Calcular" />
+                                        <br /><input type="button" class="btn btn-info btn-lg texto" title="Recalcular o valor total do pedido com o desconto de acordo com o desconto informado pela chave do cumpo de desconto." value="Recalcular" />
                                     </div>
                                 </td>
                             </tr>
                             <tr class="warning">
                                 <td colspan="3" class="text-right">
-                                    Total de produtos
+                                    <i>Total de produtos</i>
                                 </td>
-                                <td class="text-left">
+                                <td colspan="2" class="text-left">
                                     <strong>R$ 1.750,00</strong>
                                 </td>
-                                <td></td>
                             </tr>
                         </tfoot>
                         <tbody>
                            <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
+                                <td>
+                                    <div class="col-lg-2">
+                                        <img src="img/prod-sub.png" class="img-responsive" alt="Generic placeholder image" title="Generic placeholder image" />
                                     </div>
-                                    <div class="col-xs-10">
+                                    <div class="col-lg-10">
                                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div class="col-xs-5">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
                                     </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
+                                    <div class="col-lg-3">
+                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default texto">Atualizar valor <i class="fa fa-repeat"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -221,24 +214,24 @@
                                     R$ 350,00
                                 </td>
                                 <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
+                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho texto">Remover item <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
+                                <td>
+                                    <div class="col-lg-2">
+                                        <img src="img/prod-sub.png" class="img-responsive" alt="Generic placeholder image" title="Generic placeholder image" />
                                     </div>
-                                    <div class="col-xs-10">
+                                    <div class="col-lg-10">
                                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div class="col-xs-5">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
                                     </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
+                                    <div class="col-lg-3">
+                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default texto">Atualizar valor <i class="fa fa-repeat"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -248,24 +241,24 @@
                                     R$ 350,00
                                 </td>
                                 <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
+                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho texto">Remover item <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
+                                <td>
+                                    <div class="col-lg-2">
+                                        <img src="img/prod-sub.png" class="img-responsive" alt="Generic placeholder image" title="Generic placeholder image" />
                                     </div>
-                                    <div class="col-xs-10">
+                                    <div class="col-lg-10">
                                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div class="col-xs-5">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
                                     </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
+                                    <div class="col-lg-3">
+                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default texto">Atualizar valor <i class="fa fa-repeat"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -275,24 +268,24 @@
                                     R$ 350,00
                                 </td>
                                 <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
+                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho texto">Remover item <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
+                                <td>
+                                    <div class="col-lg-2">
+                                        <img src="img/prod-sub.png" class="img-responsive" alt="Generic placeholder image" title="Generic placeholder image" />
                                     </div>
-                                    <div class="col-xs-10">
+                                    <div class="col-lg-10">
                                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div class="col-xs-5">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
                                     </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
+                                    <div class="col-lg-3">
+                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default texto">Atualizar valor <i class="fa fa-repeat"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -302,24 +295,24 @@
                                     R$ 350,00
                                 </td>
                                 <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
+                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho texto">Remover item <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="col-lg-5">
-                                    <div class="col-xs-2">
-                                        <img src="img/prod-sub.png" width="72" alt="Generic placeholder image" title="Generic placeholder image" />
+                                <td>
+                                    <div class="col-lg-2">
+                                        <img src="img/prod-sub.png" class="img-responsive" alt="Generic placeholder image" title="Generic placeholder image" />
                                     </div>
-                                    <div class="col-xs-10">
+                                    <div class="col-lg-10">
                                         Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta.
                                     </div>
                                 </td>
                                 <td class="text-center">
-                                    <div class="col-xs-5">
+                                    <div class="col-lg-5">
                                         <input type="text" class="form-control quantidade-produto text-center" maxlength="3" value="1" />
                                     </div>
-                                    <div class="col-xs-3">
-                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default">Atualizar valor <i class="fa fa-repeat"></i></a>
+                                    <div class="col-lg-3">
+                                        <a href="#atualizar-valor-item" title="Atualizar valor item" class="btn btn-default  texto">Atualizar valor <i class="fa fa-repeat"></i></a>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -329,17 +322,17 @@
                                     R$ 350,00
                                 </td>
                                 <td class="text-center">
-                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho">Remover item <i class="fa fa-trash-o"></i></a>
+                                    <a href="#remover-item" class="btn btn-danger remover-item-carrinho texto">Remover item <i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="row" id="div-fechamento-carrinho">
                         <div class="col-lg-6">
-                            <a href="#comprar_mais" class="btn btn-warning btn-lg pull-left" title="Comprar mais produtos">Comprar mais produtos</a>
+                            <a href="#comprar_mais" class="btn btn-warning btn-lg pull-left  texto" title="Comprar mais produtos">Comprar mais produtos</a>
                         </div>
                         <div class="col-lg-6">
-                            <a href="#concluir_compra" class="btn btn-success btn-lg pull-right" title="Concluir compra">Concluir compra</a>
+                            <a href="#concluir_compra" class="btn btn-success btn-lg pull-right texto" title="Concluir compra">Concluir compra</a>
                         </div>
                     </div>
                 </form>
@@ -388,7 +381,7 @@
                             <li><a title="Pol&iacute;tica de Privacidade" href="#politica">Pol&iacute;tica de Privacidade</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 texto">
                         <div class="col-md-12">
                             <h3>Central de atendimento</h3>
                             <a href="#central_atendimento" title="Central de atendimento">
@@ -444,5 +437,8 @@
         </div><!--fim fechamento da pagina-->
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/store.min.js"></script>
+        <script type="text/javascript" src="js/rv-jquery-fontsize-2.0.3.js"></script>
+        <script type="text/javascript" src="js/acessibilidade.js"></script>
     </body>
 </html>
