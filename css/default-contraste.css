@@ -1,0 +1,73 @@
+body.contraste{
+    background: #000 !important;
+    color: #FFF !important;
+}
+
+.contraste .container,
+.contraste #conteudo .container,
+.contraste #busca-central-interna,
+.contraste #barra_acessibilidade{
+    background: #333333 !important;
+    color: #FFF !important;
+}
+.contraste .container a{
+    color: #FFF !important;
+}
+
+.contraste .navbar-default{
+    background: #333333 !important;
+}
+
+.contraste .btn-success,
+.contraste .btn-default,
+.contraste .btn-info,
+.contraste .btn-danger,
+.contraste .btn-warning,
+.contraste .input-group-addon{
+    background-color: #333333 !important;
+    border: 1px solid #666 !important ;
+    color: #FFF !important;
+}
+
+.contraste #produto-destaque,
+.contraste #topo{
+    background-color: #666 !important;
+}
+.contraste .preco{
+    background-color: #666 !important;
+    border: 1px solid #999 !important;
+}
+
+.contraste .pagination a{
+    background: #333333 !important;
+    color: #fff !important;
+}
+
+.contraste #menu .active a{
+    background: #666 !important;
+}
+
+.contraste table thead tr{
+    background: #666 !important;
+    color: #000;
+}
+.contraste table tfoot tr{
+    background-color: #666 !important;
+}
+
+.contraste .breadcrumb a{
+    color: #000 !important;
+}
+.contraste .active{
+    color: #666 !important;
+}
+
+.contraste .alert-danger,
+.contraste .alert-warning{
+    background: #666 !important;
+    color: #FFF !important;
+}
+.contraste .alert-danger a,
+.contraste .alert-warning a{
+    color: #39B3D7 !important;
+}
