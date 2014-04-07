@@ -5,24 +5,15 @@
 $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
 ?>
 <!DOCTYPE html>
-    <!--[if lt IE 7]>
-          <html class="no-js lt-ie9 lt-ie8 lt-ie7"> 
-    <![endif]-->
-    <!--[if IE 7]>
-         <html class="no-js lt-ie9 lt-ie8"> 
-     <![endif]-->
-    <!--[if IE 8]> 
-        <html class="no-js lt-ie9"> 
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <html class="no-js"> 
-    <!--<![endif]-->
+<html lang="pt_BR">
     <head>
         <meta charset="utf-8">
         <?php print $this->defaults() ?>
         <?php print $this->headTitle(); ?>
         <?php print $this->headMeta(); ?>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="author" content="Fabricio Nogueira">
         <?php print $this->headLink() ?>
         <script type="text/javascript">
             var baseUrl = '<?php print $this->baseUrl(); ?>';
@@ -34,14 +25,14 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
             <?php print $this->layout()->navigation; ?>
          <?php else : ?>
         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Grass</a>
+                    <a class="navbar-brand" href="#"><?php print $this->sistema ?></a>
                 </div>
             </div>
         </div>
         <?php endif;?>
-        <div class="container">
+        <div class="container-fluid">
             <div id="content">
                 <div class="row">
                     <div class="col-md-pull-12">
@@ -52,11 +43,11 @@ $vOrganizacao = $this->organizacaoDefault()->toViewSingle();
             <hr>
         </div>
         <footer>
-            <div class="container">
+            <div class="container-fluid">
                 <div id="content">
-                    <div class="col-md-2 pull-left">&copy; Grass <?php print date('Y')?></div>
-                    <div class="col-md-4 pull-right text-right"><i class="icon-home"></i> <?php print $vOrganizacao['nome_organizacao']?></div>
+                    <div class="col-md-4 pull-left">&copy; <?php print $this->sistema ?> <?php print date('Y')?></div>
                     <div class="col-md-4 pull-right text-right"><?php print $this->usuario();?></div>
+                    <div class="col-md-4 center text-center"><i class="icon-home"></i> <?php print $vOrganizacao['nome_organizacao']?></div>
                 </div>
             </div>
         </footer>

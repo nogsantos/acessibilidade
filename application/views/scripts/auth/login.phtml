@@ -3,56 +3,58 @@
  * Formulario de login
  */
 ?>
-<div class="row">
-    <div class="col-md-12">
-        <div class="page-header">
-            <h1>Bem vindo ao sistema! <small class="text-muted">Por favor identifique-se pelo formul&aacute;rio abaixo.</small></h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h1>Bem vindo ao <?php print $this->sistema ?>! <small class="text-muted">Por favor identifique-se pelo formul&aacute;rio abaixo.</small></h1>
+            </div>
         </div>
     </div>
-</div>
-<?php if (sizeof($this->messages) > 0) : ?>
-<div class="row">
-    <div class="col-md-12">
-        <?php echo $this->messages[0] ?>
+    <?php if (sizeof($this->messages) > 0) : ?>
+    <div class="row">
+        <div class="col-md-12">
+            <?php echo $this->messages[0] ?>
+        </div>
     </div>
-</div>
-<?php endif; ?>
-<div class="row">
-    <div class="col-md-6">
-        <form name="form" id="formLogin" autocomplete="off" action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" method="POST">
-            <div class="panel panel-info">
-                <div class="panel-heading">Formul&aacute;rio de login</div>
-                <div class="panel-body">
-                    <div class="form-group col-lg-12">
-                        <label for="organizacao">Organiza&ccedil;&atilde;o</label>
-                        <select class="form-control" name="organizacao" id="organizacao" title="Informe a Organização">
-                        <?php foreach ($this->organizacao()->toZendForm() as $key => $value) :?>
-                            <option value="<?php print $key ?>"><?php print $value ?></option>
-                        <?php endforeach;?>
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label for="login">Login</label>
-                        <input type="text" name="login" id="login" class="form-control" autocorrect="off" autocomplete="off" title="Informe o Login" value="" />
-                    </div>
-                    <div class="form-group col-lg-12">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" id="senha" class="form-control" autocorrect="off" autocomplete="off" title="Informe a senha" value=""/>
-                    </div>
-                    <div class="form-group col-lg-12">
+    <?php endif; ?>
+    <div class="row">
+        <div class="col-md-6">
+            <form name="form" id="formLogin" autocomplete="off" action="<?php echo $this->url(array('controller' => 'auth', 'action' => 'login')); ?>" method="POST">
+                <div class="panel panel-info">
+                    <div class="panel-heading">Formul&aacute;rio de login</div>
+                    <div class="panel-body">
+                        <div class="form-group col-lg-12">
+                            <label for="organizacao">Organiza&ccedil;&atilde;o</label>
+                            <select class="form-control" name="organizacao" id="organizacao" title="Informe a Organização">
+                            <?php foreach ($this->organizacao()->toZendForm() as $key => $value) :?>
+                                <option value="<?php print $key ?>"><?php print $value ?></option>
+                            <?php endforeach;?>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="login">Login</label>
+                            <input type="text" name="login" id="login" class="form-control" autocorrect="off" autocomplete="off" title="Informe o Login" value="" />
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="senha">Senha</label>
+                            <input type="password" name="senha" id="senha" class="form-control" autocorrect="off" autocomplete="off" title="Informe a senha" value=""/>
+                        </div>
+                        <div class="form-group col-lg-12">
                         <input type="submit" name="btLogar" id="btLogar" value="Logar" title="Logar" class="btn btn-primary btn-lg btn-block">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-    <div class="col-md-6">
-        <table border="0" width="100%">
-            <tr>
-                <td align="center" valign="center">
-                    <img src="<?php print $this->baseUrl() . '/img/login.jpg' ?>" class="img-rounded img-responsive" title="Tela de login do sistema." />
-                </td>
-            </tr>
-        </table>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <table border="0" width="100%">
+                <tr>
+                    <td align="center" valign="center">
+                        <img src="<?php print $this->baseUrl() . '/img/login.jpg' ?>" class="img-rounded img-responsive" title="Tela de login do sistema." />
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

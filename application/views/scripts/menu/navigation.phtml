@@ -25,7 +25,7 @@ foreach ($this->itensMenu as $value) {
 }
 ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Alterar Navega&ccedil;&atilde;o</span>
@@ -33,7 +33,7 @@ foreach ($this->itensMenu as $value) {
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<?php print $this->url(array('controller' => 'index', 'action' => 'index')) ?>">Grass</a>
+            <a class="navbar-brand" href="<?php print $this->url(array('controller' => 'index', 'action' => 'index')) ?>"><?php print $this->sistema ?> </a>
         </div>
         <div class="collapse navbar-collapse bs-js-navbar-collapse">
             <ul class="nav navbar-nav">
@@ -59,7 +59,7 @@ foreach ($this->itensMenu as $value) {
                 </li>
                 <li class="fat-menu">
                     <form class="navbar-form navbar-right" action="<?php print $this->url(array('controller' => 'auth', 'action' => 'logout')) ?>">
-                        <button type="submit" class="btn btn-success" title="Sair do sistema com seguran&ccedil;a">Sair com seguran&ccedil;a&nbsp;&nbsp;<i class="icon-off"></i></button>
+                        <button type="submit" class="btn btn-success">Sair com seguran&ccedil;a&nbsp;&nbsp;<i class="icon-off"></i></button>
                     </form>
                 </li>
             </ul>

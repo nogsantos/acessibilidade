@@ -22,6 +22,10 @@ abstract class MainController extends Zend_Controller_Action {
      */
     public function init() {
         parent::init();
+        
+        $config        = Zend_Controller_Front::getInstance()->getParam('bootstrap');
+        $vDadosSistema = $config->getOption('configuracao');
+        
         $this->url = Zend_Controller_Front::getInstance()->getBaseUrl();
         /*
          * Default styles.
@@ -82,6 +86,13 @@ abstract class MainController extends Zend_Controller_Action {
             true,
             array('id' => 'default')
         );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/css/dashboard.css',
+            'screen',
+            true,
+            array('id' => 'deshboard')
+        );
         /*
          * Default Scripts
          */
@@ -116,6 +127,10 @@ abstract class MainController extends Zend_Controller_Action {
         $this->view->headScript()->appendFile(
             $this->url.
             '/js/default.js'
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.
+            '/js/docs.min.js'
         );
         $this->view->headScript()->appendFile(
             $this->url.
@@ -168,6 +183,10 @@ abstract class MainController extends Zend_Controller_Action {
         if (Zend_Registry::isRegistered('Zend_Locale')) {
             $this->_zendLocale = Zend_Registry::get('Zend_Locale');
         }
+        /*
+         * Define o nome do sistema 
+         */
+        $this->view->sistema = $vDadosSistema['sistema']['nome'];
     }
     /**
      * método que desabilita a view e o layout
