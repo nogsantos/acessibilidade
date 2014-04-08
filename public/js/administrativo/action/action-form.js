@@ -103,14 +103,14 @@ jQuery(function(){
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Identifica a qual controlador pertece a a&ccedil;&atilde;o.</i>',
+        content   : '<i>Vincula a action a um controller.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpCodigoActionField").popover({
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Identifica para qual listagem essa action pertece.</i>',
+        content   : '<i>Identificar&aacute; a qual action a a&ccedil;&atilde;o pertecer&aacute;. Infome o identificador definido no c&oacute;digo do sistema.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpTipoField").popover({
@@ -131,28 +131,28 @@ jQuery(function(){
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Nome da a&ccedil;&atilde;o</i>',
+        content   : '<i>Nome da action que ser&aacute; visualizada pelo usu&aacute;rio</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpCodigoIdentificadorField").popover({
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Identifica para qual listagem essa action pertece.</i>',
+        content   : '<i>Identificador da action para o sistema. No caso de bot&otilde;es, esse c&oacute;digo poder&aacute; ser usado para manipula&ccedil;&otilde;es do DOM com jQuery.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpNomeControladorField").popover({
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Usado para definir o controller da action.</i>',
+        content   : '<i>Usado para definir o Controller da action. No c&oacute;digo do sistema, esse campo ser&aacute; utilizado para forma&ccedil;&atilde;o do link definindo o controller da a&ccedil;&atilde;o.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpNomeAcaoField").popover({
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Nome da action no controller.</i>',
+        content   : '<i>Usado para definir a Action. No c&oacute;digo do sistema, esse campo ser&aacute; utilizado para forma&ccedil;&atilde;o do link definindo a action no controller.</i><br />Padr&atilde;o: [nome.controller]<br />Ex.: salvar.action',
         title     : 'Ajuda'
     });
     jQuery("#helpClasseBotaoField").popover({

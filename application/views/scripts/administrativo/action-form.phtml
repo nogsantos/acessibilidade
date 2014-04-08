@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_fk_controller">
-                            <label class="control-label" for="fk_controller">Controlador * <i class="icon-question-sign" id="helpControladorField"></i></label>
+                            <label class="control-label" for="fk_controller">Controler * <i class="icon-question-sign" id="helpControladorField"></i></label>
                             <div class="row" style="margin-left:0;">
                                 <div class="form-control" id="fk_controller" name="fk_controller"></div>
                             </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="codigo_action">
-                            <label class="control-label" for="codigo_action">C&oacute;digo action <i class="icon-question-sign" id="helpCodigoActionField"></i></label>
+                            <label class="control-label" for="codigo_action">C&oacute;digo da action <i class="icon-question-sign" id="helpCodigoActionField"></i></label>
                             <input type="text" class="form-control" maxlength="250" name="codigo_action" id="codigo_action" value="<?php print @$this->oAction->codigo_action ?>" />
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_id_action">
-                            <label class="control-label" for="id_action">C&oacute;digo identificador * <i class="icon-question-sign" id="helpCodigoIdentificadorField"></i></label>
+                            <label class="control-label" for="id_action">C&oacute;digo identificador <code>tag &lt;id&gt; </code> * <i class="icon-question-sign" id="helpCodigoIdentificadorField"></i></label>
                             <input type="text" class="form-control" maxlength="50" name="id_action" id="id_action" value="<?php print @$this->oAction->id_action ?>" />
                         </div>
                     </div>
@@ -87,23 +87,45 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group" id="div_rel_controller">
-                            <label class="control-label" for="rel_controller">Nome Controlador <i class="icon-question-sign" id="helpNomeControladorField"></i></label>
+                            <label class="control-label" for="rel_controller">Controller <i class="icon-question-sign" id="helpNomeControladorField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="rel_controller" id="rel_controller" value="<?php print @$this->oAction->rel_controller ?>" />
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_rel_action">
-                            <label class="control-label" for="rel_action">Nome A&ccedil;&atilde;o <i class="icon-question-sign" id="helpNomeAcaoField"></i></label>
+                            <label class="control-label" for="rel_action">Action <i class="icon-question-sign" id="helpNomeAcaoField"></i></label>
                             <input type="text" class="form-control" maxlength="100" name="rel_action" id="rel_action" value="<?php print @$this->oAction->rel_action ?>" />
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group" id="div_class_botao">
-                            <label class="control-label" for="class_botao">Classe bot&atilde;o <i class="icon-question-sign" id="helpClasseBotaoField"></i></label>
-                            <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
+                        <div class="btn-group" data-toggle="buttons">
+                            <label id="tipo_action_botao" class="btn btn-default">
+                                <input type="radio" class="btn-default" name="tipo_action" value="btn-default"/>Padrão
+                            </label>
+                            <label id="tipo_action_botao" class="btn btn-primary">
+                                <input type="radio" class="btn-primary" name="tipo_action" value="btn-primary"/>Primário
+                            </label>
+                            <label id="tipo_action_botao" class="btn btn-success">
+                                <input type="radio" class="btn-success" name="tipo_action" value="btn-success"/>Sucesso
+                            </label>
+                            <label id="tipo_action_botao" class="btn btn-info">
+                                <input type="radio" class="btn-info" name="tipo_action" value="btn-info"/>Inf.
+                            </label>
+                            <label id="tipo_action_botao" class="btn btn-warning">
+                                <input type="radio" class="btn-warning" name="tipo_action" value="btn-warning"/>Atenção
+                            </label>
+                            <label id="tipo_action_botao" class="btn btn-danger">
+                                <input type="radio" class="btn-danger" name="tipo_action" value="btn-danger"/>Perigo
+                            </label>
                         </div>
+                        <label class="control-label" for="class_botao">
+                            Outra
+                            <div class="form-group">
+                                <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
+                            </div>
+                        </label>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_class_icone">

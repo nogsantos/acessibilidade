@@ -26,6 +26,7 @@ jQuery(function(){
         div_data_bloqueio = jQuery("#div_data_bloqueio"),
         data_bloqueio = jQuery("#data_bloqueio"),
         btImprimir = jQuery("#imprimir"),
+        btExcluir = jQuery("#excluirController"),
         btSalvar = jQuery("#salvarController")
     ;
     /*
@@ -58,6 +59,12 @@ jQuery(function(){
             return true;
         }
     }
+    /**
+     * Botão Excluir
+     */
+    btExcluir.click(function(){
+        window.open(baseUrl + '/administrativo/pdf','Impressão','height=600,width=1024',false);
+    });
     /**
      * Botão Imprimir
      */
