@@ -219,7 +219,7 @@ ALTER TABLE administrativo.organizacao ADD FOREIGN KEY(fk_matriz) REFERENCES adm
 ALTER TABLE administrativo.perfil_organizacao ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
 ALTER TABLE administrativo.perfil_controller ADD FOREIGN KEY(fk_perfil) REFERENCES administrativo.perfil (id_perfil);
 ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_telefone) REFERENCES public.telefone (id_telefone);
-ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_pessoa) REFERENCES public.telefone (id_telefone);
+ALTER TABLE pessoa.pessoa_telefone ADD FOREIGN KEY(fk_pessoa) REFERENCES public.pessoa (id_pessoa);
 
 comment on table pessoa.pessoa is 'Tabela Pessoa é a especialização de pessoas no sistema.';
 comment on column pessoa.pessoa.id_pessoa is 'Chave principal de identificação da pessoa no sistema, pode ser um cpf(fisica) cnpj(juridica)';

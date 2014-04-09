@@ -100,36 +100,64 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="btn-group" data-toggle="buttons">
-                            <label id="tipo_action_botao" class="btn btn-default">
-                                <input type="radio" class="btn-default" name="tipo_action" value="btn-default"/>Padrão
-                            </label>
-                            <label id="tipo_action_botao" class="btn btn-primary">
-                                <input type="radio" class="btn-primary" name="tipo_action" value="btn-primary"/>Primário
-                            </label>
-                            <label id="tipo_action_botao" class="btn btn-success">
-                                <input type="radio" class="btn-success" name="tipo_action" value="btn-success"/>Sucesso
-                            </label>
-                            <label id="tipo_action_botao" class="btn btn-info">
-                                <input type="radio" class="btn-info" name="tipo_action" value="btn-info"/>Inf.
-                            </label>
-                            <label id="tipo_action_botao" class="btn btn-warning">
-                                <input type="radio" class="btn-warning" name="tipo_action" value="btn-warning"/>Atenção
-                            </label>
-                            <label id="tipo_action_botao" class="btn btn-danger">
-                                <input type="radio" class="btn-danger" name="tipo_action" value="btn-danger"/>Perigo
-                            </label>
-                        </div>
                         <label class="control-label" for="class_botao">
-                            Outra
-                            <div class="form-group">
-                                <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
+                            Classe para o Bot&atilde;o <i class="icon-question-sign" id="helpClasseBotaoField"></i></label><br>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_botao" value="btn-default" checked="checked" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-primary">
+                                    <input type="radio" class="btn-primary" name="class_botao" value="btn-primary"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-success">
+                                    <input type="radio" class="btn-success" name="class_botao" value="btn-success"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-info">
+                                    <input type="radio" class="btn-info" name="class_botao" value="btn-info"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-warning">
+                                    <input type="radio" class="btn-warning" name="class_botao" value="btn-warning"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-danger">
+                                    <input type="radio" class="btn-danger" name="class_botao" value="btn-danger"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </label>
                             </div>
-                        </label>
+                            Outra
+                            <input type="text" class="form-control" maxlength="100" name="class_botao" id="class_botao" value="<?php print @$this->oAction->class_botao ?>" />
                     </div>
                     <div class="col-md-6">
                         <div class="form-group" id="div_class_icone">
-                            <label class="control-label" for="class_icone">Classe icone <i class="icon-question-sign" id="helpClasseIconeField"></i></label>
+                            <label class="control-label" for="class_icone">Classe icone para o bot&atilde;o <i class="icon-question-sign" id="helpClasseIconeField"></i></label><br>
+                            <div class="btn-group" data-toggle="buttons">
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-question-sign" /><i class="icon-question-sign" title="Ajuda" ></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-save" /><i class="icon-save" title="Salvar"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-edit" /><i class="icon-edit" title="Editar"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-trash" /><i class="icon-trash" title="Exclus&atilde;o"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-print" /><i class="icon-print" title="Imprimir"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-eye-open" /><i class="icon-eye-open" title="Visualizar"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-refresh" /><i class="icon-refresh" title="Recarregar"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-download" /><i class="icon-download" title="Download"></i>
+                                </label>
+                                <label id="tipo_action_botao" class="btn btn-default">
+                                    <input type="radio" class="btn-default" name="class_icone" value="icon-file-alt" /><i class="icon-file-alt" title="Novo"></i>
+                                </label>
+                            </div>
+                            Outra <small>[Para mais op&ccedil;&otilde;es <a target="_blank" href="http://fontawesome.io/icons/">Font Awesome</a>]</small>
                             <input type="text" class="form-control" maxlength="100" name="class_icone" id="class_icone" value="<?php print @$this->oAction->class_icone ?>" />
                         </div>
                     </div>

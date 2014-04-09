@@ -11,6 +11,12 @@
  * @version 1.0.0
  *
  */
-class PerfilController {
-    
+require_once 'MainController.php';
+class PerfilController extends MainController {
+    /**
+     * Init
+     */
+    public function init(){
+        parent::init();
+    }
 }

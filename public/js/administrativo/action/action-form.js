@@ -159,14 +159,14 @@ jQuery(function(){
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Define a classe visual do botão no formulário.</i>',
+        content   : '<i>Define a classe visual do bot&atilde;o no formul&aacute;rio.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpClasseIconeField").popover({
         animation : true,
         html      : true,
         trigger   : 'hover',
-        content   : '<i>Classe que será utilizada para adicionar um icone caso a action seja um botão.</i>',
+        content   : '<i>Classe que ser&aacute; utilizada para adicionar um icone caso a action seja um bot&atilde;o.</i>',
         title     : 'Ajuda'
     });
     jQuery("#helpDescricaoField").popover({

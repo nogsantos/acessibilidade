@@ -213,6 +213,66 @@ class AdministrativoController extends MainController {
         echo Zend_Json::encode($oController->listarControllers()->toArray());
     }
     /**
+     * Index listagem de perfis.
+     */
+    public function perfilAction(){
+      /*
+       * Monta o menu principal
+       */
+       $this->_helper->actionStack('navigation', 'Menu');
+       /*
+        * Grid
+        */
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables')
+        );
+        $this->view->headLink()->prependStylesheet(
+            $this->url.
+            '/DataTables-1.9.4/media/css/jquery.dataTables_themeroller.css',
+            'screen',
+            true,
+            array('id' => 'jquery.dataTables_themeroller')
+        );
+        $this->view->headScript()->appendFile(
+            $this->url.'/DataTables-1.9.4/media/js/jquery.dataTables.js'
+        );
+        /*
+         * Paginador do grid
+         */
+        $this->view->headScript()->appendFile(
+            $this->url.'/DataTables-1.9.4/media/js/paginador.js'
+        );
+        /*
+         * Carrega o grid no formulário.
+         */
+        $this->view->headScript()->appendFile(
+           $this->url.'/js/loadGrid.js'
+        );
+        /*
+         * Script da página
+         */
+        $this->view->headScript()->appendFile(
+            $this->url.'/js/administrativo/perfil/perfil.js'
+        );
+        /*
+         * Listagem dos módulos cadastrados.
+         */
+        $oPerfil             = new Application_Model_Perfil();
+//        $this->view->oPerfil = $oPerfil->();
+        /*
+         * Chamada para Menu da listagem.
+         */
+        $oMenuListagem = new Custom_Menu();
+        $oMenuListagem->setController($this->_controller);
+        $oMenuListagem->setCodigoAction('controller');
+        $oMenuListagem->setTipoMenu('L');
+        $this->view->menu = $oMenuListagem->menu();
+    }
+    /**
      * Pdf
      */
     public function pdfAction(){
