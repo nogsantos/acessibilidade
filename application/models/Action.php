@@ -282,7 +282,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
     public function cadastrar(){
         try {
             $vDados = array(
-                'fk_controller'    => $this->fkController, 
+                'fk_controller'    => (int) $this->fkController, 
                 'id_action'        => $this->idAction, 
                 'codigo_action'    => $this->codigoAction, 
                 'rel_controller'   => $this->relController, 
@@ -293,7 +293,7 @@ class Application_Model_Action extends Zend_Db_Table_Abstract {
                 'tipo_action'      => $this->tipoAction, 
                 'tipo_menu'        => $this->tipoMenu, 
                 'descricao_action' => $this->descricaoAction, 
-                'numero_ordem'     => $this->numeroOrdem, 
+                'numero_ordem'     => (int) $this->numeroOrdem, 
                 'data_bloqueio'    => empty($this->dataBloqueio) ? null : $this->dataBloqueio,
             );
             $this->insert($vDados);

@@ -12,7 +12,8 @@
  *
  */
 require_once 'MainController.php';
-class ActionController extends MainController {
+require_once 'ActionBusiness.php';
+class ActionController extends MainController{
     /**
      * Init
      */
@@ -34,61 +35,10 @@ class ActionController extends MainController {
             if ($this->getRequest()->isPost()) {
                 $vDados = $this->getRequest()->getPost();
                 if ($oActionForm->isValid($vDados)) {
-                    $oAction = new Application_Model_Action();
-                    /*
-                     * Objects sets
-                     */
-                    $oAction->setFkController(
-                        $oActionForm->getValue('fk_controller')
-                    );
-                    $oAction->setCodigoAction(
-                        $oActionForm->getValue('codigo_action')
-                    );
-                    $oAction->setTipoAction(
-                        $oActionForm->getValue('tipo_action')
-                    );
-                    $oAction->setTipoMenu(
-                        $oActionForm->getValue('tipo_menu')
-                    );
-                    $oAction->setNomeAction(
-                        $oActionForm->getValue('nome_action')
-                    );
-                    $oAction->setIdAction(
-                        $oActionForm->getValue('id_action')
-                    );
-                    $oAction->setRelController(
-                        $oActionForm->getValue('rel_controller')
-                    );
-                    $oAction->setRelController(
-                        $oActionForm->getValue('rel_controller')
-                    );
-                    $oAction->setRelAction(
-                        $oActionForm->getValue('rel_action')
-                    );
-                    $oAction->setClassBotao(
-                        $oActionForm->getValue('class_botao')
-                    );
-                    $oAction->setClassIcone(
-                        $oActionForm->getValue('class_icone')
-                    );
-                    $oAction->setDescricaoAction(
-                        $oActionForm->getValue('descricao_action')
-                    );
-                    $oAction->setNumeroOrdem(
-                        $oActionForm->getValue('numero_ordem')
-                    );
-//                    $codigoAction = $oActionForm->getValue('id_controller');
-//                    if(empty($codigoAction)){
-                        /*
-                         * Cadastro
-                         */
-                        $retorno = $oAction->cadastrar();
-//                    }else{
-                        /*
-                         * Edição
-                         */
-//                        $retorno = $oAction->editar();
-//                    }
+                    
+                    $oActionBusiness = new ActionBusiness();
+                    $retorno = $oActionBusiness->cadastrar($oActionForm->getValues());
+
                     if(!$retorno){
                         $this->_helper->flashMessenger->addMessage('
                             <div class="alert alert-danger">

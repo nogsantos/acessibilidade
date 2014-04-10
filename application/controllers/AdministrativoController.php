@@ -268,7 +268,7 @@ class AdministrativoController extends MainController {
          */
         $oMenuListagem = new Custom_Menu();
         $oMenuListagem->setController($this->_controller);
-        $oMenuListagem->setCodigoAction('controller');
+        $oMenuListagem->setCodigoAction('perfil');
         $oMenuListagem->setTipoMenu('L');
         $this->view->menu = $oMenuListagem->menu();
     }
