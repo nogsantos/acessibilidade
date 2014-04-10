@@ -62,12 +62,28 @@ class Form_Action extends Zend_Form {
                     ->addValidator('StringLength', true, array(0,100))
         ;
         /*
+         * class_icone_other
+         */
+        $class_icone_other = new Zend_Form_Element_Text('class_icone_other');
+        $class_icone_other->addFilter('StripTags')
+                          ->addFilter('StringTrim')
+                          ->addValidator('StringLength', true, array(0,100))
+        ;
+        /*
          * class_botao
          */
         $class_botao = new Zend_Form_Element_Text('class_botao');
         $class_botao->addFilter('StripTags')
                     ->addFilter('StringTrim')
                     ->addValidator('StringLength', true, array(0,100))
+        ;
+        /*
+         * class_botao_other
+         */
+        $class_botao_other = new Zend_Form_Element_Text('class_botao_other');
+        $class_botao_other->addFilter('StripTags')
+                          ->addFilter('StringTrim')
+                          ->addValidator('StringLength', true, array(0,100))
         ;
         /*
          * nome_action
