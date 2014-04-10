@@ -1,4 +1,0 @@
-/**
- * Consultas schema public
- *
- */
